@@ -21,7 +21,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-primary w-100 text-center", method: "post",  style: "text-decoration:none;"} do %>
+      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-outline-primary btn-sm w-100 text-center", method: "post",  style: "text-decoration:none; border:1px solid;"} do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -54,7 +54,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: -1), { class: "btn-sm btn-outline-danger w-100 text-center", method: "post",  style: "text-decoration:none;" } do %>
+      <%= link_to preference_tag_path(choice, kind: -1), { class: "btn-sm btn-outline-danger w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;" } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -87,7 +87,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-primary w-100 text-center", method: "post",  style: "text-decoration:none;"} do %>
+      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-primary w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;"} do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -120,7 +120,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: -1), { class: "btn-sm btn-outline-danger w-100 text-center", method: "post",  style: "text-decoration:none;" } do %>
+      <%= link_to preference_tag_path(choice, kind: -1), { class: "btn-sm btn-outline-danger w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;" } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -153,7 +153,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-primary w-100 text-center", method: "post",  style: "text-decoration:none;"} do %>
+      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-primary w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;"} do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -186,7 +186,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: -1), { class: "btn-sm btn-outline-danger w-100 text-center", method: "post",  style: "text-decoration:none;" } do %>
+      <%= link_to preference_tag_path(choice, kind: -1), { class: "btn-sm btn-outline-danger w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;" } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
