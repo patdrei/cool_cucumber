@@ -21,7 +21,7 @@ class PreferencesController < ApplicationController
 
   def create_with_tag
     @tag = Tag.find(params[:tag_id])
-    @preference = Preference.new()
+    @preference = Preference.new(strong_params)
     @preference.active = true
     @preference.tag = @tag
     @preference.user = current_user
@@ -31,6 +31,6 @@ class PreferencesController < ApplicationController
   private
 
   def strong_params
-    params.require(:preference).permit(:kind)
+    params.permit(:kind)
   end
 end

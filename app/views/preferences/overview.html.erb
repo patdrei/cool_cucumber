@@ -7,7 +7,7 @@
 <% @top_choices.each do |choice| %>
 <div class="col col-lg-2 col-sm-6  p-1">
   <form class="form-inline">
-    <%= link_to preference_tag_path(choice, kind: "positive"), { class: "btn-sm btn-outline-primary w-100", method: "post",  style: "text-decoration:none;" } do %>
+    <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-primary w-100", method: "post",  style: "text-decoration:none;" } do %>
       <span><%= choice.name %></span>
     <% end %>
   </form>
