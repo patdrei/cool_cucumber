@@ -2,13 +2,20 @@ class PreferencesController < ApplicationController
 
   def overview
     @top_choices = Tag.where(category: 'top_choice')
+    @cuisines = Tag.where(category: 'cuisines')
+    @types = Tag.where(category: 'dish_types')
+
     @ingredients = Ingredient.all
     @preferences = current_user.preferences
   end
 
   def deactivate
-    preference = Preference.find(params[:id])
-    preference.active = false
+     Preference.destroy(params[:id])
+    # @preference = Preference.find(params[:id])
+    # @preference.active = false
+    # @preference.save
+
+    redirect_to overview_path
   end
 
   def create_with_ingredient
@@ -17,6 +24,7 @@ class PreferencesController < ApplicationController
     @preference.active = true
     @preference.ingredient = @ingredient
     @preference.save
+    redirect_to overview_path
   end
 
   def create_with_tag
@@ -26,6 +34,7 @@ class PreferencesController < ApplicationController
     @preference.tag = @tag
     @preference.user = current_user
     @preference.save
+    redirect_to overview_path
   end
 
   private
