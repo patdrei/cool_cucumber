@@ -5,51 +5,56 @@
   <title>Document</title>
 </head>
 <body>
-  <div class="banner d-flex justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80);">
+  <div class="banner d-flex justify-content-center h-40" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80);">
     <div class="container">
       <h1 class="text-center"> <strong>Ready, shop - cook!</strong></h1>
       <p class="text-center">Get your own mealplan</p>
     </div>
-    <a class="btn btn-primary" href="#">Create</a>
+    <a class="btn btn-primary" href='/meal_plans/new'>Create</a>
   </div>
   <div class="card-product row mt-5 ml-3">
-    <h1 class="col-2 text-center font-c-6 my-auto">1</h1>
-    <div class="col-10 card-product-infos">
+    <h1 class="col-1 text-center font-c-6 my-auto">1</h1>
+    <div class="col-11 card-product-infos lefty-border">
       <h2 class="font-c-6">Set your preferences</h2>
       <p>Healthy and diverse</p>
-      <div class="row pb-3 border-bottom">
+      <div class="row pb-3 ml-1 mr-5 border-bottom">
         <div class="col-3 tag color-1">Vegetarian</div>
         <div class="col-3 tag color-2">Italian</div>
         <div class="col-3 tag color-3">Soup</div>
       </div>
     </div>
   </div>
-  <div class="card-product row mt-5 ml-3">
-    <h1 class="col-2 text-center font-c-6 my-auto">2</h1>
-    <div class="col-10 card-product-infos">
+  <div class="card-product row mt-5 ml-3 mr-5">
+    <h1 class="col-1 text-center font-c-6 my-auto">2</h1>
+    <div class="col-11 card-product-infos lefty-border">
       <h2 class="font-c-6">Shuffle your meal plan</h2>
       <p>Individual and dynamic</p>
-      <div class="row pb-3 border-bottom">
-        <img class="col-3 mh-10" src="https://images.unsplash.com/photo-1543362906-acfc16c67564?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=802&q=80">
-        <div class="col-6 tag">
-          <p></p>
+      <div class="row pb-3 border-bottom h-30">
+        <img class ="col-2"src="https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80">
+        <div class="col-6 tag p-0 pt-4">
+          <h6 class="font-c-neutral text-left "><strong>Papaya salad</strong></h6>
+          <p class="font-c-neutral text-left mb-0">Sunny papayas mixed with fresh herbs</>
         </div>
       </div>
     </div>
   </div>
-  <div class="card-product row mt-5 ml-3">
-    <h1 class="col-2 text-center font-c-6 my-auto">3</h1>
-    <div class="col-10 card-product-infos">
+  <div class="card-product row mt-5 ml-3 mr-5">
+    <h1 class="col-1 text-center font-c-6 my-auto">3</h1>
+    <div class="col-11 card-product-infos lefty-border">
       <h2 class="font-c-6">Shop smoothly</h2>
       <p>Simple and quick</p>
-      <div class="row pb-3 border-bottom">
-        <div class="col-3 tag color-1">Vegetarian</div>
-        <div class="col-6 tag color-2">Italian</div>
+      <div class="d-flex">
+        <i class="fal fa-square icon-size-empty mr-3 font-c-neutral"></i>
+        <p class="mb-1 font-c-neutral">2 limes</p>
+      </div>
+       <div class="d-flex border-bottom">
+        <i class="fas fa-square icon-size-full mr-3 font-c-3"></i>
+        <p class="font-c-neutral">Peanuts</p>
       </div>
     </div>
   </div>
-  <div class="row justify-content-center mt-3">
-    <a class="btn btn-primary" href="#">Start now</a>
+  <div class="row justify-content-center mt-3 mb-5">
+    <a class="btn btn-primary" href='/meal_plans/new'>Start now</a>
   </div>
 </body>
 </html>
