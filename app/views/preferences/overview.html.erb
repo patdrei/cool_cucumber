@@ -1,0 +1,16 @@
+<h1>Our top choice Recipe Tags</h1>
+
+<div class="container">
+
+<% @top_choices.each do |choice| %>
+<div class="btn-sm btn-primary"><%= choice.name %></div>
+<% end %>
+
+</div>
+<h1>Ingredients you might like</h1>
+
+<% @ingredients.each do |ingredient| %>
+<div class="btn-sm btn-primary"><%= ingredient.name %></div>
+<% end %>
+
+<%= @preferences %>
