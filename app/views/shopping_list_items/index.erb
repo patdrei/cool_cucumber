@@ -1,6 +1,29 @@
 
-<img id = ""src="https://images.unsplash.com/photo-1536546025187-bad5bfc86628?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80">
-<% @shopping_list_items.each do |shopping_list_item| %>
-  <h1> <%= shopping_list_item.ingredient.name %></h1>
-<% end  %>
+<!-- <img class = "shopping_list_items_banner" src= "https://images.unsplash.com/photo-1536546025187-bad5bfc86628?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"> -->
+
+<div class="shopping_list_items_banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1536546025187-bad5bfc86628?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80)">
+  <a class="btn btn-primary" href="#">Create</a>
+</div>
+
+
+<div class = "shopping_list_item_card">
+  <% @shopping_list_items.each do |shopping_list_item| %>
+      <% if shopping_list_item.purchased  %>
+        <div class="shopping_list_item_bought">
+          <p> <%= shopping_list_item.ingredient.name %></p>
+
+        </div>
+
+      <% else %>
+        <div class="shopping_list_item">
+          <p> <%= shopping_list_item.ingredient.name %></p>
+
+        </div>
+
+      <% end  %>
+
+  <% end  %>
+</div>
+
+
 
