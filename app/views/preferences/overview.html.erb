@@ -1,16 +1,28 @@
-<h1>Our top choice Recipe Tags</h1>
+
 
 <div class="container">
+  <h1>Our top choice Recipe Tags</h1>
+  <div class="row">
 
 <% @top_choices.each do |choice| %>
-<div class="btn-sm btn-primary"><%= choice.name %></div>
+<div class="col col-lg-2 col-sm-6  p-1">
+  <form class="form-inline">
+    <%= link_to preference_tag_path(choice, kind: "positive"), { class: "btn-sm btn-outline-primary w-100", method: "post",  style: "text-decoration:none;" } do %>
+      <span><%= choice.name %></span>
+    <% end %>
+  </form>
+</div>
 <% end %>
 
-</div>
+  </div>
 <h1>Ingredients you might like</h1>
+<div class="row">
 
 <% @ingredients.each do |ingredient| %>
+<div class="col col-lg-2 col-sm-4  p-1">
 <div class="btn-sm btn-primary"><%= ingredient.name %></div>
+</div>
 <% end %>
-
+</div>
+</div>
 <%= @preferences %>
