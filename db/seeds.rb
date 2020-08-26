@@ -111,7 +111,7 @@ end
 
   unless Recipe.exists?(name: recipes_hash["title"])
 
-    recipe = Recipe.new(name: recipes_hash["title"], description: recipes_hash["summary"], instructions: recipes_hash["instructions"])
+    recipe = Recipe.new(name: recipes_hash["title"], description: recipes_hash["summary"], instructions: recipes_hash["instructions"], image_url: recipes_hash["image"])
     recipe.save
 
     tag_array.each do |tag|
