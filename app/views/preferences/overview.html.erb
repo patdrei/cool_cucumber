@@ -5,24 +5,24 @@
   <div class="row">
 
 <% @top_choices.each do |choice| %>
+<% next if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: -1, active: true) %>
 <div class="col col-lg-2 col-sm-6  p-1">
-  <form class="form-inline">
-    <%= link_to preference_tag_path(choice, kind: "positive"), { class: "btn-sm btn-outline-primary w-100", method: "post",  style: "text-decoration:none;" } do %>
-      <span><%= choice.name %></span>
-    <% end %>
-  </form>
+  <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: 1, active: true) %>
+    <form class="form-inline">
+      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-primary w-100", method: "post",  style: "text-decoration:none;" } do %>
+        <span><%= choice.name %></span>
+      <% end %>
+    </form>
+
+  <% else %>
+    <form class="form-inline">
+      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-primary w-100", method: "post",  style: "text-decoration:none;" } do %>
+        <span><%= choice.name %></span>
+      <% end %>
+    </form>
+  <% end %>
 </div>
 <% end %>
 
   </div>
-<h1>Ingredients you might like</h1>
-<div class="row">
 
-<% @ingredients.each do |ingredient| %>
-<div class="col col-lg-2 col-sm-4  p-1">
-<div class="btn-sm btn-primary"><%= ingredient.name %></div>
-</div>
-<% end %>
-</div>
-</div>
-<%= @preferences %>
