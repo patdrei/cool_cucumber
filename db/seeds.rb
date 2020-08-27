@@ -96,7 +96,6 @@ def set_ingredients(ingredients_array, recipe)
 end
 
 
-
 5.times do
 
   rm = RestClient.get 'https://api.spoonacular.com/recipes/random?apiKey=ccbbbc4b94f44e508ad540ed35565cbc'

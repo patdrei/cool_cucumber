@@ -36,7 +36,7 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'rest-client'
 
-group :development, :test do  
+group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'

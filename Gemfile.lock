@@ -298,12 +298,14 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.4.0)
+
 PLATFORMS
   java
   ruby
   x64-mingw32
   x86-mingw32
   x86-mswin32
+
 DEPENDENCIES
   autoprefixer-rails
   bootsnap (>= 1.4.2)
@@ -331,7 +333,9 @@ DEPENDENCIES
   web-console (>= 3.3.0)
   webdrivers
   webpacker (~> 4.0)
+
 RUBY VERSION
    ruby 2.6.6p146
+
 BUNDLED WITH
    2.1.4
