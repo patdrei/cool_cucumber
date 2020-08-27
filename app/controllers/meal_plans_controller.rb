@@ -1,6 +1,7 @@
 class MealPlansController < ApplicationController
 
   def new
+    @meal_plan = MealPlan.new
   end
 
   def create
