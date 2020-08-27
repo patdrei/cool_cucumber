@@ -23,6 +23,7 @@ class PreferencesController < ApplicationController
     @preference = Preference.new(kind: params[:kind])
     @preference.active = true
     @preference.ingredient = @ingredient
+    @preference.user = current_user
     @preference.save
     redirect_to overview_path
   end
