@@ -76,6 +76,8 @@ end
 
 def set_ingredients(ingredients_array, recipe)
   ingredients_array.each do |ingredient|
+    a = RestClient.get "https://api.spoonacular.com/recipes/convert?ingredientName=#{ingredient['name']}&sourceAmount=#{ingredient['amount']}&sourceUnit=#{ingredient['unit']}&targetUnit=grams&apiKey=ccbbbc4b94f44e508ad540ed35565cbc"
+    amount = JSON.parse(a)
     if Ingredient.exists?(name: ingredient['name'])
       existing_ingredient = Ingredient.find_by(name: ingredient['name'])
       recipe_ingredient = RecipeIngredient.new( amount: ingredient['amount'])
@@ -84,7 +86,7 @@ def set_ingredients(ingredients_array, recipe)
       recipe_ingredient.save
     else
       recipe_ingredient = RecipeIngredient.new( amount: ingredient['amount'])
-      new_ingredient = Ingredient.new(name: ingredient['name'], unit: ingredient['unit'])
+      new_ingredient = Ingredient.new(name: ingredient['name'], unit: "grams")
       new_ingredient.save
       recipe_ingredient.ingredient = new_ingredient
       recipe_ingredient.recipe = recipe
@@ -94,10 +96,9 @@ def set_ingredients(ingredients_array, recipe)
 end
 
 
+5.times do
 
-30.times do
-
-  rm = RestClient.get 'https://api.spoonacular.com/recipes/random?apiKey=7ee1889b634344b88e83d28e2fd3ddbc'
+  rm = RestClient.get 'https://api.spoonacular.com/recipes/random?apiKey=ccbbbc4b94f44e508ad540ed35565cbc'
   rm_array = JSON.parse(rm)
 
 

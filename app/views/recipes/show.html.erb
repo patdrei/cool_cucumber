@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Recipe</title>
+</head>
+<body>
+  <div class="banner d-flex justify-content-center h-40" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80);">
+    <div class="container">
+      <h1 class="text-center"> <strong>Ready, shop - cook!</strong></h1>
+      <p class="text-center">Get your own mealplan</p>
+    </div>
+    <a class="btn btn-primary" id="btn-lg" href='/meal_plans/new'>Back to meal plan</a>
+  </div>
+  <div class="m-2 justify-content-center">
+    <div class="border p-5 mt-5 justify-content-center">
+      <h1 class="text-center mb-3"> <%= @recipe.name.html_safe  %></h1>
+      <div class="row mb-3">
+        <div class="col-2"></div>
+        <div class="col-8 border-bottom text-center font-c-3"><strong>Ingredients</strong></div>
+        <div class="col-2"></div>
+      </div>
+      <p class="text-center"> <% @all_recipe_ingredients.each do |item| %>
+          <%= item.amount %>
+          <%= item.ingredient.unit %>
+          <%= item.ingredient.name  %>
+          <br>
+          <% end%>
+      </p>
+      <div class="row mb-3 mt-5">
+        <div class="col-2"></div>
+        <div class="col-8 border-bottom text-center font-c-3"><strong>Summary</strong></div>
+        <div class="col-2"></div>
+      </div>
+      <p class="text-center"> <%= @recipe.description.html_safe %> </p>
+      <div class="row mb-3 mt-5">
+        <div class="col-2"></div>
+        <div class="col-8 text-center border-bottom font-c-3"><strong>Instructions</strong></div>
+        <div class="col-2"></div>
+      </div>
+      <p class="text-center"> <%= @recipe.instructions.html_safe %> </p>
+    </div>
+  </div>
+</body>
+</html>
