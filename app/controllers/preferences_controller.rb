@@ -15,7 +15,7 @@ class PreferencesController < ApplicationController
     # @preference.active = false
     # @preference.save
 
-    redirect_to overview_path
+    redirect_back(fallback_location: overview_path)
   end
 
   def create_with_ingredient
@@ -24,7 +24,7 @@ class PreferencesController < ApplicationController
     @preference.active = true
     @preference.ingredient = @ingredient
     @preference.save
-    redirect_to overview_path
+    redirect_back(fallback_location: overview_path)
   end
 
   def create_with_tag
@@ -34,7 +34,7 @@ class PreferencesController < ApplicationController
     @preference.tag = @tag
     @preference.user = current_user
     @preference.save
-    redirect_to overview_path
+    redirect_back(fallback_location: overview_path)
   end
 
   private
