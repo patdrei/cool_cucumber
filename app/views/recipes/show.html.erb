@@ -11,9 +11,14 @@
     </div>
     <a class="btn btn-primary" href='/meal_plans/new'>Back to meal plan</a>
   </div>
-  <div class="container">
-    <div class="border p-3 m-5 justify-content-center">
-      <h1 class="text-center"> <%= @recipe.name.html_safe  %></h1>
+  <div class="container m-0">
+    <div class="border p-5 m-2 justify-content-center">
+      <h1 class="text-center mb-3"> <%= @recipe.name.html_safe  %></h1>
+      <div class="row mb-3">
+        <div class="col-2"></div>
+        <div class="col-8 border-bottom text-center font-c-3"><strong>Ingredients</strong></div>
+        <div class="col-2"></div>
+      </div>
       <p class="text-center"> <% @all_recipe_ingredients.each do |item| %>
           <%= item.amount %>
           <%= item.ingredient.unit %>
@@ -21,8 +26,18 @@
           <br>
           <% end%>
       </p>
-      <p> <%= @recipe.description.html_safe %> </p>
-      <p> <%= @recipe.instructions.html_safe %> </p>
+      <div class="row mb-3 mt-5">
+        <div class="col-2"></div>
+        <div class="col-8 border-bottom text-center font-c-3"><strong>Summary</strong></div>
+        <div class="col-2"></div>
+      </div>
+      <p class="text-center"> <%= @recipe.description.html_safe %> </p>
+      <div class="row mb-3 mt-5">
+        <div class="col-2"></div>
+        <div class="col-8 text-center border-bottom font-c-3"><strong>Instructions</strong></div>
+        <div class="col-2"></div>
+      </div>
+      <p class="text-center"> <%= @recipe.instructions.html_safe %> </p>
     </div>
   </div>
 </body>
