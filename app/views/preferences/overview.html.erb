@@ -13,7 +13,7 @@
   <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: 1, active: true) %>
     <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
     <form class="form-inline" >
-      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-primary w-100 text-center", method: "patch",  style: "text-decoration:none;" } do %>
+      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-secondary w-100 text-center", method: "patch",  style: "text-decoration:none;" } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -21,7 +21,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-outline-primary btn-sm w-100 text-center", method: "post",  style: "text-decoration:none; border:1px solid;"} do %>
+      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-outline-secondary btn-sm w-100 text-center", method: "post",  style: "text-decoration:none; border:1px solid;"} do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -79,7 +79,7 @@
   <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: 1, active: true) %>
     <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
     <form class="form-inline" >
-      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-primary w-100 text-center", method: "patch",  style: "text-decoration:none;" } do %>
+      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-secondary w-100 text-center", method: "patch",  style: "text-decoration:none;" } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -87,7 +87,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-primary w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;"} do %>
+      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-secondary w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;"} do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -145,7 +145,7 @@
   <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: 1, active: true) %>
     <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
     <form class="form-inline" >
-      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-primary w-100 text-center", method: "patch",  style: "text-decoration:none;" } do %>
+      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-secondary w-100 text-center", method: "patch",  style: "text-decoration:none;" } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -153,7 +153,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-primary w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;"} do %>
+      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-secondary w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;"} do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>

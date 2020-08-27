@@ -6,6 +6,7 @@
 @import "tag";
 @import "buttons";
 @import "shopping_list_items";
+@import "card";
 
 // All background colours
 
@@ -65,7 +66,7 @@
 
 // All button colours
 
-#btn-lg{
+.btn-primary{
   background-color: rgb(239, 118, 122)
 }
 // icon-size sizing
