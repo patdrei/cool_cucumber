@@ -8,7 +8,7 @@
 
 <% next if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: -1, active: true) %>
 
-<div class="col col-lg-2 col-md-3 col-sm-4 col-xs-4 p-1">
+<div class="col 4 col-lg-2 col-md-3 col-sm-4 col-xs-4 p-1">
 
   <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: 1, active: true) %>
     <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
