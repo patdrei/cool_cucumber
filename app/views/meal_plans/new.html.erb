@@ -3,7 +3,7 @@
   <%= f.button :submit %>
 <% end %>
 
-<% if current_user.meal_plans.last != nil %>
+<% if @show_mp %>
 <%  current_user.meal_plans.last.meals.each do |meal| %>
 <p> <%= meal.recipe.name %> </p>
 <% end %>

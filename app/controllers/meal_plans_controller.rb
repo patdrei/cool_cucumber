@@ -2,9 +2,11 @@ class MealPlansController < ApplicationController
 
   def new
     @meal_plan = MealPlan.new
+    @show_mp = current_user.meal_plans.last != nil && current_user.meal_plans.last.active
   end
 
   def create
+    deactivate_mealplans
     @meal_plan = MealPlan.new(strong_params)
     @meal_plan.active = true
     @user = current_user
@@ -46,4 +48,10 @@ class MealPlansController < ApplicationController
   def strong_params
     params.require(:meal_plan).permit(:days)
   end
+
+  def deactivate_mealplans
+    mealplans = current_user.meal_plans
+    mealplans.each { |mp| mp.active = false }
+  end
+
 end
