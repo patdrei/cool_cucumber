@@ -1,5 +1,5 @@
 <div class="container">
-  <h5 class="text-muted pt-3 pl-2">Choose your preferences</h5>
+  <h5 class="text-muted pt-3">Choose your preferences</h5>
   <div class="row container mb-3">
 
 <% @top_choices.each do |choice| %>
@@ -11,7 +11,7 @@
   <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: 1, active: true) %>
     <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
     <form class="form-inline" >
-      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-primary w-100 text-center", method: "patch",  style: "text-decoration:none;" } do %>
+      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-secondary w-100 text-center", method: "patch",  style: "text-decoration:none;" } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -19,7 +19,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-outline-primary btn-sm w-100 text-center", method: "post",  style: "text-decoration:none; border:1px solid;"} do %>
+      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-outline-secondary btn-sm w-100 text-center", method: "post",  style: "text-decoration:none; border:1px solid;"} do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -31,20 +31,67 @@
 <% end %>
 <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
     <form class="form-inline" >
-      <%= link_to overview_path, { class: "btn-secondary btn-sm w-100 text-center", method: "get",  style: "text-decoration:none;"} do %>
+      <%= link_to overview_path, { class: "btn-primary btn-sm w-100 text-center", method: "get",  style: "text-decoration:none;"} do %>
         <span> More choices </span>
       <% end %>
     </form>
 </div>
 </div>
-</div>
+
 
 <%= simple_form_for @meal_plan do |f| %>
+<div class="text-muted">
   <%= f.input :days %>
-  <%= f.button :submit %>
+</div>
+  <%= f.submit "Generate New Meal Plan", class: "btn btn-primary w-100 mb-3"%>
 <% end %>
 
-  <div class="container">
+</div>
+
+
+<% unless @plan.nil? %>
+<div class="container">
+<% @plan.meals.each do |meal|%>
+<div class="my-2">
+  <div class="card-meal">
+     <div class="d-flex" >
+      <div class="align-self-center", style="height: 120px" >
+        <img width=100 src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1853&q=80">
+      </div>
+        <div class="col-8 card-meal-infos lefty-border">
+          <h3 class="font-c-6 mt-3"> <%= link_to meal.recipe.name, recipe_path(meal.recipe) %> </h3>
+            <div class="pl-3 desc-size ">
+            <h5 class="font-c-neutral text-left ">Cooking Time</h5>
+            <p class="overflow-ellipsis"> <%= meal.recipe.description.html_safe %> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+<% end %>
+</div>
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <div class="container">
 
     <div class="card-meal">
      <div class="d-flex" >
@@ -166,3 +213,4 @@ We have art in order not to die of the truth. </p>
   </div>
   </div>
 
+ -->

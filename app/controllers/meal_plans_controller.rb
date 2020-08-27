@@ -2,8 +2,8 @@ class MealPlansController < ApplicationController
 
   def new
     @meal_plan = MealPlan.new
-    @show_mp = current_user.meal_plans.last != nil && current_user.meal_plans.last.active
     @top_choices = Tag.where(category: 'top_choice')
+    @plan = current_user.meal_plans.last
   end
 
   def create
