@@ -2,7 +2,7 @@
 const shopping_list_item_listener = () => {
   const shopping_list_cards = document.querySelectorAll('.shopping_list_item, .shopping_list_item_bought')
 
-  if (shopping_list_items) {
+  if (shopping_list_cards) {
 
 
     shopping_list_cards.forEach((shopping_list_card) => {

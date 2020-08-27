@@ -13,13 +13,19 @@ class ShoppingListItemsController < ApplicationController
     @meal_plan = MealPlan.find(params[:meal_plan_id])
     @meal_plan.meals.each do |meal|
       @recipes = meal.recipes
-      @recipes.recipe_ingredients.each do |recipe_ingredient|
-        ShoppingListItem.create(
-          ingredient_id: recipe_ingredient.ingredient_id,
-          amount: recipe_ingredient.amount,
-          purchased: false,
-          meal_plan_id: params[:meal_plan_id]
-        )
+      unless @meal_plan.shopping_list_items.exists?(@recipe.recipe_ingredient.ingredient_id)
+        unless ShoppingListItem.exists?(ingredient_id: @recipe.recipe_ingredient.ingredient_id, meal_plan_id: @meal_plan)
+          @recipes.recipe_ingredients.each do |recipe_ingredient|
+            ShoppingListItem.create(
+              ingredient_id: @recipe.recipe_ingredient.ingredient_id,
+              amount: @recipe_ingredient.amount,
+              purchased: false,
+              meal_plan_id: params[:meal_plan_id]
+            )
+          end
+        else
+          #calculation
+        end
       end
     end
   end
@@ -31,12 +37,3 @@ class ShoppingListItemsController < ApplicationController
   def update
   end
 end
-
-# spi4 = ShoppingListItem.new(ingredient_id: 90, meal_plan_id:1, purchased: false)
-# spi5 = ShoppingListItem.new(ingredient_id: 60, meal_plan_id:1, purchased: false)
-# spi6 = ShoppingListItem.new(ingredient_id: 50, meal_plan_id:1, purchased: true)
-# spi7 = ShoppingListItem.new(ingredient_id: 40, meal_plan_id:1, purchased: false)
-# spi8 = ShoppingListItem.new(ingredient_id: 170, meal_plan_id:1, purchased: true)
-# spi9 = ShoppingListItem.new(ingredient_id: 270, meal_plan_id:1, purchased: false)
-# MealPlan.find(1).shopping_list_items.find(2).ingredient.recipe_ingredients
-
