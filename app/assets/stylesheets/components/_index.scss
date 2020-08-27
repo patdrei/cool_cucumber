@@ -4,7 +4,11 @@
 @import "navbar";
 @import "banner";
 @import "tag";
+<<<<<<< HEAD
 @import "buttons";
+=======
+@import "shopping_list_items";
+>>>>>>> bb843ad16390340eca6d239918734f4142e20fe3
 
 // All background colours
 
@@ -34,6 +38,10 @@
 
 // All font colours
 
+.font-c-neutral{
+  color: rgb(104, 104, 104);
+}
+
 .font-c-1{
   color: rgb(233, 217, 133);
 }
@@ -58,8 +66,27 @@
   color: rgb(239, 118, 122);
 }
 
+<<<<<<< HEAD
 // All button colours
 
 .btn-primary{
   background-color: rgb(239, 118, 122)
 }
+=======
+// icon-size sizing
+
+.icon-size-empty {
+  font-size: 24px;
+}
+
+.icon-size-full {
+  font-size: 20px;
+}
+
+// border-color
+
+.lefty-border {
+  border-left: 2px solid rgb(239, 118, 122);
+}
+
+>>>>>>> bb843ad16390340eca6d239918734f4142e20fe3
