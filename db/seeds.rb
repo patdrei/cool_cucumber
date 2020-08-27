@@ -95,9 +95,10 @@ end
 
 
 
-30.times do
+100.times do
 
-  rm = RestClient.get 'https://api.spoonacular.com/recipes/random?apiKey=7ee1889b634344b88e83d28e2fd3ddbc'
+  rm = RestClient.get 'https://api.spoonacular.com/recipes/random?apiKey=89afe226d41443838ed8475fdfbf122c'
+  # rm = RestClient.get 'https://api.spoonacular.com/recipes/random?apiKey=7ee1889b634344b88e83d28e2fd3ddbc'
   rm_array = JSON.parse(rm)
 
 
