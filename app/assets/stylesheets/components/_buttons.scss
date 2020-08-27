@@ -1,8 +1,7 @@
 
-.btn-primary {
+#btn-lg {
   text-align: center;
   vertical-align: middle;
-  border-radius: 17px;
   border: 1px solid transparent;
   padding: 0.25rem 80px;
   font-size: 1.2rem;
@@ -10,10 +9,7 @@
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.btn-outline-success {
+.btn {
   border-radius: 17px;
 }
 
-.btn-outline-danger {
-  border-radius: 17px;
-}
