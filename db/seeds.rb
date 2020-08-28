@@ -22,7 +22,8 @@ require 'json'
 require 'rest-client'
 
 #create 5 tags
-
+Recipe.destroy_all
+Ingredient.destroy_all
 
 
 
