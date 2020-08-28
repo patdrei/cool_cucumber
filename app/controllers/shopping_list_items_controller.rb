@@ -14,17 +14,19 @@ class ShoppingListItemsController < ApplicationController
     @meal_plan.meals.each do |meal|
       @recipes = meal.recipes
       unless @meal_plan.shopping_list_items.exists?(@recipe.recipe_ingredient.ingredient_id)
-        unless ShoppingListItem.exists?(ingredient_id: @recipe.recipe_ingredient.ingredient_id, meal_plan_id: @meal_plan)
+        if ShoppingListItem.exists?(ingredient_id: @recipe.recipe_ingredient.ingredient_id, meal_plan_id: @meal_plan)
+          # calculation
+          find shoppping list item with the same id
+          add the standard units
+        else
           @recipes.recipe_ingredients.each do |recipe_ingredient|
             ShoppingListItem.create(
               ingredient_id: @recipe.recipe_ingredient.ingredient_id,
-              amount: @recipe_ingredient.amount,
+              amount: recipe_ingredient.amount,
               purchased: false,
               meal_plan_id: params[:meal_plan_id]
             )
           end
-        else
-          #calculation
         end
       end
     end
