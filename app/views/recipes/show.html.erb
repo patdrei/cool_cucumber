@@ -36,7 +36,9 @@
         <div class="col-8 border-bottom text-center font-c-3" data-toggle="collapse" href="#collapseInstruction" role="button"><strong>Instructions</strong></div>
         <div class="col-2"></div>
       </div>
-      <p class="text-center" id="collapseInstruction"> <%= @recipe.instructions.html_safe %> </p>
+      <div class="text-center" id="collapseInstruction">
+        <p> <%= @recipe.instructions.html_safe %> </p>
+      </div>
     </div>
   </div>
 </body>
