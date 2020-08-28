@@ -74,58 +74,67 @@ def set_andvanced_tags(advanced_tags_array, recipe, category)
   end
 end
 
-def set_ingredients(ingredients_array, recipe)
+def set_ingredients(ingredients_array, recipe, key)
   ingredients_array.each do |ingredient|
-    a = RestClient.get "https://api.spoonacular.com/recipes/convert?ingredientName=#{ingredient['name']}&sourceAmount=#{ingredient['amount']}&sourceUnit=#{ingredient['unit']}&targetUnit=grams&apiKey=ccbbbc4b94f44e508ad540ed35565cbc"
+    a = RestClient.get "https://api.spoonacular.com/recipes/convert?ingredientName=#{ingredient['name']}&sourceAmount=#{ingredient['amount']}&sourceUnit=#{ingredient['unit']}&targetUnit=grams&apiKey=#{key}"
     amount = JSON.parse(a)
     if Ingredient.exists?(name: ingredient['name'])
       existing_ingredient = Ingredient.find_by(name: ingredient['name'])
-      recipe_ingredient = RecipeIngredient.new( amount: ingredient['amount'])
+      recipe_ingredient = RecipeIngredient.new( display_amount: ingredient['amount'], standard_amount: amount['targetAmount'], display_unit: ingredient['unit'])
       recipe_ingredient.ingredient = existing_ingredient
       recipe_ingredient.recipe = recipe
       recipe_ingredient.save
     else
-      recipe_ingredient = RecipeIngredient.new( amount: ingredient['amount'])
-      new_ingredient = Ingredient.new(name: ingredient['name'], unit: "grams")
+      recipe_ingredient = RecipeIngredient.new( display_amount: ingredient['amount'], standard_amount: amount['targetAmount'], display_unit: ingredient['unit'])
+      new_ingredient = Ingredient.new(name: ingredient['name'], standard_unit: amount["targetUnit"])
       new_ingredient.save
       recipe_ingredient.ingredient = new_ingredient
       recipe_ingredient.recipe = recipe
       recipe_ingredient.save
     end
   end
+
 end
 
+#Key to seed locally
+api_keys = ["ccbbbc4b94f44e508ad540ed35565cbc"]
 
-5.times do
+#Keys to seed on heroku
+#api_keys = ["89afe226d41443838ed8475fdfbf122c", "7ee1889b634344b88e83d28e2fd3ddbc","60cab3074d444019ae8bd499aa915b79", "c0e58cec687b4b028153c0b2847d5431"]
 
-  rm = RestClient.get 'https://api.spoonacular.com/recipes/random?apiKey=ccbbbc4b94f44e508ad540ed35565cbc'
-  rm_array = JSON.parse(rm)
+api_keys.each do |key|
 
+  5.times do
 
-  recipes_hash = rm_array["recipes"][0]
-  ingredients_array = recipes_hash["extendedIngredients"]
-
-  cuisines_array = recipes_hash["cuisines"]
-  dish_types_array = recipes_hash["dishTypes"]
-  occasions_array = recipes_hash["occasions"]
+    rm = RestClient.get "https://api.spoonacular.com/recipes/random?apiKey=#{key}"
+    rm_array = JSON.parse(rm)
 
 
-  unless Recipe.exists?(name: recipes_hash["title"])
+    recipes_hash = rm_array["recipes"][0]
+    ingredients_array = recipes_hash["extendedIngredients"]
 
-    recipe = Recipe.new(name: recipes_hash["title"], description: recipes_hash["summary"], instructions: recipes_hash["instructions"], image_url: recipes_hash["image"])
-    recipe.save
+    cuisines_array = recipes_hash["cuisines"]
+    dish_types_array = recipes_hash["dishTypes"]
+    occasions_array = recipes_hash["occasions"]
 
-    tag_array.each do |tag|
-      set_tag(tag, recipes_hash, recipe)
+
+    unless Recipe.exists?(name: recipes_hash["title"])
+
+      recipe = Recipe.new(name: recipes_hash["title"], description: recipes_hash["summary"], instructions: recipes_hash["instructions"], image_url: recipes_hash["image"], prep_time: recipes_hash["readyInMinutes"])
+      recipe.save
+
+      tag_array.each do |tag|
+        set_tag(tag, recipes_hash, recipe)
+      end
+
+      set_ingredients(ingredients_array, recipe, key)
+      set_andvanced_tags(cuisines_array, recipe, "cuisines")
+      set_andvanced_tags(dish_types_array, recipe, "dish_types")
+      set_andvanced_tags(occasions_array, recipe, "occasions")
     end
-
-    set_ingredients(ingredients_array, recipe)
-    set_andvanced_tags(cuisines_array, recipe, "cuisines")
-    set_andvanced_tags(dish_types_array, recipe, "dish_types")
-    set_andvanced_tags(occasions_array, recipe, "occasions")
   end
-end
 
+end
 
 
 # vegitarian: recipe.vegitarian, vegan: recipe.vegan, glutenFree: recipe.glutenFree, dairyFree: recipe.dairyFree, healthy: recipe.veryHealthy, cheap: recipe.cheap
