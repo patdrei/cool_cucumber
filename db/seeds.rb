@@ -22,9 +22,6 @@ require 'json'
 require 'rest-client'
 
 #create 5 tags
-Recipe.destroy_all
-Ingredient.destroy_all
-
 
 
 tag_array = ['vegetarian', 'vegan', 'glutenFree', 'dairyFree', 'veryHealthy', 'cheap', 'veryPopular', 'sustainable']
