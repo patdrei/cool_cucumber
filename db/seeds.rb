@@ -104,7 +104,7 @@ api_keys = ["89afe226d41443838ed8475fdfbf122c", "7ee1889b634344b88e83d28e2fd3ddb
 
 api_keys.each do |key|
 
-  5.times do
+  65.times do
 
     rm = RestClient.get "https://api.spoonacular.com/recipes/random?apiKey=#{key}"
     rm_array = JSON.parse(rm)
