@@ -22,7 +22,8 @@ require 'json'
 require 'rest-client'
 
 #create 5 tags
-
+Recipe.destroy_all
+Ingredient.destroy_all
 
 
 
@@ -103,8 +104,7 @@ api_keys = ["ccbbbc4b94f44e508ad540ed35565cbc"]
 # api_keys = ["89afe226d41443838ed8475fdfbf122c", "7ee1889b634344b88e83d28e2fd3ddbc","60cab3074d444019ae8bd499aa915b79", "c0e58cec687b4b028153c0b2847d5431"]
 
 api_keys.each do |key|
-
-  20.times do
+  65.times do
 
     rm = RestClient.get "https://api.spoonacular.com/recipes/random?apiKey=#{key}"
     rm_array = JSON.parse(rm)
