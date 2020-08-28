@@ -22,9 +22,6 @@ require 'json'
 require 'rest-client'
 
 #create 5 tags
-Recipe.destroy_all
-Ingredient.destroy_all
-
 
 
 tag_array = ['vegetarian', 'vegan', 'glutenFree', 'dairyFree', 'veryHealthy', 'cheap', 'veryPopular', 'sustainable']
@@ -98,13 +95,16 @@ def set_ingredients(ingredients_array, recipe, key)
 end
 
 #Key to seed locally
-api_keys = ["ccbbbc4b94f44e508ad540ed35565cbc"]
+# api_keys = ["ccbbbc4b94f44e508ad540ed35565cbc"]
+# overused API key = , "7ee1889b634344b88e83d28e2fd3ddbc"]
 
 #Keys to seed on heroku
-# api_keys = ["89afe226d41443838ed8475fdfbf122c", "7ee1889b634344b88e83d28e2fd3ddbc","60cab3074d444019ae8bd499aa915b79", "c0e58cec687b4b028153c0b2847d5431"]
+api_keys = ["89afe226d41443838ed8475fdfbf122c", "60cab3074d444019ae8bd499aa915b79", "c0e58cec687b4b028153c0b2847d5431"]
 
 api_keys.each do |key|
-  65.times do
+
+  50.times do
+
 
     rm = RestClient.get "https://api.spoonacular.com/recipes/random?apiKey=#{key}"
     rm_array = JSON.parse(rm)
