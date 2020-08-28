@@ -24,31 +24,31 @@
   // width: 80%;
 }
 
-
 .shopping_list_items_banner a {
   position: absolute;
   bottom: -15px;
 }
 
 .shopping_list_item_card{
-  margin-right:50px;
-  margin-left: 50px;
-  background-color: #F5F5F5;
+  margin-right:25px;
+  margin-left: 25px;
+  background-color: #EBEBEB;
   margin-top: 40px;
   text-align: left;
   box-shadow: 0 0 5px rgba(0,0,0,0.2);
-  padding: 10px;
+  margin-bottom: 30px;
+  padd-top: 10px;
 }
 
 .shopping_list_item{
-  padding: 20px;
+  padding: 12px;
   background-color: #EBEBEB;
 }
 
 .shopping_list_item_bought{
   color: #EBEBEB;
   background-color: #F5F5F5;
-  padding: 20px;
+  padding: 12px;
 }
 
 // .fa-square{

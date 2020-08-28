@@ -1,8 +1,13 @@
 
 
-<div class="container">
-  <h5 class="text-muted pt-3 pl-2">Main Categories you love</h5>
-  <div class="row container mb-3">
+<div class="justify-content-center mb-3 px-4 pt-2">
+  <div class="row">
+    <div class="d-flex justify-content-center col-12 vw-100">
+      <a class="btn btn-primary w-100 mt-3" id="btn-lg" href='/meal_plans/new'>Create Meal Plan</a>
+    </div>
+</div>
+  <h5 class="text-muted pt-3">Select from quick choices</h5>
+  <div class="row">
 
 <% @top_choices.each do |choice| %>
 
@@ -34,7 +39,9 @@
 
   </div>
 
-    <h5 class="text-muted pt-2 pl-2">Main Categories you want to avoid</h5>
+  <!-- FOR EXCLUSION OF TAGS ONLY - WE DO NOT DO THIS RIGHT NOW -->
+
+  <!--   <h5 class="text-muted pt-3 pl-2">Main Categories you want to avoid</h5>
   <div class="row container mb-3">
 
 <% @top_choices.each do |choice| %>
@@ -65,10 +72,10 @@
 
 <% end %>
 
-  </div>
+  </div> -->
 
-  <h5 class="text-muted pt-2 pl-2">Cuisines you love</h5>
-  <div class="row container mb-3">
+  <h5 class="text-muted pt-3">Select from cuisines</h5>
+  <div class="row">
 
 <% @cuisines.each do |choice| %>
 
@@ -79,7 +86,7 @@
   <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: 1, active: true) %>
     <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
     <form class="form-inline" >
-      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-secondary w-100 text-center", method: "patch",  style: "text-decoration:none;" } do %>
+      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-danger w-100 text-center", method: "patch",  style: "text-decoration:none;" } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -87,7 +94,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-secondary w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;"} do %>
+      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-danger w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;"} do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -100,7 +107,9 @@
 
   </div>
 
-    <h5 class="text-muted pt-2 pl-2">Cuisines you want to avoid</h5>
+   <!-- FOR EXCLUSION OF TAGS ONLY - WE DO NOT DO THIS RIGHT NOW -->
+
+ <!--    <h5 class="text-muted pt-3 pl-2">Cuisines you want to avoid</h5>
   <div class="row container mb-3">
 
 <% @cuisines.each do |choice| %>
@@ -131,10 +140,10 @@
 
 <% end %>
 
-  </div>
+  </div> -->
 
-  <h5 class="text-muted pt-2 pl-2">Types of Dishes you love</h5>
-  <div class="row container mb-3">
+  <h5 class="text-muted pt-3">Select from dishes</h5>
+  <div class="row">
 
 <% @types.each do |choice| %>
 
@@ -145,7 +154,7 @@
   <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: 1, active: true) %>
     <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
     <form class="form-inline" >
-      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-secondary w-100 text-center", method: "patch",  style: "text-decoration:none;" } do %>
+      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-info w-100 text-center", method: "patch",  style: "text-decoration:none;" } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -153,7 +162,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-secondary w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;"} do %>
+      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-info w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;"} do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -163,10 +172,16 @@
 </div>
 
 <% end %>
-
+<div class="row">
+    <div class="d-flex justify-content-center col-12 vw-100">
+      <a class="btn btn-primary mt-3 w-100" id="btn-lg" href='/meal_plans/new'>Create Meal Plan</a>
+    </div>
+</div>
   </div>
 
-    <h5 class="text-muted pt-2 pl-2">Types of Dishes you want to avoid</h5>
+   <!-- FOR EXCLUSION OF TAGS ONLY - WE DO NOT DO THIS RIGHT NOW -->
+
+<!--     <h5 class="text-muted pt-3 pl-2">Types of Dishes you want to avoid</h5>
   <div class="row container mb-3">
 
 <% @types.each do |choice| %>
@@ -196,8 +211,13 @@
 </div>
 
 <% end %>
+  </div>
 
   </div>
+    <div class="d-flex justify-content-center">
+      <a class="btn btn-primary m-3" id="btn-lg" href='/meal_plans/new'>Back to Meal Plan</a>
+    </div>
+
 
 </div>
 
