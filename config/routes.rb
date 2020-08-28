@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   post "ingredients/:ingredient_id/preferences", to: "preferences#create_with_ingredient", as: "preference_ingredient"
 
   post "tags/:tag_id/preferences", to: "preferences#create_with_tag", as: "preference_tag"
+  post "meals/:id/shuffle", to: "meals#shuffle", as: "shuffle"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

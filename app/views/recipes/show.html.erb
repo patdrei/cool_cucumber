@@ -20,8 +20,8 @@
         <div class="col-2"></div>
       </div>
       <p class="text-center"> <% @all_recipe_ingredients.each do |item| %>
-          <%= item.amount %>
-          <%= item.ingredient.unit %>
+          <%= item.display_amount %>
+          <%= item.display_unit %>
           <%= item.ingredient.name  %>
           <br>
           <% end%>
