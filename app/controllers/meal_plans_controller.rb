@@ -20,16 +20,22 @@ class MealPlansController < ApplicationController
       tag = pref.tag
       tag.recipe_tags
     end
+    accepted = @user.preferences.map { |pref| pref.tag }
+    @top_choices = accepted.select { |tag| tag.category == 'top_choice'}
 
-    @r_tags = tags.flatten
+    r_tags = tags.flatten
+    @recipes = r_tags.map { |tag| tag.recipe }
+    @top_choices.each do |tag|
+      @recipes.select!{ |recipe| RecipeTag.exists?(recipe_id: recipe.id, tag_id: tag.id)}
+    end
 
     @number.times do
       @meal = Meal.new
       @meal.meal_plan = @meal_plan
-      @recipe = @r_tags.sample.recipe
+      @recipe = @recipes.sample
       @meal.recipe = @recipe
       @meal.save
-      @r_tags = @r_tags.select { |i| i.recipe_id != @recipe.id }
+      @recipes.select! { |i| i != @recipe }
     end
 
     redirect_to new_meal_plan_path
