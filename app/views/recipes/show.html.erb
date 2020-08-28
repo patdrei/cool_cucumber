@@ -14,10 +14,10 @@
     <div class="border p-4 mt-5 justify-content-center">
       <div class="row mb-3">
         <div class="col-2"></div>
-        <a class="col-8 border-bottom text-center font-c-3" data-toggle="collapse" href="#collapseIngredients" role="button"><strong>Ingredients</strong></a>
+        <a class="col-8 border-bottom text-center font-c-3" data-toggle="collapse" href="#collapseIngredients" role="button"><strong>Ingredients</strong><i class="fas fa-caret-down m-1"></i></a>
         <div class="col-2"></div>
       </div>
-      <p class="text-center" id="collapseIngredients"> <% @all_recipe_ingredients.each do |item| %>
+      <p class="text-center collapse" id="collapseIngredients"> <% @all_recipe_ingredients.each do |item| %>
           <% number = item.display_amount  %>
           <%= number == number.floor ? item.display_amount.round(0) : item.display_amount.round(2) %>
           <%= item.display_unit %>
@@ -27,16 +27,16 @@
       </p>
       <div class="row mb-3 mt-5">
         <div class="col-2"></div>
-        <div class="col-8 border-bottom text-center font-c-3" data-toggle="collapse" href="#collapseDescription" role="button"><strong>Summary</strong></div>
+        <div class="col-8 border-bottom text-center font-c-3" data-toggle="collapse" href="#collapseDescription" role="button"><strong>Summary</strong><i class="fas fa-caret-down m-1"></i></div>
         <div class="col-2"></div>
       </div>
-      <p class="text-center" id="collapseDescription"> <%= @recipe.description.html_safe %> </p>
+      <p class="text-center collapse" id="collapseDescription"> <%= @recipe.description.html_safe %> </p>
       <div class="row mb-3 mt-5">
         <div class="col-2"></div>
-        <div class="col-8 border-bottom text-center font-c-3" data-toggle="collapse" href="#collapseInstruction" role="button"><strong>Instructions</strong></div>
+        <div class="col-8 border-bottom text-center font-c-3" data-toggle="collapse" href="#collapseInstruction" role="button"><strong>Instructions</strong><i class="fas fa-caret-down m-1"></i></div>
         <div class="col-2"></div>
       </div>
-      <div class="text-center" id="collapseInstruction">
+      <div class="text-center collapse" id="collapseInstruction">
         <p> <%= @recipe.instructions.html_safe %> </p>
       </div>
     </div>
