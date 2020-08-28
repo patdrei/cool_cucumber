@@ -1,5 +1,5 @@
 <div class="container">
-  <h5 class="text-muted pt-3">Choose your preferences</h5>
+  <h6 class="text-muted pt-3" style="font-size: 17px;">Choose your preferences</h6>
   <div class="row container mb-3">
 
 <% @top_choices.each do |choice| %>
@@ -41,16 +41,15 @@
 
 <%= simple_form_for @meal_plan do |f| %>
 <div class="text-muted">
-  <%= f.input :days %>
+  <%= f.input :days, required: true, label: 'For how many Days?', error: 'Please tell me how many days you want to cook?', input_html: { min: '0', max: '7', step: 'any'}%>
 </div>
   <%= f.submit "Generate New Meal Plan", class: "btn btn-primary w-100 mb-3"%>
 <% end %>
 
-</div>
+
 
 
 <% unless @plan.nil? %>
-<div class="container">
 <% @plan.meals.each do |meal|%>
 <div class="my-2">
   <div class="card-meal">
@@ -71,7 +70,6 @@
 
 <% end %>
 </div>
-
 <br>
 
 
