@@ -96,10 +96,10 @@ end
 
 #Key to seed locally
 # api_keys = ["ccbbbc4b94f44e508ad540ed35565cbc"]
-# overused API key = "89afe226d41443838ed8475fdfbf122c", "7ee1889b634344b88e83d28e2fd3ddbc"]
+# overused API key = , "7ee1889b634344b88e83d28e2fd3ddbc"]
 
 #Keys to seed on heroku
-api_keys = ["60cab3074d444019ae8bd499aa915b79", "c0e58cec687b4b028153c0b2847d5431"]
+api_keys = ["89afe226d41443838ed8475fdfbf122c", "60cab3074d444019ae8bd499aa915b79", "c0e58cec687b4b028153c0b2847d5431"]
 
 api_keys.each do |key|
 
