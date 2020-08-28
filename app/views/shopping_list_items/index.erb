@@ -10,11 +10,19 @@
   <% @shopping_list_items.each do |shopping_list_item| %>
       <% if shopping_list_item.purchased  %>
         <div class="shopping_list_item_bought">
-          <p>  <%= shopping_list_item.ingredient.name %></p>
+          <p> <%= shopping_list_item.ingredient.name %></p>
+          <p> <%= shopping_list_item.amount %></p>
         </div>
       <% else %>
-        <div class="shopping_list_item">
-          <p>  <%= shopping_list_item.ingredient.name %></p>
+        <div class="shopping_list_item d-flex justify-content-between">
+          <div>
+            <p>  <%= shopping_list_item.ingredient.name %></p>
+          </div>
+          <div class ="d-flex">
+            <p style="padding-right: 5px;"> <%= shopping_list_item.amount %></p>
+            <p> <%= shopping_list_item.ingredient.standard_unit %></p>
+          </div>
+
         </div>
       <% end  %>
 
