@@ -66,6 +66,11 @@
         </div>
       </div>
     </div>
+        <form class="form-inline" >
+      <%= link_to shuffle_path(meal), { class: "btn-sm btn-secondary w-100 text-center", method: "post",  style: "text-decoration:none;" } do %>
+        <span>Shuffle</span>
+      <% end %>
+    </form>
 <% end %>
 
 <% end %>
