@@ -1,10 +1,10 @@
 <div class="container">
   <h6 class="text-muted pt-3" style="font-size: 17px;">Choose your preferences</h6>
-  <div class="row container mb-3">
+  <div class="row m-1 mb-3">
 
 <% @top_choices.each do |choice| %>
 
-<% next if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: -1, active: true) %>
+<% next if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: -1, active: true) || choice.name == 'sustainable' || choice.name == 'cheap'%>
 
 <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
 
@@ -41,7 +41,7 @@
 
 <%= simple_form_for @meal_plan do |f| %>
 <div class="text-muted">
-  <%= f.input :days, required: true, label: 'For how many Days?', error: 'Please tell me how many days you want to cook?', input_html: { min: '0', max: '7', step: 'any'}%>
+  <%= f.input :days, required: true, label: 'For how many Days?', error: 'Please tell me how many days you want to cook?', input_html: { min: '1', max: '7', step: 'any'}%>
 </div>
   <%= f.submit "Generate New Meal Plan", class: "btn btn-primary w-100 mb-3"%>
 <% end %>
