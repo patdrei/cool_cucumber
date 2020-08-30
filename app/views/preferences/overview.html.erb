@@ -1,12 +1,22 @@
 
+<%= form_tag overview_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find an Ingredient or Recipe Tag you like"
+  %>
+  <%= submit_tag "Find", class: "rounded-0 btn bg-secondary text-white w-100" %>
+<% end %>
 
-<div class="justify-content-center mb-3 px-4 pt-2">
-  <div class="row">
-    <div class="d-flex justify-content-center col-12 vw-100">
-      <a class="btn btn-primary w-100 mt-3" id="btn-lg" href='/meal_plans/new'>Create Meal Plan</a>
-    </div>
-</div>
-  <h5 class="text-muted pt-3">Select from quick choices</h5>
+
+<div class="justify-content-center mb-3 px-4 pt-0">
+
+<% if @top_choices.length == 0 %>
+<div>
+  <h5 class="text-muted pt-3">No Main Tags matching your search</h5>
+  </div>
+<% else %>
+  <h5 class="text-muted pt-3">Select from Main Tags</h5>
   <div class="row">
 
 <% @top_choices.each do |choice| %>
@@ -38,7 +48,7 @@
 <% end %>
 
   </div>
-
+<% end %>
   <!-- FOR EXCLUSION OF TAGS ONLY - WE DO NOT DO THIS RIGHT NOW -->
 
   <!--   <h5 class="text-muted pt-3 pl-2">Main Categories you want to avoid</h5>
@@ -73,8 +83,13 @@
 <% end %>
 
   </div> -->
+<% if @cuisines.length == 0 %>
+<div>
+  <h5 class="text-muted pt-3">No Cuisines matching your search</h5>
+  </div>
+<% else %>
 
-  <h5 class="text-muted pt-3">Select from cuisines</h5>
+  <h5 class="text-muted pt-3">Select from Cuisines</h5>
   <div class="row">
 
 <% @cuisines.each do |choice| %>
@@ -106,7 +121,7 @@
 <% end %>
 
   </div>
-
+<% end %>
    <!-- FOR EXCLUSION OF TAGS ONLY - WE DO NOT DO THIS RIGHT NOW -->
 
  <!--    <h5 class="text-muted pt-3 pl-2">Cuisines you want to avoid</h5>
@@ -141,8 +156,13 @@
 <% end %>
 
   </div> -->
+  <% if @types.length == 0 %>
+  <div>
+  <h5 class="text-muted pt-3">No Dish Types matching your search</h5>
+  </div>
+<% else %>
 
-  <h5 class="text-muted pt-3">Select from dishes</h5>
+  <h5 class="text-muted pt-3">Select from Dish Types</h5>
   <div class="row">
 
 <% @types.each do |choice| %>
@@ -170,14 +190,12 @@
   <% end %>
 
 </div>
-
 <% end %>
-<div class="row">
-    <div class="d-flex justify-content-center col-12 vw-100">
-      <a class="btn btn-primary mt-3 w-100" id="btn-lg" href='/meal_plans/new'>Create Meal Plan</a>
-    </div>
 </div>
-  </div>
+<% end %>
+
+
+
 
    <!-- FOR EXCLUSION OF TAGS ONLY - WE DO NOT DO THIS RIGHT NOW -->
 
@@ -219,5 +237,50 @@
     </div>
 
 
+</div> -->
+
+<% if @ingredients.length == 0 %>
+<div>
+  <h5 class="text-muted pt-3">No Ingredients matching your search</h5>
+</div>
+<% else %>
+
+  <h5 class="text-muted pt-3">Select your favourite Ingredients</h5>
+  <div class="row">
+
+<% @ingredients.each do |choice| %>
+
+<% next if Preference.exists?(ingredient_id: choice.id, user_id: current_user.id, kind: -1, active: true) %>
+
+<div class="col-6 col-lg-2 col-md-3 col-sm-4  p-1">
+
+  <% if Preference.exists?(ingredient_id: choice.id, user_id: current_user.id, kind: 1, active: true) %>
+    <% pref = Preference.find_by(ingredient_id: choice.id, active: true) %>
+    <form class="form-inline" >
+      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-warning w-100 text-center inc-pref", method: "patch",  style: "text-decoration:none;" } do %>
+        <span><%= choice.name %></span>
+      <% end %>
+    </form>
+
+  <% else %>
+
+    <form class="form-inline" >
+      <%= link_to preference_ingredient_path(choice, kind: 1), { class: "btn-sm btn-outline-warning w-100 text-center no-pref", method: "post",  style: "text-decoration:none;border:1px solid;"} do %>
+        <span><%= choice.name %></span>
+      <% end %>
+    </form>
+
+  <% end %>
+
+</div>
+<% end %>
+</div>
+<% end %>
+
+<div class="row">
+    <div class="d-flex justify-content-center col-12 vw-100 mr-0">
+      <a class="btn btn-primary mt-3 w-100" id="btn-lg" href='/meal_plans/new'>Create Meal Plan</a>
+    </div>
 </div>
 
+  </div>
