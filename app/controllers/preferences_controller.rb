@@ -2,8 +2,8 @@ class PreferencesController < ApplicationController
 
   def overview
     @top_choices = Tag.where(category: 'top_choice')
-    @cuisines = Tag.where(category: 'cuisines')
-    @types = Tag.where(category: 'dish_types')
+    @cuisines = Tag.where(category: 'cuisines').sort_by{|tag| -tag.preferences.count }.first(8)
+    @types = Tag.where(category: 'dish_types').sort_by{|tag| -tag.preferences.count }.first(8)
 
     @ingredients = Ingredient.all
     @preferences = current_user.preferences
