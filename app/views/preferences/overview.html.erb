@@ -21,7 +21,7 @@
 
 <% @top_choices.each do |choice| %>
 
-<% next if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: -1, active: true)%>
+<%next if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: -1, active: true) || choice.name == 'sustainable' || choice.name == 'cheap' || choice.name == 'veryPopular'%>
 
 <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
 
