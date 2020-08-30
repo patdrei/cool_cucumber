@@ -9,6 +9,7 @@ class MealsController < ApplicationController
     @m_recipes = @meal_plan.meals.map{|meal| meal.recipe}
     meal.destroy
     new_meal
+    redirect_back(fallback_location: new_meal_plan_path)
   end
 
   def new_meal

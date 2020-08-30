@@ -1,9 +1,34 @@
 class MealPlansController < ApplicationController
-
   def new
     @meal_plan = MealPlan.new
     @top_choices = Tag.where(category: 'top_choice')
     @plan = current_user.meal_plans.last
+  end
+
+  def create_shopping_list_items
+    # create shopping list item
+    # pass in ingredients  through the recipe_ingredients
+    # same for amount
+    # set purchased to true
+    # check if any of those already exist
+    # @meal_plan = MealPlan.find(params[:meal_plan_id])
+    @meal_plan.meals.each do |meal|
+      @recipes = meal.recipe
+      @recipe_ingredients = @recipe.recipe_ingredients
+      @recipe_ingredients.each do |recipe_ingredient|
+        # if ShoppingListItem.exists?(ingredient_id: recipe_ingredient.ingredient_id, meal_plan_id: @meal_plan.id)
+        #   spi = ShoppingListItem.find_by(ingredient_id: recipe_ingredient.ingredient_id, meal_plan_id: @meal_plan.id)
+        #   spi.amount += recipe_ingredient.standard_amount
+        # else
+          ShoppingListItem.create(
+            ingredient_id: recipe_ingredient.ingredient_id,
+            amount: recipe_ingredient.standard_amount,
+            purchased: false,
+            meal_plan_id: @meal_plan.id
+          )
+        # end
+      end
+    end
   end
 
   def create
@@ -37,7 +62,7 @@ class MealPlansController < ApplicationController
       @meal.save
       @recipes.select! { |i| i != @recipe }
     end
-
+    create_shopping_list_items
     redirect_to new_meal_plan_path
   end
 
