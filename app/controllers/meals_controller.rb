@@ -51,6 +51,10 @@ class MealsController < ApplicationController
       @recipes.select! {|i| i != rec }
     end
 
+    if @recipes.length == 0
+      @recipes = RecipeTag.where(tag_id: 2).map{|i| i.recipe}
+    end
+
     @recipe = @recipes.sample
     @meal.recipe = @recipe
     @meal.save
@@ -68,7 +72,7 @@ class MealsController < ApplicationController
     # check if any of those already exist
     # @meal_plan = MealPlan.find(params[:meal_plan_id])
     @meal_plan.meals.each do |meal|
-      @recipes = meal.recipe
+      @recipe = meal.recipe
       @recipe_ingredients = @recipe.recipe_ingredients
       @recipe_ingredients.each do |recipe_ingredient|
         if ShoppingListItem.exists?(ingredient_id: recipe_ingredient.ingredient_id, meal_plan_id: @meal_plan.id)

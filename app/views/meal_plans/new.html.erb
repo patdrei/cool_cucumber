@@ -50,7 +50,7 @@
 
 
 <% unless @plan.nil? %>
-<% @plan.meals.each do |meal|%>
+<% @plan.meals.order(id: :desc).each do |meal|%>
 <div class="my-2">
   <div class="card-meal">
      <div class="d-flex" >

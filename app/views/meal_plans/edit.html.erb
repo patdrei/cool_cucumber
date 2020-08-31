@@ -1,4 +1,7 @@
-<% @plan.meals.each do |meal|%>
+<div class="m-3">
+  <%= link_to '+', meal_plan_meals_path(@plan), {class: "btn btn-primary w-100", method: 'post'}%>
+</div>
+<% @plan.meals.order(id: :desc).each do |meal|%>
 <div class="my-2">
   <div class="card-meal">
      <div class="d-flex" >
@@ -20,5 +23,6 @@
       <% end %>
     </form>
 <% end %>
+
   <%= link_to 'To My Shopping List', meal_plan_shopping_list_items_path(@plan), {class: "btn btn-danger mt-3 w-100"}  %>
 
