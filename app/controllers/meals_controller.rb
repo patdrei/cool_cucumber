@@ -51,6 +51,10 @@ class MealsController < ApplicationController
       @recipes.select! {|i| i != rec }
     end
 
+    if @recipes.length == 0
+      @recipes = RecipeTag.where(tag_id: 2).map{|i| i.recipe}
+    end
+
     @recipe = @recipes.sample
     @meal.recipe = @recipe
     @meal.save
