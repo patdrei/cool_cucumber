@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :meal_plans, only: [:new, :create, :edit, :update, :destroy] do
     resources :shopping_list_items, only: [:index, :update]
+    resources :meals, only: [:create]
   end
 
   resources :recipes, only: [:show]

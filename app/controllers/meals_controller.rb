@@ -4,6 +4,15 @@ class MealsController < ApplicationController
     Meal.destroy(params[:id])
   end
 
+  def create
+    @meal_plan = MealPlan.find(params[:meal_plan_id])
+    @meal = Meal.new
+    @meal.meal_plan = @meal_plan
+    @m_recipes = @meal_plan.meals.map{|meal| meal.recipe}
+    new_meal
+    redirect_back(fallback_location: new_meal_plan_path)
+  end
+
   def shuffle
     @meal = Meal.find(params[:id])
     @meal_plan = @meal.meal_plan
