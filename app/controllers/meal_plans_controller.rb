@@ -32,41 +32,46 @@ class MealPlansController < ApplicationController
   end
 
   def create
-    deactivate_mealplans
-    @meal_plan = MealPlan.new(strong_params)
-    @meal_plan.active = true
-    @user = current_user
-    @meal_plan.user = @user
-    @number = @meal_plan.days
-    @meal_plan.save
-    @preferences = @user.preferences.where(kind: 1, ingredient_id: nil)
-    tags = @preferences.map do |pref|
-      next if pref.tag_id == nil
-      tag = pref.tag
-      tag.recipe_tags
-    end
-    accepted = @preferences.map do |pref|
-      next if pref.tag_id == nil
-      pref.tag
-    end
-    @top_choices = accepted.select { |tag| tag.category == 'top_choice'}
+    if params[:days].nil?
+      redirect_to new_meal_plan_path
+      flash[:alert] = "Please say for how many days you want to cook"
+    else
+      deactivate_mealplans
+      @meal_plan = MealPlan.new(strong_params)
+      @meal_plan.active = true
+      @user = current_user
+      @meal_plan.user = @user
+      @number = @meal_plan.days
+      @meal_plan.save
+      @preferences = @user.preferences.where(kind: 1, ingredient_id: nil)
+      tags = @preferences.map do |pref|
+        next if pref.tag_id == nil
+        tag = pref.tag
+        tag.recipe_tags
+      end
+      accepted = @preferences.map do |pref|
+        next if pref.tag_id == nil
+        pref.tag
+      end
+      @top_choices = accepted.select { |tag| tag.category == 'top_choice'}
 
-    r_tags = tags.flatten
-    @recipes = r_tags.map { |tag| tag.recipe }
-    @top_choices.each do |tag|
-      @recipes.select!{ |recipe| RecipeTag.exists?(recipe_id: recipe.id, tag_id: tag.id)}
-    end
+      r_tags = tags.flatten
+      @recipes = r_tags.map { |tag| tag.recipe }
+      @top_choices.each do |tag|
+        @recipes.select!{ |recipe| RecipeTag.exists?(recipe_id: recipe.id, tag_id: tag.id)}
+      end
 
-    @number.times do
-      @meal = Meal.new
-      @meal.meal_plan = @meal_plan
-      @recipe = @recipes.sample
-      @meal.recipe = @recipe
-      @meal.save
-      @recipes.select! { |i| i != @recipe }
+      @number.times do
+        @meal = Meal.new
+        @meal.meal_plan = @meal_plan
+        @recipe = @recipes.sample
+        @meal.recipe = @recipe
+        @meal.save
+        @recipes.select! { |i| i != @recipe }
+      end
+      create_shopping_list_items
+      redirect_to new_meal_plan_path
     end
-    create_shopping_list_items
-    redirect_to new_meal_plan_path
   end
 
   def edit
