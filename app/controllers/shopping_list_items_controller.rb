@@ -4,8 +4,6 @@ class ShoppingListItemsController < ApplicationController
     @shopping_list_items = @meal_plan.shopping_list_items
   end
 
-
-
   def edit
     @shopping_list_items = ShoppingListItem.mpfind(params([:id]))
   end
