@@ -27,11 +27,18 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import { shopping_list_item_listener } from '../shopping_list_items.js';
+import { rotator } from '../rotator.js';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   shopping_list_item_listener();
+});
+
+document.addEventListener('turbolinks:load', () => {
+  // Call your functions here, e.g:
+  // initSelect2();
+  rotator();
 });
 
 //= require burgermenu
