@@ -9,10 +9,10 @@ class PreferencesController < ApplicationController
       @ingredients = Ingredient.where("name LIKE ?", "%#{params[:query].downcase}%")
     else
       @top_choices = Tag.where(category: 'top_choice')
-      @cuisines = Tag.where(category: 'cuisines').sort_by{|tag| -tag.preferences.count }.first(6)
-      @types = Tag.where(category: 'dish_types').sort_by{|tag| -tag.preferences.count }.first(6)
+      @cuisines = Tag.where(category: 'cuisines').sort_by{|tag| -tag.recipe_tags.count }.first(6)
+      @types = Tag.where(category: 'dish_types').sort_by{|tag| -tag.recipe_tags.count }.first(6)
 
-      @ingredients = Ingredient.all.sort_by{|ing| -ing.preferences.count }.first(6)
+      @ingredients = Ingredient.all.sort_by{|ing| -ing.recipe_ingredients.count }.first(6)
   end
     @preferences = current_user.preferences
   end
