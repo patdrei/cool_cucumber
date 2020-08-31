@@ -1,0 +1,24 @@
+<% @plan.meals.each do |meal|%>
+<div class="my-2">
+  <div class="card-meal">
+     <div class="d-flex" >
+      <div class="align-self-center", style="height: 120px" >
+        <img width=100 src="<%=  meal.recipe.image_url %> ">
+      </div>
+        <div class="col-8 card-meal-infos lefty-border">
+          <h3 class="font-c-6 mt-3"> <%= link_to meal.recipe.name, recipe_path(meal.recipe) %> </h3>
+            <div class="pl-3 desc-size ">
+            <h5 class="font-c-neutral text-left text-secondary">Cooking Time <%= meal.recipe.prep_time %> Minutes</h5>
+            <p class="overflow-ellipsis"> <%= meal.recipe.description.html_safe %> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+        <form class="form-inline" >
+      <%= link_to shuffle_path(meal), { class: "btn-sm btn-secondary w-100 text-center", method: "post",  style: "text-decoration:none;" } do %>
+        <span>Shuffle</span>
+      <% end %>
+    </form>
+<% end %>
+  <%= link_to 'To My Shopping List', meal_plan_shopping_list_items_path(@plan), {class: "btn btn-danger mt-3 w-100"}  %>
+
