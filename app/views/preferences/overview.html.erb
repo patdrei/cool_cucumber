@@ -36,7 +36,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-outline-secondary btn-sm w-100 text-center no-pref", method: "post",  style: "text-decoration:none; border:1px solid;"} do %>
+      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-secondary w-100 text-center no-pref", method: "post",  style: "text-decoration:none; border:1px solid;"} do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>

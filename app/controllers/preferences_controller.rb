@@ -26,6 +26,11 @@ class PreferencesController < ApplicationController
     redirect_back(fallback_location: overview_path)
   end
 
+  def category
+    @category = params[:category]
+    @tags = Tag.where(category: @category)
+  end
+
   def create_with_ingredient
     @ingredient = Ingredient.find(params[:ingredient_id])
     @preference = Preference.new(kind: params[:kind])

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :recipes, only: [:show]
 
   get "/preferences", to: "preferences#overview", as: "overview"
+  get "/preferences/:category", to: "preferences#category", as: "preferences_category"
   patch "/preferences/:id/deactivate", to: "preferences#deactivate", as: "preference_deactivate"
 
   post "ingredients/:ingredient_id/preferences", to: "preferences#create_with_ingredient", as: "preference_ingredient"
