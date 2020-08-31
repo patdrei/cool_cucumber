@@ -1,13 +1,26 @@
 class MealsController < ApplicationController
 
   def destroy
-    Meal.destroy(params[:id])
+    @meal = Meal.find(params[:id])
+    @meal_plan = @meal.meal_plan
+    @meal_plan.days -= 1
+    meals_create_shopping_list_items
+  end
+
+  def create
+    @meal_plan = MealPlan.find(params[:meal_plan_id])
+    @meal = Meal.new
+    @meal.meal_plan = @meal_plan
+    @meal_plan.days += 1
+    @m_recipes = @meal_plan.meals.map{ |meal| meal.recipe }
+    new_meal
+    redirect_back(fallback_location: new_meal_plan_path)
   end
 
   def shuffle
     @meal = Meal.find(params[:id])
     @meal_plan = @meal.meal_plan
-    @m_recipes = @meal_plan.meals.map{|meal| meal.recipe}
+    @m_recipes = @meal_plan.meals.map{ |meal| meal.recipe }
     new_meal
     redirect_back(fallback_location: new_meal_plan_path)
   end
@@ -42,5 +55,35 @@ class MealsController < ApplicationController
     @meal.recipe = @recipe
     @meal.save
     @recipes.select! { |i| i != @recipe }
+
+    meals_create_shopping_list_items
   end
+
+    def meals_create_shopping_list_items
+    @meal_plan.shopping_list_items.destroy_all
+    # create shopping list item
+    # pass in ingredients  through the recipe_ingredients
+    # same for amount
+    # set purchased to true
+    # check if any of those already exist
+    # @meal_plan = MealPlan.find(params[:meal_plan_id])
+    @meal_plan.meals.each do |meal|
+      @recipes = meal.recipe
+      @recipe_ingredients = @recipe.recipe_ingredients
+      @recipe_ingredients.each do |recipe_ingredient|
+        if ShoppingListItem.exists?(ingredient_id: recipe_ingredient.ingredient_id, meal_plan_id: @meal_plan.id)
+          spi = ShoppingListItem.find_by(ingredient_id: recipe_ingredient.ingredient_id, meal_plan_id: @meal_plan.id)
+          spi.amount += recipe_ingredient.standard_amount
+        else
+          ShoppingListItem.create(
+            ingredient_id: recipe_ingredient.ingredient_id,
+            amount: recipe_ingredient.standard_amount,
+            purchased: false,
+            meal_plan_id: @meal_plan.id
+          )
+        end
+      end
+    end
+  end
+
 end
