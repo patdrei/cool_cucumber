@@ -16,17 +16,17 @@ class MealPlansController < ApplicationController
       @recipes = meal.recipe
       @recipe_ingredients = @recipe.recipe_ingredients
       @recipe_ingredients.each do |recipe_ingredient|
-        # if ShoppingListItem.exists?(ingredient_id: recipe_ingredient.ingredient_id, meal_plan_id: @meal_plan.id)
-        #   spi = ShoppingListItem.find_by(ingredient_id: recipe_ingredient.ingredient_id, meal_plan_id: @meal_plan.id)
-        #   spi.amount += recipe_ingredient.standard_amount
-        # else
+        if ShoppingListItem.exists?(ingredient_id: recipe_ingredient.ingredient_id, meal_plan_id: @meal_plan.id)
+          spi = ShoppingListItem.find_by(ingredient_id: recipe_ingredient.ingredient_id, meal_plan_id: @meal_plan.id)
+          spi.amount += recipe_ingredient.standard_amount
+        else
           ShoppingListItem.create(
             ingredient_id: recipe_ingredient.ingredient_id,
             amount: recipe_ingredient.standard_amount,
             purchased: false,
             meal_plan_id: @meal_plan.id
           )
-        # end
+        end
       end
     end
   end
