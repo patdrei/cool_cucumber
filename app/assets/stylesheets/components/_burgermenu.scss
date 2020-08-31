@@ -1,6 +1,6 @@
 .open{
     position: fixed;
-    top: 10px;
+    bottom: 3%;
     right: 40px;
     width: 50px;
     height: 50px;
@@ -37,7 +37,7 @@
         height: 0;
         width: 0;
         right: 0;
-        top: 0;
+        bottom: 70px ;
         position: absolute;
         background-color: $secondary;
         border-radius: 50%;
@@ -51,7 +51,7 @@
             margin-right: -160px;
             transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             &:first-child{
-                margin-top: 180px;
+                margin-top: 70px;
             }
             &:nth-child(1){
                 -webkit-transition-delay: 0.05s;
@@ -97,7 +97,6 @@
         }
         span:nth-child(2){
             height: 400px;
-            width: 400px;
             right: -160px;
             top: -160px;
             border-radius: 50%;
