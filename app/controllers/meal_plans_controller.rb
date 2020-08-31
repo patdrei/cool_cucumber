@@ -32,11 +32,14 @@ class MealPlansController < ApplicationController
   end
 
   def create
-    if params[:days].nil?
+
+    if params[:meal_plan][:days] == ""
       redirect_to new_meal_plan_path
       flash[:alert] = "Please say for how many days you want to cook"
     else
+
       deactivate_mealplans
+
       @meal_plan = MealPlan.new(strong_params)
       @meal_plan.active = true
       @user = current_user
@@ -45,12 +48,14 @@ class MealPlansController < ApplicationController
       @meal_plan.save
       @preferences = @user.preferences.where(kind: 1, ingredient_id: nil)
       tags = @preferences.map do |pref|
-        next if pref.tag_id == nil
+        next if pref.tag_id.nil?
+
         tag = pref.tag
         tag.recipe_tags
       end
       accepted = @preferences.map do |pref|
-        next if pref.tag_id == nil
+        next if pref.tag_id.nil?
+
         pref.tag
       end
       @top_choices = accepted.select { |tag| tag.category == 'top_choice'}
@@ -60,6 +65,13 @@ class MealPlansController < ApplicationController
       @top_choices.each do |tag|
         @recipes.select!{ |recipe| RecipeTag.exists?(recipe_id: recipe.id, tag_id: tag.id)}
       end
+
+      if @number > @recipes.uniq.length
+        @number = @recipes.uniq.length
+        flash[:alert] = "Couln't find enough matching recipes"
+      end
+
+      ing_pref_set
 
       @number.times do
         @meal = Meal.new
@@ -91,11 +103,26 @@ class MealPlansController < ApplicationController
   end
 
   def deactivate_mealplans
-    mealplans = current_user.meal_plans
-    mealplans.each do |mp|
-      mp.active = false
-      mp.save
+    unless current_user.meal_plans.nil?
+      mealplans = current_user.meal_plans
+      mealplans.each do |mp|
+        mp.active = false
+        mp.save
+      end
     end
   end
 
+  def ing_pref_set
+    intermediary = @recipes.uniq
+    @ingredients = current_user.preferences.where(tag_id: nil).map{|i| i.ingredient}
+    unless @ingredients == []
+      intermediary.each do |recipe|
+        @ingredients.each do |ingredient|
+          if RecipeIngredient.exists?(recipe_id: recipe.id, ingredient_id: ingredient.id)
+            @recipes << recipe
+          end
+        end
+      end
+    end
+  end
 end
