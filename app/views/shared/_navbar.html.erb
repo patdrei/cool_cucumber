@@ -1,5 +1,5 @@
-<div class="navbar navbar-expand-sm navbar-light sticky-top opacity-4">
-  <%= link_to "/", class: "navbar-brand p-2" do %>
+<div class="navbar fixed-bottom navbar-expand-sm navbar-light">
+  <%= link_to "/", class: "navbar-brand" do %>
     <%= image_tag "logo.svg" %>
     <% end %>
       <% @plan = MealPlan.find_by(user: current_user, active: true) %>
@@ -27,7 +27,7 @@
             <%= link_to "My Meal Plan", edit_meal_plan_path(@plan) %>
         </li>
         <li>
-          <%= link_to meal_plan_shopping_list_items_path(@plan), :class=> "shopping_list" do %><i class="fa fa-shopping-cart" aria-hidden="true" target="_blank"></i><% end %>
+          <%= link_to meal_plan_shopping_list_items_path(@plan), class: "shopping_list" do %><i class="fa fa-shopping-cart" aria-hidden="true" target="_blank"></i><% end %>
         </li>
         <% end %>
         <li>
