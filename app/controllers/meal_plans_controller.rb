@@ -39,13 +39,16 @@ class MealPlansController < ApplicationController
     @meal_plan.user = @user
     @number = @meal_plan.days
     @meal_plan.save
-    @preferences = @user.preferences.where(kind: 1)
+    @preferences = @user.preferences.where(kind: 1, ingredient_id: nil)
     tags = @preferences.map do |pref|
-      # next if pref.tag.id == nil
+      next if pref.tag_id == nil
       tag = pref.tag
       tag.recipe_tags
     end
-    accepted = @user.preferences.map { |pref| pref.tag }
+    accepted = @preferences.map do |pref|
+      next if pref.tag_id == nil
+      pref.tag
+    end
     @top_choices = accepted.select { |tag| tag.category == 'top_choice'}
 
     r_tags = tags.flatten
@@ -67,6 +70,7 @@ class MealPlansController < ApplicationController
   end
 
   def edit
+    @plan = MealPlan.find(params[:id])
   end
 
   def update
@@ -83,7 +87,10 @@ class MealPlansController < ApplicationController
 
   def deactivate_mealplans
     mealplans = current_user.meal_plans
-    mealplans.each { |mp| mp.active = false }
+    mealplans.each do |mp|
+      mp.active = false
+      mp.save
+    end
   end
 
 end

@@ -14,13 +14,16 @@ class MealsController < ApplicationController
 
   def new_meal
     @user = current_user
-    @preferences = @user.preferences.where(kind: 1)
+        @preferences = @user.preferences.where(kind: 1, ingredient_id: nil)
     tags = @preferences.map do |pref|
-      # next if pref.tag.id == nil
+      next if pref.tag_id == nil
       tag = pref.tag
       tag.recipe_tags
     end
-    accepted = @user.preferences.map { |pref| pref.tag }
+    accepted = @preferences.map do |pref|
+      next if pref.tag_id == nil
+      pref.tag
+    end
     @top_choices = accepted.select { |tag| tag.category == 'top_choice'}
 
     r_tags = tags.flatten
