@@ -68,7 +68,7 @@ class MealsController < ApplicationController
     # check if any of those already exist
     # @meal_plan = MealPlan.find(params[:meal_plan_id])
     @meal_plan.meals.each do |meal|
-      @recipes = meal.recipe
+      @recipe = meal.recipe
       @recipe_ingredients = @recipe.recipe_ingredients
       @recipe_ingredients.each do |recipe_ingredient|
         if ShoppingListItem.exists?(ingredient_id: recipe_ingredient.ingredient_id, meal_plan_id: @meal_plan.id)

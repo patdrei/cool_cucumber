@@ -13,7 +13,7 @@ class MealPlansController < ApplicationController
     # check if any of those already exist
     # @meal_plan = MealPlan.find(params[:meal_plan_id])
     @meal_plan.meals.each do |meal|
-      @recipes = meal.recipe
+      @recipe = meal.recipe
       @recipe_ingredients = @recipe.recipe_ingredients
       @recipe_ingredients.each do |recipe_ingredient|
         if ShoppingListItem.exists?(ingredient_id: recipe_ingredient.ingredient_id, meal_plan_id: @meal_plan.id)
@@ -66,10 +66,7 @@ class MealPlansController < ApplicationController
         @recipes.select!{ |recipe| RecipeTag.exists?(recipe_id: recipe.id, tag_id: tag.id)}
       end
 
-      if @number > @recipes.uniq.length
-        @number = @recipes.uniq.length
-        flash[:alert] = "Couln't find enough matching recipes"
-      end
+      safenum if @number > @recipes.uniq.length
 
       ing_pref_set
 
@@ -110,6 +107,22 @@ class MealPlansController < ApplicationController
         mp.save
       end
     end
+  end
+
+  def safenum
+    @safenum = @number - @recipes.uniq.length
+    @number = @recipes.uniq.length
+    @saferecs = RecipeTag.where(tag_id: 2).map{|i| i.recipe}
+
+    @safenum.times do
+      @meal = Meal.new
+      @meal.meal_plan = @meal_plan
+      @saferec = @saferecs.sample
+      @meal.recipe = @saferec
+      @meal.save
+    end
+
+    flash[:alert] = "The last #{@safenum} recipes are nice but don't fit all your preferences"
   end
 
   def ing_pref_set
