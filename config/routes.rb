@@ -5,10 +5,10 @@ Rails.application.routes.draw do
 
   resources :meal_plans, only: [:new, :create, :edit, :update, :destroy] do
     resources :shopping_list_items, only: [:index, :update]
-    resources :meals, only: [:index]
   end
 
   resources :recipes, only: [:show]
+  resources :meals, only: [:destroy]
 
   get "/preferences", to: "preferences#overview", as: "overview"
   patch "/preferences/:id/deactivate", to: "preferences#deactivate", as: "preference_deactivate"
