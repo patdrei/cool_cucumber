@@ -22,7 +22,7 @@
             <%= link_to "My Meal Plan", edit_meal_plan_path(@plan) %>
         </li>
         <li>
-            <%= link_to "Shopping List", meal_plan_shopping_list_items_path(@plan) %>
+          <%= link_to meal_plan_shopping_list_items_path(@plan), :class=> "shopping_list" do %><i class="fa fa-shopping-cart" aria-hidden="true" target="_blank"></i><% end %>
         </li>
         <li>
           <%= link_to "Logout", destroy_user_session_path, method: :delete %>
