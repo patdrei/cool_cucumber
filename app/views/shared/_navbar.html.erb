@@ -11,11 +11,28 @@
 
     <% if user_signed_in? %>
 
-        <%= link_to destroy_user_session_path, { class: "btn btn-outline-danger", method: "delete",  style: "text-decoration:none;" } do %>
-          <span>Logout</span>
-        <% end %>
+       <div  class="open">
+    <span class="cls"></span>
+    <span>
+      <ul class="sub-menu ">
+        <li>
+            <a href="/preferences/overview" title="preferences">My Preferences</a>
+        </li>
+        <li>
+            <a href="/meal_plans/new" title="previous-meal-plans">My Previous Plans</a>
+        </li>
+        <li>
+            <a href="/shopping_list_item/index" title="shopping-cart"><i class="fas fa-shopping-cart"></i></a>
+        </li>
+        <li>
+          <a href="#" class="logout">Logout</a>
+        </li>
+      </ul>
+    </span>
+    <span class="cls"></span>
+      </div>
+    </form>
 
-      </form>
     <% else %>
       <form class="form-inline">
         <%= link_to new_user_session_path, { class: "btn btn-outline-success",  style: "text-decoration:none;" } do %>
@@ -23,6 +40,7 @@
        <% end %>
       </form>
     <% end %>
+
   </div>
 </div>
 

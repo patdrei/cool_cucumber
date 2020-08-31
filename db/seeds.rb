@@ -103,7 +103,7 @@ api_keys = ["89afe226d41443838ed8475fdfbf122c", "60cab3074d444019ae8bd499aa915b7
 
 api_keys.each do |key|
 
-  50.times do
+  100.times do
 
 
     rm = RestClient.get "https://api.spoonacular.com/recipes/random?apiKey=#{key}"

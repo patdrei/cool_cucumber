@@ -27,6 +27,8 @@ gem 'redis', '~> 4.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
+# Canvas menu with hardware accelerated transitions and amazing native behavior
+gem 'burgermenu-rails'
 
 gem 'devise'
 gem 'rest-client'
