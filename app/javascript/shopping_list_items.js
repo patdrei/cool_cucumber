@@ -1,7 +1,6 @@
 
 const shopping_list_item_listener = () => {
   const shopping_list_cards = document.querySelectorAll('.shopping_list_item, .shopping_list_item_bought')
-
   if (shopping_list_cards) {
 
 
@@ -9,8 +8,14 @@ const shopping_list_item_listener = () => {
       shopping_list_card.addEventListener("click", () => {
         shopping_list_card.classList.toggle("shopping_list_item_bought");
         shopping_list_card.classList.toggle("shopping_list_item");
+        const circle = shopping_list_card.querySelector("i");
+          circle.classList.toggle('fa-check-circle');
+          circle.classList.toggle('far')
+          circle.classList.toggle('fas')
+          circle.classList.toggle('fa-circle');
       });
     });
+
 
   };
 };
