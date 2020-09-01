@@ -4,17 +4,27 @@
   <title> <%= params[:category] %></title>
 </head>
 <body>
-  <div class="m-3">
-    <h1> Select from all <%= @category.capitalize.gsub("_"," ") %></h1>
-    <% if params[:category] == "cuisines"  %>
+   <% if params[:category] == "cuisines"  %>
       <% i = '-danger' %>
-    <% elsif params[:category] == "top_choices" %>
+      <% f = 'font-c-4' %>
+    <% elsif params[:category] == "top_choice" %>
       <% i = '-secondary'  %>
+      <% f = 'font-c-3' %>
     <% elsif params[:category] == "dish_types"%>
       <% i = '-info'  %>
+      <% f = 'font-c-1' %>
     <% else%>
       <% i = '-warning' %>
     <% end %>
+
+  <div class="m-3">
+     <div class="row justify-content-left mt-2 ml-1 mb-3">
+      <a class="<%= f %>" href='/preferences'>
+        <i class="fas fa-long-arrow-alt-left mr-1"></i>
+        <u>Return to preference overview</u>
+      </a>
+    </div>
+    <h1> Select from all <%= @category.capitalize.gsub("_"," ") %></h1>
 
     <div class="justify-content-center p-1 mb-3">
     <%= form_tag preferences_category_path, method: :get do %>
@@ -56,5 +66,6 @@
         <% end %>
 
     </div>
+
 </body>
 </html>
