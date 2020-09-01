@@ -1,12 +1,21 @@
-card-product {
+
+
+.card-meal-lp {
+  margin-bottom: 5px;
   overflow: hidden;
   height: 120px;
+  border-radius: 10px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
 }
 
+.card-meal-lp h5 {
+  font-size: 12px;
+  font-weight: bold;
+  margin: 0;
+}
 .card-product img {
   height: 100%;
   width: 120px;
