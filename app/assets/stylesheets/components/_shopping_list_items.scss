@@ -31,22 +31,25 @@
 .shopping_list_item_card{
   margin-right:25px;
   margin-left: 25px;
-  background-color: #EBEBEB;
+  border: 3px solid rgba(178, 189, 126, 0.3);
   margin-top: 40px;
   text-align: left;
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
   margin-bottom: 30px;
+  border-radius: 3px;
+
 }
 
 .shopping_list_item{
   padding: 12px;
-  background-color: #EBEBEB;
-
+  background-color: rgba(178, 189, 126, 0.5);
+  background-opacity: 0.5;
+  :hover {
+    background-color: rgba(178, 189, 126, 0.5);
+  }
 }
 
 .shopping_list_item_bought{
-  color: #EBEBEB;
-  background-color: #F5F5F5;
+  background-color: rgba(178, 189, 126, 0.3) ;
   padding: 12px;
   }
 
