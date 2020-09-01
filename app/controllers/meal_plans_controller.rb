@@ -36,6 +36,7 @@ class MealPlansController < ApplicationController
     if params[:meal_plan][:days] == ""
       redirect_to new_meal_plan_path
       flash[:alert] = "Please say for how many days you want to cook"
+
     else
 
       deactivate_mealplans
@@ -47,14 +48,14 @@ class MealPlansController < ApplicationController
       @number = @meal_plan.days
       @meal_plan.save
       @preferences = @user.preferences.where(kind: 1, ingredient_id: nil)
+
       tags = @preferences.map do |pref|
-        next if pref.tag_id.nil?
 
         tag = pref.tag
         tag.recipe_tags
       end
+
       accepted = @preferences.map do |pref|
-        next if pref.tag_id.nil?
 
         pref.tag
       end
@@ -129,9 +130,6 @@ class MealPlansController < ApplicationController
       @saferecs.select! { |i| i != @recipe }
     end
 
-
-
-    flash[:alert] = "The last #{@safenum} recipes are nice but don't fit all your preferences"
   end
 
   def ing_pref_set
