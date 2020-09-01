@@ -4,17 +4,15 @@
   <title></title>
 </head>
 <body>
-  <% if params[:category] == "cuisines"  %>
-      <% i = '-danger' %>
-    <% elsif params[:category] == "top_choices" %>
-      <% i = '-secondary'  %>
-    <% elsif params[:category] == "dish_types"%>
-      <% i = '-info'  %>
-    <% else%>
-      <% i = '-warning' %>
-  <% end %>
 
   <div class="m-3">
+
+    <div class="row justify-content-left mt-2 ml-1 mb-3">
+      <a class="font-c-5" href='/preferences'>
+        <i class="fas fa-long-arrow-alt-left ml-1"></i>
+        <u>Return to preference overview</u>
+      </a>
+    </div>
 
     <div class="justify-content-center p-1 mb-3">
     <%= form_tag preferences_ingredients_path, method: :get do %>
@@ -39,7 +37,7 @@
               <% if Preference.exists?(ingredient_id: ingredient.id, user_id: current_user.id, kind: 1, active: true) %>
                 <% pref = Preference.find_by(ingredient_id: ingredient.id, active: true) %>
                 <form class="form-inline" >
-                  <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn#{i} w-100 text-center inc-pref", method: "patch",  style: "text-decoration:none;", remote: true} do %>
+                  <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-warning w-100 text-center inc-pref", method: "patch",  style: "text-decoration:none;", remote: true} do %>
                     <span><%= ingredient.name %></span>
                   <% end %>
                 </form>
@@ -47,7 +45,7 @@
               <% else %>
 
                 <form class="form-inline" >
-                  <%= link_to preference_ingredient_path(ingredient, kind: 1), { class: "btn-sm btn-outline#{i} w-100 text-center no-pref", method: "post",  style: "text-decoration:none; border:1px solid;", remote: true} do %>
+                  <%= link_to preference_ingredient_path(ingredient, kind: 1), { class: "btn-sm btn-outline-warning w-100 text-center no-pref", method: "post",  style: "text-decoration:none; border:1px solid;", remote: true} do %>
                     <span><%= ingredient.name %></span>
                   <% end %>
                 </form>
@@ -60,9 +58,6 @@
             </div>
           <% end %>
 
-
-
-
     <%  else %>
 
     <div class="row p-1 mb-3">
@@ -72,7 +67,7 @@
               <% if Preference.exists?(ingredient_id: ingredient.id, user_id: current_user.id, kind: 1, active: true) %>
                 <% pref = Preference.find_by(ingredient_id: ingredient.id, active: true) %>
                 <form class="form-inline" >
-                  <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn#{i} w-100 text-center inc-pref", method: "patch",  style: "text-decoration:none;", remote: true} do %>
+                  <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-warning w-100 text-center inc-pref", method: "patch",  style: "text-decoration:none;", remote: true} do %>
                     <span><%= ingredient.name %></span>
                   <% end %>
                 </form>
@@ -80,7 +75,7 @@
               <% else %>
 
                 <form class="form-inline" >
-                  <%= link_to preference_ingredient_path(ingredient, kind: 1), { class: "btn-sm btn-outline#{i} w-100 text-center no-pref", method: "post",  style: "text-decoration:none; border:1px solid;", remote: true} do %>
+                  <%= link_to preference_ingredient_path(ingredient, kind: 1), { class: "btn-sm btn-outline-warning w-100 text-center no-pref", method: "post",  style: "text-decoration:none; border:1px solid;", remote: true} do %>
                     <span><%= ingredient.name %></span>
                   <% end %>
                 </form>
@@ -94,6 +89,12 @@
 
 
   </div>
-      <%  end %>
+  <%  end %>
+  <div class="row justify-content-left mt-2 ml-1 mb-3">
+    <a class="font-c-6" href='/preferences'>
+      <i class="fas fa-long-arrow-alt-left mr-1"></i>
+      <u>Return to preference overview</u>
+    </a>
+  </div>
 </body>
 </html>

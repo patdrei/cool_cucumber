@@ -28,7 +28,12 @@ class PreferencesController < ApplicationController
 
   def category
     @category = params[:category]
-    @tags = Tag.where(category: @category)
+
+    if params[:query].present?
+      @tags = Tag.where(category: @category).where("name ILIKE ?", "%#{params[:query].downcase}%")
+    else
+      @tags = Tag.where(category: @category)
+    end
   end
 
   def ingredients
@@ -36,8 +41,7 @@ class PreferencesController < ApplicationController
     @preferences = current_user.preferences
 
     if params[:query].present?
-      @pure_ingredients = Ingredient.where("name LIKE ?", "%#{params[:query].downcase}%")
-
+      @pure_ingredients = Ingredient.where("name ILIKE ?", "%#{params[:query].downcase}%")
     else
       @ingredients = sort_ingredients
     end
