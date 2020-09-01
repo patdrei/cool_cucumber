@@ -66,8 +66,8 @@ class MealPlansController < ApplicationController
         @recipes.select!{ |recipe| RecipeTag.exists?(recipe_id: recipe.id, tag_id: tag.id)}
       end
 
-      safenum if @number > @recipes.uniq.length
 
+      @number = @recipes.uniq.length
       ing_pref_set
 
       @number.times do
@@ -78,6 +78,7 @@ class MealPlansController < ApplicationController
         @meal.save
         @recipes.select! { |i| i != @recipe }
       end
+      safenum if @meal_plan.days > @recipes.uniq.length
       create_shopping_list_items
       redirect_to new_meal_plan_path
     end
@@ -111,8 +112,13 @@ class MealPlansController < ApplicationController
 
   def safenum
     @safenum = @number - @recipes.uniq.length
-    @number = @recipes.uniq.length
     @saferecs = RecipeTag.where(tag_id: 2).map{|i| i.recipe}
+
+    @m_recipes = @meal_plan.meals.map{ |meal| meal.recipe }
+
+    @m_recipes.each do |rec|
+      @saferec.select! {|i| i != rec }
+    end
 
     @safenum.times do
       @meal = Meal.new
@@ -120,7 +126,10 @@ class MealPlansController < ApplicationController
       @saferec = @saferecs.sample
       @meal.recipe = @saferec
       @meal.save
+      @saferecs.select! { |i| i != @recipe }
     end
+
+
 
     flash[:alert] = "The last #{@safenum} recipes are nice but don't fit all your preferences"
   end
