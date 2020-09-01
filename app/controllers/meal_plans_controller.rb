@@ -67,7 +67,7 @@ class MealPlansController < ApplicationController
       end
 
 
-      @number = @recipes.uniq.length
+      @number = @recipes.uniq.length if @meal_plan.days > @recipes.uniq.length
       ing_pref_set
 
       @number.times do
@@ -117,7 +117,7 @@ class MealPlansController < ApplicationController
     @m_recipes = @meal_plan.meals.map{ |meal| meal.recipe }
 
     @m_recipes.each do |rec|
-      @saferec.select! {|i| i != rec }
+      @saferecs.select! {|i| i != rec }
     end
 
     @safenum.times do
