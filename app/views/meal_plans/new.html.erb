@@ -29,6 +29,7 @@
 </div>
 
 <% end %>
+
 <div class="col-6 col-lg-2 col-md-3 col-sm-4 pt-2 pl-4">
     <a class="font-c-3" href='/preferences'>
       <u>More choices</u>
@@ -61,19 +62,27 @@
         <img width=100 src="<%=  meal.recipe.image_url %> ">
       </div>
         <div class="col-8 card-meal-infos lefty-border">
-          <h3 class="font-c-6 mt-3"> <%= link_to meal.recipe.name, recipe_path(meal.recipe) %> </h3>
-            <div class="pl-3 desc-size ">
+          <div class="details">
+          <h3 class="font-c-6 mt-3"> <%= link_to meal.recipe.name.truncate(24), recipe_path(meal.recipe) %> </h3>
+            <div class="pl-1 desc-size ">
             <h5 class="font-c-neutral text-left text-secondary"><i class="fas fa-clock pr-1"></i> <%= meal.recipe.prep_time %> minutes</h5>
-            <p class="overflow-ellipsis"> <%= meal.recipe.description.html_safe %> </p>
+            <p class="overflow-ellipsis"> <%= meal.recipe.description.html_safe.truncate(24) %> </p>
+            </div>
+            <div class="btn-form-wrapper" grid-column-end: foo;>
+              <form class="form-row">
+                <div class="shuffle-btn">
+                  <%= link_to shuffle_path(meal), { class: "shuffle", remote: true, method: 'post' } do %><i class="fa fa-redo" aria-hidden="true"></i><% end %>
+                </div>
+                <div class="remove-btn">
+                  <%= link_to meal_path(meal), { class: "delete", remote: true, method: 'delete',  style: "text-decoration:none;" } do %><i class="far fa-trash-alt" aria-hidden="true"></i><% end %>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
+       </div>
     </div>
-        <form class="form-inline" >
-      <%= link_to shuffle_path(meal), { class: "btn-sm btn-secondary w-100 text-center", method: "post",  style: "text-decoration:none;" } do %>
-        <span>Shuffle</span>
-      <% end %>
-    </form>
+<div>
 <% end %>
   <%= link_to 'To My Shopping List', meal_plan_shopping_list_items_path(@plan), {class: "btn btn-danger mt-3 w-100"}  %>
 <% end %>
@@ -82,6 +91,3 @@
 
 </div>
 <br>
-
-
-

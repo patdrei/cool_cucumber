@@ -48,16 +48,21 @@ document.addEventListener('turbolinks:load', () => {
 
 //= require burgermenu
 $(document).ready(function() {
-        $(document).delegate('.open', 'click', function(event){
-            $(this).addClass('oppenned');
-            event.stopPropagation();
-        })
-        $(document).delegate('body', 'click', function(event) {
-            $('.open').removeClass('oppenned');
-        })
-        $(document).delegate('.cls', 'click', function(event){
-            $('.open').removeClass('oppenned');
-            event.stopPropagation();
-        });
-    });
+  $(document).delegate('.open', 'click', function(event){
+      $(this).addClass('oppenned');
+      event.stopPropagation();
+  })
+  $(document).delegate('body', 'click', function(event) {
+      $('.open').removeClass('oppenned');
+  })
+  $(document).delegate('.cls', 'click', function(event){
+      $('.open').removeClass('oppenned');
+      event.stopPropagation();
+  });
+});
+
+$(".alert").fadeTo(2000, 500).slideUp(500, function(){
+    $(".alert").slideUp(1000);
+});
+
 

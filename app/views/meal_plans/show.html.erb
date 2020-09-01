@@ -1,0 +1,21 @@
+
+<% @plan.meals.order(id: :desc).each do |meal|%>
+<div class="my-2">
+  <div class="card-meal">
+     <div class="d-flex" >
+      <div class="align-self-center", style="height: 120px" >
+        <img width=100 src="<%=  meal.recipe.image_url %> ">
+      </div>
+        <div class="col-8 card-meal-infos lefty-border">
+          <h3 class="font-c-6 mt-3"> <%= link_to meal.recipe.name, recipe_path(meal.recipe) %> </h3>
+            <div class="pl-3 desc-size ">
+            <h5 class="font-c-neutral text-left text-secondary">Cooking Time <%= meal.recipe.prep_time %> Minutes</h5>
+            <p class="overflow-ellipsis"> <%= meal.recipe.description.html_safe %> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+  <%= link_to 'Save to my Account', meal_plan_save_path(@plan), {class: "btn btn-primary mt-3 w-100", method: 'post'}  %>
+

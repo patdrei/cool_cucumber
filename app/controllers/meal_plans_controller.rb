@@ -1,4 +1,25 @@
 class MealPlansController < ApplicationController
+
+  skip_before_action :authenticate_user!, only: [:show]
+
+  def show
+    @plan = MealPlan.find(params[:id])
+  end
+
+  def save_to_account
+    @meal_plan = MealPlan.find(params[:id])
+    @user = current_user
+    @new_plan = MealPlan.new(active: true, days: @meal_plan.days)
+    @new_plan.user = @user
+    @new_plan.save
+    @meal_plan.meals.each do |meal|
+      new_meal = Meal.new(done: false, meal_plan_id: @new_plan.id, recipe_id: meal.recipe.id)
+      new_meal.save
+    end
+
+    redirect_to edit_meal_plan_path(@new_plan.id)
+  end
+
   def new
     @meal_plan = MealPlan.new
     @top_choices = Tag.where(category: 'top_choice')
@@ -36,6 +57,7 @@ class MealPlansController < ApplicationController
     if params[:meal_plan][:days] == ""
       redirect_to new_meal_plan_path
       flash[:alert] = "Please say for how many days you want to cook"
+
     else
 
       deactivate_mealplans
@@ -47,14 +69,14 @@ class MealPlansController < ApplicationController
       @number = @meal_plan.days
       @meal_plan.save
       @preferences = @user.preferences.where(kind: 1, ingredient_id: nil)
+
       tags = @preferences.map do |pref|
-        next if pref.tag_id.nil?
 
         tag = pref.tag
         tag.recipe_tags
       end
+
       accepted = @preferences.map do |pref|
-        next if pref.tag_id.nil?
 
         pref.tag
       end
@@ -80,18 +102,12 @@ class MealPlansController < ApplicationController
       end
       safenum if @meal_plan.days > @recipes.uniq.length
       create_shopping_list_items
-      redirect_to new_meal_plan_path
+      redirect_to edit_meal_plan_path(@meal_plan.id)
     end
   end
 
   def edit
     @plan = MealPlan.find(params[:id])
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private
@@ -129,9 +145,6 @@ class MealPlansController < ApplicationController
       @saferecs.select! { |i| i != @recipe }
     end
 
-
-
-    flash[:alert] = "The last #{@safenum} recipes are nice but don't fit all your preferences"
   end
 
   def ing_pref_set

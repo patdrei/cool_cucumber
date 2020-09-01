@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get "/dashboard", to: "pages#dashboard", as: 'dashboard'
 
-  resources :meal_plans, only: [:new, :create, :edit, :update, :destroy] do
+  resources :meal_plans, only: [:show, :new, :create, :edit] do
     resources :shopping_list_items, only: [:index, :update]
     resources :meals, only: [:create]
   end
@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   post "meals/:id/shuffle", to: "meals#shuffle", as: "shuffle"
 
   post "shopping_list_items/:id/change_purchased", to: "shopping_list_items#change_purchased", as: "change_purchased"
+
+  post "meal_plans/:id/save_to_account", to: "meal_plans#save_to_account", as: "meal_plan_save"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
