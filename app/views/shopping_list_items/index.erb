@@ -2,7 +2,7 @@
 <!-- <img class = "shopping_list_items_banner" src= "https://images.unsplash.com/photo-1536546025187-bad5bfc86628?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"> -->
 
 <div class="shopping_list_items_banner" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1536546025187-bad5bfc86628?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80)">
-  <a class="btn btn-primary" id="btn-lg" href="#">Back to Mealplan</a>
+ <%= link_to "Back to Meal Plan", edit_meal_plan_path(@meal_plan), :class => "btn btn-primary"%>
 </div>
 
 
@@ -15,9 +15,10 @@
           <%= number == number.floor ? shopping_list_item.amount.round(0) : shopping_list_item.amount.round(2) %>
         </div>
       <% else %>
-        <div class="shopping_list_item d-flex justify-content-between">
-          <div>
-            <p>  <%= shopping_list_item.ingredient.name %></p>
+        <div class="shopping_list_item d-flex justify-content-between" style="border-bottom: 1px solid white;">
+          <div class = "d-flex align-items-center">
+            <i class="far fa-circle pr-2" style="font-size: 10px;"></i>
+            <p style="max-width: 13ch;">  <%= shopping_list_item.ingredient.name %></p>
 
           </div>
           <div class ="d-flex">

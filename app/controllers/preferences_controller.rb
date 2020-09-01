@@ -8,11 +8,11 @@ class PreferencesController < ApplicationController
 
       @ingredients = Ingredient.where("name LIKE ?", "%#{params[:query].downcase}%")
     else
-      @top_choices = Tag.where(category: 'top_choice')
-      @cuisines = Tag.where(category: 'cuisines').sort_by{|tag| -tag.preferences.count }.first(6)
-      @types = Tag.where(category: 'dish_types').sort_by{|tag| -tag.preferences.count }.first(6)
+      @top_choices = Tag.where(category: 'top_choice').first(4)
+      @cuisines = Tag.where(category: 'cuisines').sort_by{|tag| -tag.recipe_tags.count }.first(4)
+      @types = Tag.where(category: 'dish_types').sort_by{|tag| -tag.recipe_tags.count }.first(4)
 
-      @ingredients = Ingredient.all.sort_by{|ing| -ing.preferences.count }.first(6)
+      @ingredients = Ingredient.all.sort_by{|ing| -ing.recipe_ingredients.count }.first(4)
   end
     @preferences = current_user.preferences
   end
@@ -29,6 +29,24 @@ class PreferencesController < ApplicationController
   def category
     @category = params[:category]
     @tags = Tag.where(category: @category)
+  end
+
+  def ingredients
+    @ingredients = sort_ingredients
+  end
+
+  def sort_ingredients
+    ingredients = Ingredient.all
+    array_of_arrays = []
+    alphabet_array = ('a'..'z').to_a
+
+    alphabet_array.each do |input|
+      intermediate = ingredients.select do |i|
+        i.name.first.downcase == input
+      end
+        array_of_arrays << intermediate
+    end
+    array_of_arrays
   end
 
   def create_with_ingredient

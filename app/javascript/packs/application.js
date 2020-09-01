@@ -28,7 +28,7 @@ import "bootstrap";
 // Internal imports, e.g:
 import { shopping_list_item_listener } from '../shopping_list_items.js';
 import { rotator } from '../rotator.js';
-
+import { range_slider } from '../range_slider.js';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
@@ -41,6 +41,11 @@ document.addEventListener('turbolinks:load', () => {
   rotator();
 });
 
+document.addEventListener('turbolinks:load', () => {
+  // Call your functions here, e.g:
+  // initSelect2();
+  range_slider();
+});
 
 //= require burgermenu
 $(document).ready(function() {
