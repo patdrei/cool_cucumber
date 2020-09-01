@@ -88,7 +88,13 @@
   white-space: nowrap;
  }
 
-.card-meal .shuffle {
-  bottom: 0;
-  left: 60px
+.btn-form-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 200px;
+}
+
+.shuffle-btn, .remove-btn {
+  padding-left: 10px;
+  color: $gray;
 }
