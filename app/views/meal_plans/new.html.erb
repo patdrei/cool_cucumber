@@ -52,12 +52,13 @@
   </div>
 </div>
 
+
  -->
 <%= simple_form_for @meal_plan do |f| %>
 <div class="text-muted">
   <%= f.input :days, required: true, label: 'For how many Days?', error: 'Please tell me how many days you want to cook?', input_html: { min: '1', max: '7', step: 'any'}%>
 </div>
-  <%= f.submit "Generate New Meal Plan", class: "btn btn-primary w-100 mb-3"%>
+  <%= f.submit "Generate New Meal Plan", {class: "btn btn-primary w-100 mb-3", remote: true}%>
 <% end %>
 
 
@@ -74,7 +75,7 @@
         <div class="col-8 card-meal-infos lefty-border">
           <h3 class="font-c-6 mt-3"> <%= link_to meal.recipe.name, recipe_path(meal.recipe) %> </h3>
             <div class="pl-3 desc-size ">
-            <h5 class="font-c-neutral text-left text-secondary">Cooking Time <%= meal.recipe.prep_time %> Minutes</h5>
+            <h5 class="font-c-neutral text-left text-secondary"><i class="fas fa-clock pr-1"></i> <%= meal.recipe.prep_time %> minutes</h5>
             <p class="overflow-ellipsis"> <%= meal.recipe.description.html_safe %> </p>
           </div>
         </div>
@@ -96,141 +97,3 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- <div class="container">
-
-    <div class="card-meal">
-     <div class="d-flex" >
-      <div class="align-self-center", style="height: 120px" >
-        <img width=100 src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1853&q=80">
-      </div>
-        <div class="col-8 card-meal-infos lefty-border">
-          <h3 class="font-c-6">@meal_plan.recipe.name</h3>
-            <div class="pl-3 desc-size ">
-            <h5 class="font-c-neutral text-left ">@cooking time and tag</h5>
-            <p class="overflow-ellipsis">He who has a why to live can bear almost any how.
-To live is to suffer, to survive is to find some meaning in the suffering.
-He who fights with monsters might take care lest he thereby become a monster. And if you gaze for long into an abyss, the abyss gazes also into you.
-When you stare into the abyss the abyss stares back at you.
-There are no facts, only interpretations.
-That which does not kill us makes us stronger.
-Without music, life would mistake.
-Blessed are the forgetful: for they get the better even of their blunders.
-One must still have chaos in oneself to be able to give birth to a dancing star.
-We have art in order not to die of the truth. </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-meal">
-     <div class="d-flex" >
-      <div class="align-self-center", style="height: 120px" >
-        <img width=100 src="https://images.unsplash.com/photo-1572449043416-55f4685c9bb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80">
-      </div>
-        <div class="col-8 card-meal-infos lefty-border">
-          <h3 class="font-c-6">@meal_plan.recipe.name</h3>
-            <div class="pl-3 desc-size ">
-            <h5 class="font-c-neutral text-left ">@cooking time and tag</h5>
-            <p class="overflow-ellipsis">He who has a why to live can bear almost any how.
-To live is to suffer, to survive is to find some meaning in the suffering.
-He who fights with monsters might take care lest he thereby become a monster. And if you gaze for long into an abyss, the abyss gazes also into you.
-When you stare into the abyss the abyss stares back at you.
-There are no facts, only interpretations.
-That which does not kill us makes us stronger.
-Without music, life would be a mistake.
-Blessed are the forgetful: for they get the better even of their blunders.
-One must still have chaos in oneself to be able to give birth to a dancing star.
-We have art in order not to die of the truth. </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-meal">
-     <div class="d-flex" >
-      <div class="align-self-center", style="height: 120px" >
-        <img width=100 src="https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60">
-      </div>
-        <div class="col-8 card-meal-infos lefty-border">
-          <h3 class="font-c-6">@meal_plan.recipe.name</h3>
-            <div class="pl-3 desc-size ">
-            <h5 class="font-c-neutral text-left ">@cooking time and tag</h5>
-            <p class="overflow-ellipsis">He who has a why to live can bear almost any how.
-To live is to suffer, to survive is to find some meaning in the suffering.
-He who fights with monsters might take care lest he thereby become a monster. And if you gaze for long into an abyss, the abyss gazes also into you.
-When you stare into the abyss the abyss stares back at you.
-There are no facts, only interpretations.
-That which does not kill us makes us stronger.
-Without music, life would be a mistake.
-Blessed are the forgetful: for they get the better even of their blunders.
-One must still have chaos in oneself to be able to give birth to a dancing star.
-We have art in order not to die of the truth. </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-meal">
-     <div class="d-flex" >
-      <div class="align-self-center", style="height: 120px" >
-        <img width=100 src="https://images.unsplash.com/photo-1476718406336-bb5a9690ee2a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
-      </div>
-        <div class="col-8 card-meal-infos lefty-border">
-          <h3 class="font-c-6">@meal_plan.recipe.name</h3>
-            <div class="pl-3 desc-size ">
-            <h5 class="font-c-neutral text-left ">@cooking time and tag</h5>
-            <p class="overflow-ellipsis">He who has a why to live can bear almost any how.
-To live is to suffer, to survive is to find some meaning in the suffering.
-He who fights with monsters might take care lest he thereby become a monster. And if you gaze for long into an abyss, the abyss gazes also into you.
-When you stare into the abyss the abyss stares back at you.
-There are no facts, only interpretations.
-That which does not kill us makes us stronger.
-Without music, life would be a mistake.
-Blessed are the forgetful: for they get the better even of their blunders.
-One must still have chaos in oneself to be able to give birth to a dancing star.
-We have art in order not to die of the truth. </p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-meal">
-     <div class="d-flex" >
-      <div class="align-self-center", style="height: 120px" >
-        <img width=100 src="https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60">
-      </div>
-        <div class="col-8 card-meal-infos lefty-border">
-          <h3 class="font-c-6">@meal_plan.recipe.name</h3>
-            <div class="pl-3 desc-size ">
-            <h5 class="font-c-neutral text-left ">@cooking time and tag</h5>
-            <p class="overflow-ellipsis">He who has a why to live can bear almost any how.
-To live is to suffer, to survive is to find some meaning in the suffering.
-He who fights with monsters might take care lest he thereby become a monster. And if you gaze for long into an abyss, the abyss gazes also into you.
-When you stare into the abyss the abyss stares back at you.
-There are no facts, only interpretations.
-That which does not kill us makes us stronger.
-Without music, life would be a mistake.
-Blessed are the forgetful: for they get the better even of their blunders.
-One must still have chaos in oneself to be able to give birth to a dancing star.
-We have art in order not to die of the truth. </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  <div class="row justify-content-center mt-3 mb-5">
-    <a class="btn btn-primary" id="btn-lg" href='/meal_plans/new'>Select Plan</a>
-  </div>
-  </div>
-
- -->
