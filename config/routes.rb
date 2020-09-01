@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get "/dashboard", to: "pages#dashboard", as: 'dashboard'
 
-  resources :meal_plans, only: [:new, :create, :edit, :update, :destroy] do
+  resources :meal_plans, only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :shopping_list_items, only: [:index, :update]
     resources :meals, only: [:create]
   end

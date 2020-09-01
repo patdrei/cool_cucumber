@@ -1,4 +1,11 @@
 class MealPlansController < ApplicationController
+
+  skip_before_action :authenticate_user!, only: [:show]
+
+  def show
+    @plan = MealPlan.find(params[:id])
+  end
+
   def new
     @meal_plan = MealPlan.new
     @top_choices = Tag.where(category: 'top_choice')
