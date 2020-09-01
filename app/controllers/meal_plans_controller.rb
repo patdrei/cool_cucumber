@@ -102,7 +102,7 @@ class MealPlansController < ApplicationController
       end
       safenum if @meal_plan.days > @recipes.uniq.length
       create_shopping_list_items
-      redirect_to new_meal_plan_path
+      redirect_to edit_meal_plan_path(@meal_plan.id)
     end
   end
 
