@@ -32,7 +32,15 @@ class PreferencesController < ApplicationController
   end
 
   def ingredients
-    @ingredients = sort_ingredients
+    @alphabet = ('a'..'z').to_a
+    @preferences = current_user.preferences
+
+    if params[:query].present?
+      @pure_ingredients = Ingredient.where("name LIKE ?", "%#{params[:query].downcase}%")
+
+    else
+      @ingredients = sort_ingredients
+    end
   end
 
   def sort_ingredients
