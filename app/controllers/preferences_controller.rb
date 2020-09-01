@@ -31,6 +31,10 @@ class PreferencesController < ApplicationController
     @tags = Tag.where(category: @category)
   end
 
+  def ingredients
+    @ingredients = Ingredient.all
+  end
+
   def create_with_ingredient
     @ingredient = Ingredient.find(params[:ingredient_id])
     @preference = Preference.new(kind: params[:kind])
