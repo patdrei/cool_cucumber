@@ -1,4 +1,25 @@
 class MealPlansController < ApplicationController
+
+  skip_before_action :authenticate_user!, only: [:show]
+
+  def show
+    @plan = MealPlan.find(params[:id])
+  end
+
+  def save_to_account
+    @meal_plan = MealPlan.find(params[:id])
+    @user = current_user
+    @new_plan = MealPlan.new(active: true, days: @meal_plan.days)
+    @new_plan.user = @user
+    @new_plan.save
+    @meal_plan.meals.each do |meal|
+      new_meal = Meal.new(done: false, meal_plan_id: @new_plan.id, recipe_id: meal.recipe.id)
+      new_meal.save
+    end
+
+    redirect_to edit_meal_plan_path(@new_plan.id)
+  end
+
   def new
     @meal_plan = MealPlan.new
     @top_choices = Tag.where(category: 'top_choice')
@@ -87,12 +108,6 @@ class MealPlansController < ApplicationController
 
   def edit
     @plan = MealPlan.find(params[:id])
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private

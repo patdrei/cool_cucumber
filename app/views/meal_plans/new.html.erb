@@ -85,7 +85,7 @@
                   <%= link_to shuffle_path(meal), { class: "shuffle", remote: true, method: 'post' } do %><i class="fa fa-redo" aria-hidden="true"></i><% end %>
                 </div>
                 <div class="remove-btn">
-                  <%= link_to meal_path(meal), class: "delete", method: "delete",  style: "text-decoration:none;" do %><i class="far fa-trash-alt" aria-hidden="true"></i><% end %>
+                  <%= link_to meal_path(meal), { class: "delete", remote: true, method: 'delete',  style: "text-decoration:none;" } do %><i class="far fa-trash-alt" aria-hidden="true"></i><% end %>
                 </div>
               </form>
             </div>

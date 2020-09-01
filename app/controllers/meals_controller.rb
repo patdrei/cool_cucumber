@@ -5,6 +5,8 @@ class MealsController < ApplicationController
     @meal_plan = @meal.meal_plan
     @meal_plan.days -= 1
     meals_create_shopping_list_items
+    @meal.destroy
+    redirect_back(fallback_location: new_meal_plan_path)
   end
 
   def create
