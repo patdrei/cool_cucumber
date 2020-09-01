@@ -4,40 +4,39 @@
     <% end %>
       <% @plan = MealPlan.find_by(user: current_user, active: true) %>
 
-     <div class="d-flex">
-    <!-- <i class="fas fa-search icon mr-4 m-2"></i> -->
 
-      <form class="form-inline">
+  <div class="d-flex">
+    <!-- <i class="fas fa-search icon mr-4 m-2"></i> -->
 
     <% if user_signed_in? %>
 
-       <div  class="open">
-    <span class="cls"></span>
-    <span>
-      <ul class="sub-menu ">
-        <li>
-           <%= link_to "My Preferences", overview_path %>
-        </li>
-        <% if @plan.nil? %>
-        <li>
-            <%= link_to "New Meal Plan", new_meal_plan_path %>
-        </li>
-        <% else %>
-        <li>
-            <%= link_to "My Meal Plan", edit_meal_plan_path(@plan) %>
-        </li>
-        <li>
-          <%= link_to meal_plan_shopping_list_items_path(@plan), class: "shopping_list" do %><i class="fa fa-shopping-cart" aria-hidden="true" target="_blank"></i><% end %>
-        </li>
-        <% end %>
-        <li>
-          <%= link_to "Logout", destroy_user_session_path, method: :delete %>
-        </li>
-      </ul>
-    </span>
-    <span class="cls"></span>
+      <div  class="open">
+        <span class="cls"></span>
+        <span>
+          <ul class="sub-menu ">
+            <li>
+               <%= link_to "My Preferences", overview_path %>
+            </li>
+            <% if @plan.nil? %>
+            <li>
+              <%= link_to "New Meal Plan", new_meal_plan_path %>
+            </li>
+            <% else %>
+            <li>
+              <%= link_to "My Meal Plan", edit_meal_plan_path(@plan) %>
+            </li>
+            <li>
+              <%= link_to meal_plan_shopping_list_items_path(@plan), class: "shopping_list" do %><i class="fa fa-shopping-cart" aria-hidden="true" target="_blank"></i><% end %>
+            </li>
+            <% end %>
+            <li>
+              <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+            </li>
+          </ul>
+        </span>
+        <span class="cls">
+        </span>
       </div>
-    </form>
 
     <% else %>
       <form class="form-inline">

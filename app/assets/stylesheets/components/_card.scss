@@ -1,4 +1,4 @@
-card-product {
+.card-product {
   overflow: hidden;
   height: 120px;
   background: white;
@@ -88,4 +88,13 @@ card-product {
   white-space: nowrap;
  }
 
+.btn-form-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 200px;
+}
 
+.shuffle-btn, .remove-btn {
+  padding-left: 10px;
+  color: $gray;
+}
