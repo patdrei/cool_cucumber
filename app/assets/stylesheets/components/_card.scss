@@ -1,4 +1,4 @@
-card-product {
+.card-product {
   overflow: hidden;
   height: 120px;
   background: white;
@@ -88,4 +88,7 @@ card-product {
   white-space: nowrap;
  }
 
-
+.card-meal .shuffle {
+  bottom: 0;
+  left: 60px
+}
