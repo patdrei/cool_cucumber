@@ -98,14 +98,25 @@
 .btn-form-wrapper {
   display: flex;
   justify-content: flex-end;
-  width: 160px;
+  width: 80px;
   margin-bottom: 5px;
 }
 
-.shuffle-btn i, .remove-btn i, .share-btn i{
+.shuffle-btn i, .remove-btn i {
   padding-left: 30px;
   font-size: large;
-  color: $gray;
+  color: $primary;
 }
 
+.btn-form-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+    }
 
+.form-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 80px;
+  }
