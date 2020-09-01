@@ -1,4 +1,4 @@
-
+<!--
 <%= form_tag overview_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
@@ -6,7 +6,7 @@
     placeholder: "Find an Ingredient or Recipe Tag you like"
   %>
   <%= submit_tag "Find", class: "rounded-0 btn bg-secondary text-white w-100" %>
-<% end %>
+<% end %> -->
 
 
 <div class="justify-content-center mb-3 px-4 pt-0">
@@ -28,7 +28,7 @@
   <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: 1, active: true) %>
     <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
     <form class="form-inline" >
-      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-secondary w-100 text-center inc-pref", method: "patch",  style: "text-decoration:none;" } do %>
+      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-secondary w-100 text-center inc-pref", method: "patch",  style: "text-decoration:none;", remote: true } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -36,7 +36,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-secondary w-100 text-center no-pref", method: "post",  style: "text-decoration:none; border:1px solid;"} do %>
+      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-secondary w-100 text-center no-pref", method: "post",  style: "text-decoration:none; border:1px solid;", remote: true} do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -49,6 +49,12 @@
 
   </div>
 <% end %>
+<div class="row justify-content-left mt-2 ml-1 mb-3">
+  <a class="font-c-3" href='/preferences/top_choice'>
+    <u>See more top choices</u>
+    <i class="fas fa-long-arrow-alt-right ml-1"></i>
+  </a>
+</div>
   <!-- FOR EXCLUSION OF TAGS ONLY - WE DO NOT DO THIS RIGHT NOW -->
 
   <!--   <h5 class="text-muted pt-3 pl-2">Main Categories you want to avoid</h5>
@@ -63,7 +69,7 @@
   <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: -1, active: true) %>
 
     <form class="form-inline" >
-      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-danger w-100 text-center inc-pref", method: "patch",  style: "text-decoration:none;" } do %>
+      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-danger w-100 text-center inc-pref", method: "patch",  style: "text-decoration:none;", remote: true } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -71,7 +77,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: -1), { class: "btn-sm btn-outline-danger w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;" } do %>
+      <%= link_to preference_tag_path(choice, kind: -1), { class: "btn-sm btn-outline-danger w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -101,7 +107,7 @@
   <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: 1, active: true) %>
     <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
     <form class="form-inline" >
-      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-danger w-100 text-center inc-pref", method: "patch",  style: "text-decoration:none;" } do %>
+      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-danger w-100 text-center inc-pref", method: "patch",  style: "text-decoration:none;", remote: true } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -109,7 +115,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-danger w-100 text-center no-pref", method: "post",  style: "text-decoration:none;border:1px solid;"} do %>
+      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-danger w-100 text-center no-pref", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true} do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -122,6 +128,12 @@
 
   </div>
 <% end %>
+<div class="row justify-content-left mt-2 ml-1 mb-3">
+  <a class="font-c-4" href='/preferences/cuisines'>
+    <u>See more cuisines</u>
+    <i class="fas fa-long-arrow-alt-right ml-1"></i>
+  </a>
+</div>
    <!-- FOR EXCLUSION OF TAGS ONLY - WE DO NOT DO THIS RIGHT NOW -->
 
  <!--    <h5 class="text-muted pt-3 pl-2">Cuisines you want to avoid</h5>
@@ -136,7 +148,7 @@
   <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: -1, active: true) %>
 
     <form class="form-inline" >
-      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-danger w-100 text-center", method: "patch",  style: "text-decoration:none;" } do %>
+      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-danger w-100 text-center", method: "patch",  style: "text-decoration:none;", remote: true } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -144,7 +156,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: -1), { class: "btn-sm btn-outline-danger w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;" } do %>
+      <%= link_to preference_tag_path(choice, kind: -1), { class: "btn-sm btn-outline-danger w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -174,7 +186,7 @@
   <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: 1, active: true) %>
     <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
     <form class="form-inline" >
-      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-info w-100 text-center inc-pref", method: "patch",  style: "text-decoration:none;" } do %>
+      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-info w-100 text-center inc-pref", method: "patch",  style: "text-decoration:none;", remote: true } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -182,7 +194,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-info w-100 text-center no-pref", method: "post",  style: "text-decoration:none;border:1px solid;"} do %>
+      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-sm btn-outline-info w-100 text-center no-pref", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true} do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -193,8 +205,12 @@
 <% end %>
 </div>
 <% end %>
-
-
+<div class="row justify-content-left mt-2 ml-1 mb-3">
+  <a class="font-c-1" href='/preferences/dish_types'>
+    <u>See more dish types</u>
+    <i class="fas fa-long-arrow-alt-right ml-1"></i>
+  </a>
+</div>
 
 
    <!-- FOR EXCLUSION OF TAGS ONLY - WE DO NOT DO THIS RIGHT NOW -->
@@ -211,7 +227,7 @@
   <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: -1, active: true) %>
 
     <form class="form-inline" >
-      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-danger w-100 text-center", method: "patch",  style: "text-decoration:none;" } do %>
+      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-danger w-100 text-center", method: "patch",  style: "text-decoration:none;", remote: true } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -219,7 +235,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: -1), { class: "btn-sm btn-outline-danger w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;" } do %>
+      <%= link_to preference_tag_path(choice, kind: -1), { class: "btn-sm btn-outline-danger w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -257,7 +273,7 @@
   <% if Preference.exists?(ingredient_id: choice.id, user_id: current_user.id, kind: 1, active: true) %>
     <% pref = Preference.find_by(ingredient_id: choice.id, active: true) %>
     <form class="form-inline" >
-      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-warning w-100 text-center inc-pref", method: "patch",  style: "text-decoration:none;" } do %>
+      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-warning w-100 text-center inc-pref", method: "patch",  style: "text-decoration:none;", remote: true } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -265,7 +281,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_ingredient_path(choice, kind: 1), { class: "btn-sm btn-outline-warning w-100 text-center no-pref", method: "post",  style: "text-decoration:none;border:1px solid;"} do %>
+      <%= link_to preference_ingredient_path(choice, kind: 1), { class: "btn-sm btn-outline-warning w-100 text-center no-pref", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true} do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -276,6 +292,12 @@
 <% end %>
 </div>
 <% end %>
+<div class="row justify-content-left mt-2 ml-1 mb-3">
+  <a class="font-c-5" href='/preferences/ingredients'>
+    <u>See more ingredients</u>
+    <i class="fas fa-long-arrow-alt-right ml-1"></i>
+  </a>
+</div>
 
 <div class="row">
     <div class="d-flex justify-content-center col-12 vw-100 mr-0">
