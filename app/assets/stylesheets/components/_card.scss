@@ -56,7 +56,7 @@
 }
 
 .card-meal h3 {
-  padding-bottom: 8px;
+  padding-bottom: 6px;
   font-size: 16px;
   font-weight: bold;
   margin: 0;
@@ -77,12 +77,12 @@
 }
 
 .card-meal .card-meal-infos {
-  padding: 16px;
+  padding: 14px;
 }
 
 .card-meal .overflow-ellipsis{
   width: 45vw;
-  height: 3rem;
+  height: 1.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -91,10 +91,14 @@
 .btn-form-wrapper {
   display: flex;
   justify-content: flex-end;
-  width: 200px;
+  width: 160px;
+  margin-bottom: 5px;
 }
 
-.shuffle-btn, .remove-btn {
-  padding-left: 10px;
+.shuffle-btn i, .remove-btn i, .share-btn i{
+  padding-left: 30px;
+  font-size: large;
   color: $gray;
 }
+
+
