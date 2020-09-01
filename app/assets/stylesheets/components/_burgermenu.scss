@@ -1,37 +1,37 @@
 
 .open{
     position: fixed;
-    bottom: 3%;
-    right: 40px;
+    bottom: 1%;
+    right: 20px;
     width: 50px;
     height: 50px;
     display: block;
     cursor: pointer;
 
-    span{
-        display: block;
-        float: left;
-        clear: both;
-        height: 4px;
-        width: 30px;
-        border-radius: 40px;
-        background-color: $gray;
-        position: absolute;
-        right: 3px;
-        top: 3px;
-        overflow: hidden;
-        transition: all 0.4s ease;
-        &:nth-child(1){
-            margin-top: 10px;
-            z-index: 9;
-        }
-        &:nth-child(2){
-            margin-top: 25px;
-        }
-        &:nth-child(3){
-            margin-top: 40px;
-        }
-    }
+  span{
+    display: block;
+    float: left;
+    clear: both;
+    height: 4px;
+    width: 30px;
+    border-radius: 40px;
+    background-color: #343a40;
+    position: absolute;
+    right: 3px;
+    top: -1px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+      &:nth-child(1){
+          margin-top: 10px;
+          z-index: 9;
+      }
+      &:nth-child(2){
+          margin-top: 21px;
+      }
+      &:nth-child(3){
+          margin-top: 32px;
+      }
+  }
 }
 .sub-menu{
     transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -94,7 +94,7 @@
             transform: rotate(45deg);
         }
         span:nth-child(1){
-            transform: rotate(45deg) translateY(12px) translateX(12px);
+            transform: rotate(45deg) translateY(4px) translateX(4px);
         }
         span:nth-child(2){
             height: 400px;
