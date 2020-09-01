@@ -29,40 +29,29 @@
 </div>
 
 <% end %>
-<div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
-    <form class="form-inline" >
-      <%= link_to overview_path, { class: "btn-primary btn-sm w-100 text-center", method: "get",  style: "text-decoration:none;"} do %>
-        <span> More choices </span>
-      <% end %>
-    </form>
-</div>
-</div>
-</div>
-<!--
-<div class="row">
-  <div>
-    <h4>Select number of days:</h4>
-  </div>
-  <div class="range-wrap">
-    <input type="range" class="range ml-5 mt-1" min="1" max="10">
-    <output class="bubble mt-4"></output>
-  </div>
-  <div>
-    <input type="button", class = "btn btn-primary w-100 mb-3">
-  </div>
+
+<div class="col-6 col-lg-2 col-md-3 col-sm-4 pt-2 pl-4">
+    <a class="font-c-3" href='/preferences'>
+      <u>More choices</u>
+      <i class="fas fa-long-arrow-alt-right mr-1"></i>
+    </a>
 </div>
 
 
- -->
+</div>
+  <h6 class="text-muted mb-1" style="font-size: 17px;">Choose the number of days</h6>
 <%= simple_form_for @meal_plan do |f| %>
-<div class="text-muted">
-  <%= f.input :days, required: true, label: 'For how many Days?', error: 'Please tell me how many days you want to cook?', input_html: { min: '1', max: '7', step: 'any'}%>
-</div>
-  <%= f.submit "Generate New Meal Plan", {class: "btn btn-primary w-100 mb-3", remote: true}%>
+  <div class="row d-flex justify-content-center change_color">
+    <div class="column mt-1" style ="width:87%;">
+          <%= f.input :days, required: true, label: false, error: 'Please tell me how many days you want to cook?', input_html: { class: 'is-valid', id: 'range_slider', min: '1', max: '14', step: 'any'}, as: :range%>
+    </div>
+    <div class="column">
+      <a id="range_slider_value" class="ml-3 mt-3" style="color:black;">7</a>
+    </div>
+
+  </div>
+  <%= f.submit "Generate New Meal Plan", class: "btn btn-primary w-100 mb-3"%>
 <% end %>
-
-
-
 
 <% unless @plan.nil? %>
 <% @plan.meals.order(id: :desc).each do |meal|%>
