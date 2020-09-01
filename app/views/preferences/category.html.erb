@@ -39,14 +39,14 @@
 
     <div class="row p-1">
         <% @tags.each do |tag| %>
-       <%next if Preference.exists?(tag_id: tag.id, user_id: current_user.id, kind: -1, active: true) || tag.name == 'sustainable' || tag.name == 'cheap' || tag.name == 'veryPopular'%>
+       <%next if tag.name == 'sustainable' || tag.name == 'cheap' || tag.name == 'veryPopular'%>
 
         <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
 
-          <% if Preference.exists?(tag_id: tag.id, user_id: current_user.id, kind: 1, active: true) %>
+          <% if Preference.exists?(tag_id: tag.id, user_id: current_user.id) %>
             <% pref = Preference.find_by(tag_id: tag.id, active: true) %>
             <form class="form-inline" >
-              <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn#{i} w-100 text-center inc-pref", method: "patch",  style: "text-decoration:none;", remote: true } do %>
+              <%= link_to preference_tag_path(tag), { class: "btn-sm btn#{i} w-100 text-center inc-pref", method: "post",  style: "text-decoration:none;", remote: true } do %>
                 <span><%= tag.name %></span>
               <% end %>
             </form>
@@ -54,7 +54,7 @@
           <% else %>
 
             <form class="form-inline" >
-              <%= link_to preference_tag_path(tag, kind: 1), { class: "btn-sm btn-outline#{i} w-100 text-center no-pref", method: "post",  style: "text-decoration:none; border:1px solid;", remote: true} do %>
+              <%= link_to preference_tag_path(tag), { class: "btn-sm btn-outline#{i} w-100 text-center no-pref", method: "post",  style: "text-decoration:none; border:1px solid;", remote: true} do %>
                 <span><%= tag.name %></span>
               <% end %>
             </form>

@@ -54,28 +54,34 @@ class PreferencesController < ApplicationController
   end
 
   def create_with_ingredient
-    @ingredient = Ingredient.find(params[:ingredient_id])
-    @preference = Preference.new(kind: params[:kind])
-    @preference.active = true
-    @preference.ingredient = @ingredient
-    @preference.user = current_user
-    @preference.save
-    redirect_back(fallback_location: overview_path)
+    if Preference.exists?(ingredient_id: params[:ingredient_id], user_id: current_user.id)
+      preference = Preference.find_by(ingredient_id: params[:ingredient_id], user_id: current_user.id)
+      Preference.destroy(preference.id)
+    else
+      @ingredient = Ingredient.find(params[:ingredient_id])
+      @preference = Preference.new(strong_params)
+      @preference.ingredient = @ingredient
+      @preference.user = current_user
+      @preference.save
+    end
   end
 
   def create_with_tag
-    @tag = Tag.find(params[:tag_id])
-    @preference = Preference.new(strong_params)
-    @preference.active = true
-    @preference.tag = @tag
-    @preference.user = current_user
-    @preference.save
-    redirect_back(fallback_location: overview_path)
+    if Preference.exists?(tag_id: params[:tag_id], user_id: current_user.id)
+      preference = Preference.find_by(tag_id: params[:tag_id], user_id: current_user.id)
+      Preference.destroy(preference.id)
+    else
+      @tag = Tag.find(params[:tag_id])
+      @preference = Preference.new(strong_params)
+      @preference.tag = @tag
+      @preference.user = current_user
+      @preference.save
+    end
   end
 
   private
 
   def strong_params
-    params.permit(:kind)
+    params.permit(:kind, :tag_id, :ingredient_id)
   end
 end

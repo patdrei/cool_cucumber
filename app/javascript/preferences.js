@@ -1,9 +1,13 @@
 const pref_toggler = () => {
-const shopping_list_item_listener = () => {
-  const preferences = document.querySelectorAll('.inc-pref')
+  const preferences = document.querySelectorAll('.btn-outline-secondary')
+
 preferences.forEach((preference) => {
 
   preference.addEventListener("click", () =>
-    )
-})
-}
+    preference.classList.toggle("btn-outline-secondary");
+    preference.classList.toggle("btn-secondary");
+    );
+});
+};
+
+export { pref_toggler };
