@@ -32,7 +32,21 @@ class PreferencesController < ApplicationController
   end
 
   def ingredients
-    @ingredients = Ingredient.all
+    @ingredients = sort_ingredients
+  end
+
+  def sort_ingredients
+    ingredients = Ingredient.all
+    array_of_arrays = []
+    alphabet_array = ('a'..'z').to_a
+
+    alphabet_array.each do |input|
+      intermediate = ingredients.select do |i|
+        i.name.first.downcase == input
+      end
+        array_of_arrays << intermediate
+    end
+    array_of_arrays
   end
 
   def create_with_ingredient
