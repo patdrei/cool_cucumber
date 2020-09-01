@@ -37,7 +37,7 @@
     </form>
 </div>
 </div>
-
+</div>
 <!--
 <div class="row">
   <div>
@@ -79,7 +79,7 @@
             <h5 class="font-c-neutral text-left text-secondary"><i class="fas fa-clock pr-1"></i> <%= meal.recipe.prep_time %> minutes</h5>
             <p class="overflow-ellipsis"> <%= meal.recipe.description.html_safe.truncate(24) %> </p>
             </div>
-            <div class="btn-form-wrapper">
+            <div class="btn-form-wrapper" grid-column-end: foo;>
               <form class="form-row">
                 <div class="shuffle-btn">
                   <%= link_to shuffle_path(meal), { class: "shuffle", remote: true, method: 'post' } do %><i class="fa fa-redo" aria-hidden="true"></i><% end %>
@@ -87,13 +87,13 @@
                 <div class="remove-btn">
                   <%= link_to meal_path(meal), class: "delete", method: "delete",  style: "text-decoration:none;" do %><i class="far fa-trash-alt" aria-hidden="true"></i><% end %>
                 </div>
-                <div class="like-block__like-icon like-block__like-icon--is-visible"></div>
               </form>
-             </div>
+            </div>
           </div>
         </div>
        </div>
     </div>
+<div>
 <% end %>
   <%= link_to 'To My Shopping List', meal_plan_shopping_list_items_path(@plan), {class: "btn btn-danger mt-3 w-100"}  %>
 <% end %>
