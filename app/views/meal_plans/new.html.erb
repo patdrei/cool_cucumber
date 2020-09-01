@@ -38,7 +38,7 @@
 </div>
 </div>
 
-
+<!--
 <div class="row">
   <div>
     <h4>Select number of days:</h4>
@@ -52,7 +52,7 @@
   </div>
 </div>
 
-
+ -->
 <%= simple_form_for @meal_plan do |f| %>
 <div class="text-muted">
   <%= f.input :days, required: true, label: 'For how many Days?', error: 'Please tell me how many days you want to cook?', input_html: { min: '1', max: '7', step: 'any'}%>
