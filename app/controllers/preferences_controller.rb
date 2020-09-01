@@ -1,20 +1,12 @@
 class PreferencesController < ApplicationController
 
   def overview
-    if params[:query].present?
-      @top_choices = Tag.where(category: 'top_choice').where("name LIKE ?", "%#{params[:query].downcase}%")
-      @cuisines = Tag.where(category: 'cuisines').where("name LIKE ?", "%#{params[:query].downcase}%")
-      @types = Tag.where(category: 'dish_types').where("name LIKE ?", "%#{params[:query].downcase}%")
-
-      @ingredients = Ingredient.where("name LIKE ?", "%#{params[:query].downcase}%")
-    else
       @top_choices = Tag.where(category: 'top_choice').first(4)
       @cuisines = Tag.where(category: 'cuisines').sort_by{|tag| -tag.recipe_tags.count }.first(4)
       @types = Tag.where(category: 'dish_types').sort_by{|tag| -tag.recipe_tags.count }.first(4)
 
       @ingredients = Ingredient.all.sort_by{|ing| -ing.recipe_ingredients.count }.first(4)
-  end
-    @preferences = current_user.preferences
+      @preferences = current_user.preferences
   end
 
   def deactivate
