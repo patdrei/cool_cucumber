@@ -6,30 +6,33 @@
 <% unless @plan.nil? %>
 <% @plan.meals.order(id: :desc).each do |meal|%>
 <div class="my-2">
+  <di<div class="my-2">
   <div class="card-meal">
-     <div class="d-flex" >
-      <div class="align-self-center", style="height: 120px" >
-        <img width=100 src="<%=  meal.recipe.image_url %> ">
+     <div class="d-flex">
+      <div class="align-self-center" ,="" style="height: 120px">
+        <img width="100" src=" ">
       </div>
-        <div class="col-8 card-meal-infos lefty-border">
+        <div class="col-8 d-flex card-meal-infos lefty-border" style="align-items: center">
           <div class="details">
-          <h3 class="font-c-6 mt-3"> <%= link_to meal.recipe.name.truncate(24), recipe_path(meal.recipe) %> </h3>
+          <h3 class="font-c-6 mt-0"> <a href="/recipes/37">Cherry Lime Mojito</a> </h3>
             <div class="pl-1 desc-size ">
-            <h5 class="font-c-neutral text-left text-secondary"><i class="fas fa-clock pr-1"></i> <%= meal.recipe.prep_time %> minutes</h5>
-            <p class="overflow-ellipsis"> <%= meal.recipe.description.html_safe.truncate(24) %> </p>
-            </div>
-            <div class="btn-form-wrapper" grid-column-end: foo;>
-              <form class="form-row">
-                <div class="shuffle-btn">
-                  <%= link_to shuffle_path(meal), { class: "shuffle", remote: true, method: 'post' } do %><i class="fa fa-redo" aria-hidden="true"></i><% end %>
-                </div>
-                <div class="remove-btn">
-                  <%= link_to meal_path(meal), class: "delete", method: "delete",  style: "text-decoration:none;" do %><i class="far fa-trash-alt" aria-hidden="true"></i><% end %>
-                </div>
-              </form>
+            <h5 class="font-c-neutral text-left text-secondary"><i class="fas fa-clock pr-1" aria-hidden="true"></i>  minutes</h5>
+            <p class="overflow-ellipsis"> Cherry Lime Mojito is... </p>
             </div>
           </div>
+        <div class="btn-form-wrapper">
+          <form class="form-row">
+            <div class="shuffle-btn">
+              <a class="shuffle" data-remote="true" rel="nofollow" data-method="post" href="/meals/122/shuffle"><i class="fa fa-redo" aria-hidden="true"></i></a>
+            </div>
+            <div class="remove-btn">
+              <a class="delete" style="text-decoration:none;" rel="nofollow" data-method="delete" href="/meals/122"><i class="far fa-trash-alt" aria-hidden="true"></i></a>
+            </div>
+          </form>
         </div>
+        </div>
+       </div>
+       </div>
        </div>
     </div>
 <div>
