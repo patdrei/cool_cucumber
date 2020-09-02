@@ -1,17 +1,20 @@
 
-#range_slider[type=range]::-webkit-slider-thumb {
-    background: red;
+#range_slider_value_container{
+  border-style: solid;
+  border-radius: 100%;
+  width: 56px;
+  height:56px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
 }
-input[type=range]::-moz-range-thumb {
-    background: red;
+
+
+
+
+
+
+#range_slider_value{
+  padding-top: 8px;
 }
-input[type=range]::-ms-thumb {
-    background: red;
-}
-
-
-
-
-
-
-
