@@ -1,3 +1,7 @@
+<div class="banner" style="height: 300px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),  url(https://images.unsplash.com/photo-1583338917496-7ea264c374ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80)">
+  <h2 class="pl-4 pb-2" style="color: white;"> Create your Meal Plan</h2>
+</div>
+
 <div class="container">
   <h6 class="text-muted pt-3" style="font-size: 17px;">Choose your preferences</h6>
   <div class="row m-1 mb-3">
@@ -5,6 +9,7 @@
   <%  @user_preferences = current_user.preferences.first(4) %>
 
     <% if @user_preferences == [] %>
+
       <% @top_choices.each do |choice| %>
         <% next if Preference.exists?(tag_id: choice.id, user_id: current_user.id, active: true) || choice.name == 'sustainable' || choice.name == 'cheap'|| choice.name == 'veryPopular'%>
         <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
@@ -37,23 +42,24 @@
                   <span><%= ingredient.name %></span>
                 <% end %>
               </form>
-       <% else %>
-   <% if choice.category == "cuisines"  %>
-      <% i = '-danger' %>
-      <% j = '-danger' %>
-      <% f = 'font-c-4' %>
-  <% elsif choice.category == "top_choice" %>
-      <% i = '-secondary'  %>
-      <% j = '-secondary'  %>
-      <% f = 'font-c-3' %>
-    <% elsif choice.category == "dish_types"%>
-      <% i = '-info text-white'  %>
-      <% j = '-info'  %>
-      <% f = 'font-c-1' %>
-  <% else%>
-      <% i = '-warning' %>
-      <% j = '-warning' %>
-  <% end %>
+            </div>
+        <% else %>
+           <% if choice.category == "cuisines"  %>
+              <% i = '-danger' %>
+              <% j = '-danger' %>
+              <% f = 'font-c-4' %>
+          <% elsif choice.category == "top_choice" %>
+              <% i = '-secondary'  %>
+              <% j = '-secondary'  %>
+              <% f = 'font-c-3' %>
+            <% elsif choice.category == "dish_types"%>
+              <% i = '-info text-white'  %>
+              <% j = '-info'  %>
+              <% f = 'font-c-1' %>
+          <% else%>
+              <% i = '-warning' %>
+              <% j = '-warning' %>
+          <% end %>
           <% next if Preference.exists?(tag_id: choice.id, user_id: current_user.id, active: true)%>
           <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
             <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
@@ -65,30 +71,31 @@
           </div>
        <% end %>
       <% end %>
+
     <% end %>
+  <div class="col-6 col-lg-2 col-md-3 col-sm-4 pt-2 pl-4">
+      <a class="font-c-3" href='/preferences'>
+        <u>More choices</u>
+        <i class="fas fa-long-arrow-alt-right mr-1"></i>
+      </a>
+  </div>
+</div>
+
+  <h6 class="text-muted mb-1 " style="font-size: 17px;">Choose the number of days</h6>
+  <%= simple_form_for @meal_plan do |f| %>
+    <div class="row d-flex justify-content-center">
+      <div class="column mt-1" style ="width:87%;">
+        <%= f.input :days, required: true, label: false, error: 'Please tell me how many days you want to cook?', input_html: { class: 'is-valid', id: 'range_slider', min: '1', max: '14', step: 'any'}, as: :range%>
+      </div>
+      <div class="column">
+        <a id="range_slider_value" class="ml-2 mt-3" style="color:black;">7</a>
+      </div>
+    </div>
+    <%= f.submit "Generate New Meal Plan", class: "btn btn-primary w-100 mb-3"%>
+  <% end %>
 
       <!-- end -->
 
 
 
-<div class="col-6 col-lg-2 col-md-3 col-sm-4 pt-2 pl-4">
-    <a class="font-c-3" href='/preferences'>
-      <u>More choices</u>
-      <i class="fas fa-long-arrow-alt-right mr-1"></i>
-    </a>
-</div>
 
-
-</div>
-  <h6 class="text-muted mb-1" style="font-size: 17px;">Choose the number of days</h6>
-  <%= simple_form_for @meal_plan do |f| %>
-    <div class="row d-flex justify-content-center change_color">
-      <div class="column mt-1" style ="width:87%;">
-        <%= f.input :days, required: true, label: false, error: 'Please tell me how many days you want to cook?', input_html: { class: 'is-valid', id: 'range_slider', min: '1', max: '14', step: 'any'}, as: :range%>
-      </div>
-      <div class="column">
-        <a id="range_slider_value" class="ml-3 mt-3" style="color:black;">7</a>
-      </div>
-    </div>
-    <%= f.submit "Generate New Meal Plan", class: "btn btn-primary w-100 mb-3"%>
-  <% end %>
