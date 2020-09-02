@@ -86,6 +86,7 @@ class MealPlansController < ApplicationController
       end
 
 
+
       @number = @recipes.uniq.length if @meal_plan.days > @recipes.uniq.length
       ing_pref_set
 

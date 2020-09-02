@@ -8,9 +8,8 @@
   <div class="m-3">
 
     <div class="row justify-content-left mt-2 ml-1 mb-3">
-      <a class="font-c-5" href='/preferences'>
-        <i class="fas fa-long-arrow-alt-left ml-1"></i>
-        <u>Return to preference overview</u>
+      <a class="font-c-neutral" href='/preferences'>
+       <i class="fas fa-angle-double-left"></i>
       </a>
     </div>
 
@@ -28,15 +27,15 @@
     <% if @pure_ingredients.nil? %>
 
     <% @ingredients.each_with_index do |array, i| %>
-          <h4 class="mt-3">
-            <%= @alphabet[i].capitalize  %></h4>
+          <a class="mt-3 sizing font-c-5" id="selector" data-toggle="collapse" href="#collapse-<%= i %>" role="button">
+            <%= @alphabet[i].capitalize %></a>
           <div class="row p-1 mb-3">
             <% array.each do |ingredient| %>
-            <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
+            <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1 <%= i == 0 ? 'collapse-show' : 'collapse' %>" id="collapse-<%= i %>">
               <% if Preference.exists?(ingredient_id: ingredient.id, user_id: current_user.id) %>
                 <form class="form-inline" >
                   <%= link_to preference_ingredient_path(ingredient), { class: "btn-sm btn-warning w-100 text-center inc-pref", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true} do %>
-                    <span><%= ingredient.name %></span>
+                    <span><%= ingredient.name.truncate(25) %></span>
                   <% end %>
                 </form>
 
@@ -44,7 +43,7 @@
 
                 <form class="form-inline" >
                   <%= link_to preference_ingredient_path(ingredient), { class: "btn-sm btn-outline-warning w-100 text-center no-pref", method: "post",  style: "text-decoration:none; border:1px solid;", remote: true} do %>
-                    <span><%= ingredient.name %></span>
+                    <span><%= ingredient.name.truncate(25) %></span>
                   <% end %>
                 </form>
 
