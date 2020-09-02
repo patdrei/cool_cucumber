@@ -1,0 +1,17 @@
+footer {
+  position: sticky;
+  bottom: 0;
+  padding: 3px
+}
+
+
+.quarter-ellipse1 {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  border-radius: 100% 0 0 0;
+  background: $secondary;
+  opacity: 0.8;
+  width: 150px;
+  height: 75px;
+}
