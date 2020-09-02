@@ -26,13 +26,19 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import { shopping_list_item_listener } from '../shopping_list_items.js';
-
+import { pref_toggler } from '../preferences.js';
 import { rotator } from '../rotator.js';
 import { range_slider } from '../range_slider.js';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   shopping_list_item_listener();
+});
+
+document.addEventListener('turbolinks:load', () => {
+  // Call your functions here, e.g:
+  // initSelect2();
+  pref_toggler();
 });
 
 document.addEventListener('turbolinks:load', () => {

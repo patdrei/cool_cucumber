@@ -18,7 +18,7 @@
   <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id) %>
     <% pref = Preference.find_by(tag_id: choice.id, user_id: current_user.id) %>
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice), { class: "btn-sm btn-secondary w-100 text-center inc-pref", method: "post",  style: "text-decoration:none;", remote: true } do %>
+      <%= link_to preference_tag_path(choice), { class: "btn-sm btn-secondary w-100 text-center inc-pref", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -45,40 +45,8 @@
     <i class="fas fa-angle-double-right"></i>
   </a>
 </div>
-  <!-- FOR EXCLUSION OF TAGS ONLY - WE DO NOT DO THIS RIGHT NOW -->
 
-  <!--   <h5 class="text-muted pt-3 pl-2">Main Categories you want to avoid</h5>
-  <div class="row container mb-3">
 
-<% @top_choices.each do |choice| %>
-
-<% next if Preference.exists?(tag_id: choice.id, user_id: current_user.id) %>
-<% pref = Preference.find_by(tag_id: choice.id, user_id: current_user.id) %>
-<div class="col-6 col-lg-2 col-md-3 col-sm-4  p-1">
-
-  <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: -1, active: true) %>
-
-    <form class="form-inline" >
-      <%= link_to preference_tag_path(choice), { class: "btn-sm btn-danger w-100 text-center inc-pref", method: "post",  style: "text-decoration:none;", remote: true } do %>
-        <span><%= choice.name %></span>
-      <% end %>
-    </form>
-
-  <% else %>
-
-    <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: -1), { class: "btn-sm btn-outline-danger w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true } do %>
-        <span><%= choice.name %></span>
-      <% end %>
-    </form>
-
-  <% end %>
-
-</div>
-
-<% end %>
-
-  </div> -->
 <% if @cuisines.length == 0 %>
 <div>
   <h5 class="text-muted pt-3">No Cuisines matching your search</h5>
@@ -97,7 +65,7 @@
   <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id) %>
     <% pref = Preference.find_by(tag_id: choice.id, user_id: current_user.id) %>
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice), { class: "btn-sm btn-danger w-100 text-center inc-pref", method: "post",  style: "text-decoration:none;", remote: true } do %>
+      <%= link_to preference_tag_path(choice), { class: "btn-sm btn-danger w-100 text-center inc-pref", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -124,40 +92,7 @@
     <i class="fas fa-angle-double-right"></i>
   </a>
 </div>
-   <!-- FOR EXCLUSION OF TAGS ONLY - WE DO NOT DO THIS RIGHT NOW -->
 
- <!--    <h5 class="text-muted pt-3 pl-2">Cuisines you want to avoid</h5>
-  <div class="row container mb-3">
-
-<% @cuisines.each do |choice| %>
-
-<% next if Preference.exists?(tag_id: choice.id, user_id: current_user.id) %>
-<% pref = Preference.find_by(tag_id: choice.id, user_id: current_user.id) %>
-<div class="col-6 col-lg-2 col-md-3 col-sm-4  p-1">
-
-  <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: -1, active: true) %>
-
-    <form class="form-inline" >
-      <%= link_to preference_tag_path(choice), { class: "btn-sm btn-danger w-100 text-center", method: "post",  style: "text-decoration:none;", remote: true } do %>
-        <span><%= choice.name %></span>
-      <% end %>
-    </form>
-
-  <% else %>
-
-    <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: -1), { class: "btn-sm btn-outline-danger w-100 text-center", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true } do %>
-        <span><%= choice.name %></span>
-      <% end %>
-    </form>
-
-  <% end %>
-
-</div>
-
-<% end %>
-
-  </div> -->
   <% if @types.length == 0 %>
   <div>
   <h5 class="text-muted pt-3">No Dish Types matching your search</h5>
@@ -176,7 +111,7 @@
   <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id) %>
     <% pref = Preference.find_by(tag_id: choice.id, user_id: current_user.id) %>
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice), { class: "btn-sm btn-info w-100 text-center inc-pref", method: "post",  style: "text-decoration:none;", remote: true } do %>
+      <%= link_to preference_tag_path(choice), { class: "btn-sm btn-info w-100 text-center inc-pref text-white", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -263,7 +198,7 @@
   <% if Preference.exists?(ingredient_id: choice.id, user_id: current_user.id) %>
     <% pref = Preference.find_by(ingredient_id: choice.id, user_id: current_user.id) %>
     <form class="form-inline" >
-      <%= link_to preference_ingredient_path(choice), { class: "btn-sm btn-warning w-100 text-center inc-pref", method: "post",  style: "text-decoration:none;", remote: true } do %>
+      <%= link_to preference_ingredient_path(choice), { class: "btn-sm btn-warning w-100 text-center inc-pref", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
