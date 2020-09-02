@@ -11,7 +11,8 @@
       <% i = '-secondary'  %>
       <% f = 'font-c-3' %>
     <% elsif params[:category] == "dish_types"%>
-      <% i = '-info'  %>
+      <% i = '-info text-white'  %>
+      <% j = '-info'  %>
       <% f = 'font-c-1' %>
     <% else%>
       <% i = '-warning' %>
@@ -54,7 +55,7 @@
           <% else %>
 
             <form class="form-inline" >
-              <%= link_to preference_tag_path(tag), { class: "btn-sm btn-outline#{i} w-100 text-center no-pref", method: "post",  style: "text-decoration:none; border:1px solid;", remote: true} do %>
+              <%= link_to preference_tag_path(tag), { class: "btn-sm btn-outline#{j} w-100 text-center no-pref", method: "post",  style: "text-decoration:none; border:1px solid;", remote: true} do %>
                 <span><%= tag.name %></span>
               <% end %>
             </form>

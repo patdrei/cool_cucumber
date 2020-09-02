@@ -35,6 +35,7 @@ const pref_toggler = () => {
     preferencesC.forEach((preference) => {
       preference.addEventListener("click", () => {
         preference.classList.toggle("btn-info");
+        preference.classList.toggle("text-white");
         preference.classList.toggle("btn-outline-info");
       });
     });
