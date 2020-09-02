@@ -2,33 +2,70 @@
   <h6 class="text-muted pt-3" style="font-size: 17px;">Choose your preferences</h6>
   <div class="row m-1 mb-3">
 
-<% @top_choices.each do |choice| %>
+  <%  @user_preferences = current_user.preferences %>
 
-<% next if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: -1, active: true) || choice.name == 'sustainable' || choice.name == 'cheap'|| choice.name == 'veryPopular'%>
-
-<div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
-
-  <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: 1, active: true) %>
-    <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
-    <form class="form-inline" >
-      <%= link_to preference_deactivate_path(pref), { class: "btn-sm btn-secondary w-100 text-center", method: "patch",  style: "text-decoration:none;" } do %>
-        <span><%= choice.name %></span>
+    <% if @user_preferences == [] %>
+      <% @top_choices.each do |choice| %>
+        <% next if Preference.exists?(tag_id: choice.id, user_id: current_user.id, active: true) || choice.name == 'sustainable' || choice.name == 'cheap'|| choice.name == 'veryPopular'%>
+        <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
+          <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, active: true ) %>
+            <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
+            <form class="form-inline" >
+              <%= link_to preference_tag_path(pref), { class: "btn-sm btn-secondary w-100 text-center", method: "patch",  style: "text-decoration:none;" } do %>
+                <span><%= choice.name %></span>
+              <% end %>
+            </form>
+          <% else %>
+            <form class="form-inline" >
+              <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-outline-secondary btn-sm w-100 text-center", method: "post",  style: "text-decoration:none; border:1px solid;"} do %>
+                <span><%= choice.name %></span>
+              <% end %>
+            </form>
+          <% end %>
+        </div>
       <% end %>
-    </form>
+    <% else %>
 
-  <% else %>
-
-    <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-outline-secondary btn-sm w-100 text-center", method: "post",  style: "text-decoration:none; border:1px solid;"} do %>
-        <span><%= choice.name %></span>
+      <% @user_preferences.each do |pref| %>
+        <% choice = pref.tag %>
+        <% ingredient = pref.ingredient %>
+        <% if choice.nil? %>
+            <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
+              <% pref = Preference.find_by(ingredient_id: ingredient.id, active: true) %>
+              <form class="form-inline" >
+                <%= link_to preference_ingredient_path(ingredient), { class: "btn-sm btn-warning w-100 text-center", method: "post",  style: "text-decoration:none;" } do %>
+                  <span><%= ingredient.name %></span>
+                <% end %>
+              </form>
+       <% else %>
+          <% if choice.category == "cuisines"  %>
+            <% i = '-danger' %>
+            <% f = 'font-c-4' %>
+          <% elsif choice.category == "top_choice" %>
+            <% i = '-secondary'  %>
+            <% f = 'font-c-3' %>
+          <% elsif choice.category == "dish_types"%>
+            <% i = '-info'  %>
+            <% f = 'font-c-1' %>
+         <% else%>
+            <% i = '-warning' %>
+          <% end %>
+          <% next if Preference.exists?(tag_id: choice.id, user_id: current_user.id, active: true)%>
+          <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
+            <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
+            <form class="form-inline" >
+              <%= link_to preference_tag_path(choice), { class: "btn-sm btn#{i} w-100 text-center", method: "post",  style: "text-decoration:none;" } do %>
+                <span><%= choice.name %></span>
+              <% end %>
+            </form>
+          </div>
+       <% end %>
       <% end %>
-    </form>
+    <% end %>
 
-  <% end %>
+      <!-- end -->
 
-</div>
 
-<% end %>
 
 <div class="col-6 col-lg-2 col-md-3 col-sm-4 pt-2 pl-4">
     <a class="font-c-3" href='/preferences'>

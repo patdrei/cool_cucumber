@@ -65,7 +65,7 @@ class MealPlansController < ApplicationController
       @meal_plan.user = @user
       @number = @meal_plan.days
       @meal_plan.save
-      @preferences = @user.preferences.where(kind: 1, ingredient_id: nil)
+      @preferences = @user.preferences.where(ingredient_id: nil)
 
       tags = @preferences.map do |pref|
 
@@ -84,6 +84,7 @@ class MealPlansController < ApplicationController
       @top_choices.each do |tag|
         @recipes.select!{ |recipe| RecipeTag.exists?(recipe_id: recipe.id, tag_id: tag.id)}
       end
+
 
 
       @number = @recipes.uniq.length if @meal_plan.days > @recipes.uniq.length
