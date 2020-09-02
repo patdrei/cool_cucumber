@@ -68,7 +68,7 @@ class MealPlansController < ApplicationController
       @meal_plan.user = @user
       @number = @meal_plan.days
       @meal_plan.save
-      @preferences = @user.preferences.where(kind: 1, ingredient_id: nil)
+      @preferences = @user.preferences.where(ingredient_id: nil)
 
       tags = @preferences.map do |pref|
 
