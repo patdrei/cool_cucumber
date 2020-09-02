@@ -11,39 +11,32 @@
   <% @shopping_list_items.each do |shopping_list_item| %>
   <%= link_to change_purchased_path(shopping_list_item), { method: "post",  style: "text-decoration:none; color:black;", remote: true } do %>
       <% if shopping_list_item.purchased  %>
-
         <div class="shopping_list_item_bought d-flex justify-content-between" style="border-bottom: 1px solid white;">
           <div class = "d-flex align-items-center">
             <i class="fas fa-check-circle pr-2" style="font-size: 10px;"></i>
             <p style="max-width: 13ch;">  <%= shopping_list_item.ingredient.name %></p>
-
           </div>
           <div class ="d-flex">
-
             <p style="padding-right: 5px;">
               <% number = shopping_list_item.amount  %>
               <%= number == number.floor ? shopping_list_item.amount.round(0) : shopping_list_item.amount.round(2) %>
             </p>
             <p> <%= shopping_list_item.ingredient.standard_unit %></p>
           </div>
-
         </div>
       <% else %>
         <div class="shopping_list_item d-flex justify-content-between" style="border-bottom: 1px solid white;">
           <div class = "d-flex align-items-center">
             <i class="far fa-circle pr-2" style="font-size: 10px;"></i>
             <p style="max-width: 13ch;">  <%= shopping_list_item.ingredient.name %></p>
-
           </div>
           <div class ="d-flex">
-
             <p style="padding-right: 5px;">
               <% number = shopping_list_item.amount  %>
               <%= number == number.floor ? shopping_list_item.amount.round(0) : shopping_list_item.amount.round(2) %>
             </p>
             <p> <%= shopping_list_item.ingredient.standard_unit %></p>
           </div>
-
         </div>
       <% end  %>
       <% end %>
