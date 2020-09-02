@@ -12,7 +12,7 @@ class ShoppingListItemsController < ApplicationController
   end
 
   def change_purchased
-    @shopping_list_item = ShoppingListItem.find(params([:id]))
+    @shopping_list_item = ShoppingListItem.find(params[:id])
     if @shopping_list_item.purchased == true
       @shopping_list_item.purchased = false
     else

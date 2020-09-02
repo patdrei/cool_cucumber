@@ -7,8 +7,11 @@
 
 
 <div class = "shopping_list_item_card">
+
   <% @shopping_list_items.each do |shopping_list_item| %>
+  <%= link_to change_purchased_path(shopping_list_item), { method: "post",  style: "text-decoration:none; color:black;", remote: true } do %>
       <% if shopping_list_item.purchased  %>
+
         <div class="pb-0 pt-0 shopping_list_item_bought">
           <p> <%= shopping_list_item.ingredient.name %></p>
            <% number = shopping_list_item.amount  %>
@@ -32,7 +35,7 @@
 
         </div>
       <% end  %>
-
+      <% end %>
   <% end  %>
 </div>
 
