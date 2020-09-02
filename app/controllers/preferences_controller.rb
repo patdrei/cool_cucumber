@@ -18,6 +18,12 @@ class PreferencesController < ApplicationController
     redirect_back(fallback_location: overview_path)
   end
 
+  def destroy_all
+    @preferences_annihilator = Preference.where(user: current_user)
+    @preferences_annihilator.destroy_all
+    redirect_back(fallback_location: overview_path)
+  end
+
   def category
     @category = params[:category]
 
