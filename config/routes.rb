@@ -13,7 +13,9 @@ Rails.application.routes.draw do
 
   get "/preferences", to: "preferences#overview", as: "overview"
   get "/preferences/ingredients", to: "preferences#ingredients", as: "preferences_ingredients"
+  delete "/preferences/delete_all", to: "preferences#destroy_all", as: "preferences_destroy_all"
   get "/preferences/:category", to: "preferences#category", as: "preferences_category"
+
 
   patch "/preferences/:id/deactivate", to: "preferences#deactivate", as: "preference_deactivate"
 
