@@ -29,6 +29,7 @@ import { shopping_list_item_listener } from '../shopping_list_items.js';
 import { pref_toggler } from '../preferences.js';
 import { rotator } from '../rotator.js';
 import { range_slider } from '../range_slider.js';
+import { disabled } from '../meal_plan_new.js';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
