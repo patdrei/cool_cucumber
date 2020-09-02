@@ -14,3 +14,27 @@ footer {
   width: 150px;
   height: 75px;
 }
+
+
+.quarter-ellipse2 {
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  border-radius: 0 100% 0 0;
+  background: $info;
+  opacity: 0.9;
+  width: 150px;
+  height: 75px;
+
+}
+
+
+.shopping_list {
+  color: $gray;
+  font-size: 30px;
+  padding-left: 20px;
+}
+
+.shopping_list i {
+  vertical-align: -webkit-baseline-middle;
+}

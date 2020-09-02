@@ -16,3 +16,11 @@
 .btn-sm{
   border-radius: 17px;
 }
+
+.plus-circle i {
+  position: fixed;
+  bottom: 5px;
+  font-size: 50px;
+  left: 44vw;
+  fill: $gray;
+}
