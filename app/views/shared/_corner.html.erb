@@ -1,3 +1,5 @@
+<footer>
+  <div class="corner justify-content-center">
 <% if user_signed_in? %>
 
 <div class="box">
@@ -14,6 +16,9 @@
             <%= link_to "New Meal Plan", new_meal_plan_path %>
           </li>
           <% else %>
+           <li>
+            <%= link_to "New Meal Plan", new_meal_plan_path %>
+          </li>
           <li>
             <%= link_to "My Meal Plan", edit_meal_plan_path(@plan) %>
           </li>
@@ -32,3 +37,7 @@
   </div>
 </div>
  <% end %>
+
+</div>
+
+</footer>
