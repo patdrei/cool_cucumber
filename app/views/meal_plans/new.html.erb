@@ -40,18 +40,17 @@
 
 </div>
   <h6 class="text-muted mb-1" style="font-size: 17px;">Choose the number of days</h6>
-<%= simple_form_for @meal_plan do |f| %>
-  <div class="row d-flex justify-content-center change_color">
-    <div class="column mt-1" style ="width:87%;">
-          <%= f.input :days, required: true, label: false, error: 'Please tell me how many days you want to cook?', input_html: { class: 'is-valid', id: 'range_slider', min: '1', max: '14', step: 'any'}, as: :range%>
+  <%= simple_form_for @meal_plan do |f| %>
+    <div class="row d-flex justify-content-center change_color">
+      <div class="column mt-1" style ="width:87%;">
+        <%= f.input :days, required: true, label: false, error: 'Please tell me how many days you want to cook?', input_html: { class: 'is-valid', id: 'range_slider', min: '1', max: '14', step: 'any'}, as: :range%>
+      </div>
+      <div class="column">
+        <a id="range_slider_value" class="ml-3 mt-3" style="color:black;">7</a>
+      </div>
     </div>
-    <div class="column">
-      <a id="range_slider_value" class="ml-3 mt-3" style="color:black;">7</a>
-    </div>
-
-  </div>
-  <%= f.submit "Generate New Meal Plan", class: "btn btn-primary w-100 mb-3"%>
-<% end %>
+    <%= f.submit "Generate New Meal Plan", class: "btn btn-primary w-100 mb-3"%>
+  <% end %>
 
 <% unless @plan.nil? %>
 <% @plan.meals.order(id: :desc).each do |meal|%>

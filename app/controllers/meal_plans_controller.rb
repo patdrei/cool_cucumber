@@ -53,22 +53,19 @@ class MealPlansController < ApplicationController
   end
 
   def create
+    days = params[:meal_plan][:days].to_i
 
-    if params[:meal_plan][:days] == ""
-      redirect_to new_meal_plan_path
-      flash[:alert] = "Please say for how many days you want to cook"
-
-    else
 
       deactivate_mealplans
 
-      @meal_plan = MealPlan.new(strong_params)
+      @meal_plan = MealPlan.new
+      @meal_plan.days = days
       @meal_plan.active = true
       @user = current_user
       @meal_plan.user = @user
       @number = @meal_plan.days
       @meal_plan.save
-      @preferences = @user.preferences.where(kind: 1, ingredient_id: nil)
+      @preferences = @user.preferences.where(ingredient_id: nil)
 
       tags = @preferences.map do |pref|
 
@@ -103,7 +100,6 @@ class MealPlansController < ApplicationController
       safenum if @meal_plan.days > @recipes.uniq.length
       create_shopping_list_items
       redirect_to edit_meal_plan_path(@meal_plan.id)
-    end
   end
 
   def edit
