@@ -13,7 +13,7 @@
       <% if shopping_list_item.purchased  %>
         <div class="shopping_list_item_bought d-flex justify-content-between" style="border-bottom: 1px solid white;">
           <div class = "d-flex align-items-center">
-            <i class="far fa-circle pr-2" style="font-size: 10px;"></i>
+            <i class="fas fa-check-circle pr-2" style="font-size: 10px;"></i>
             <p style="max-width: 13ch;">  <%= shopping_list_item.ingredient.name %></p>
           </div>
           <div class ="d-flex">
@@ -21,7 +21,7 @@
               <% number = shopping_list_item.amount  %>
               <%= number == number.floor ? shopping_list_item.amount.round(0) : shopping_list_item.amount.round(2) %>
             </p>
-              <p> <%= shopping_list_item.ingredient.standard_unit %></p>
+            <p> <%= shopping_list_item.ingredient.standard_unit %></p>
           </div>
         </div>
       <% else %>
