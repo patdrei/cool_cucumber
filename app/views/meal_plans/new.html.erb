@@ -11,7 +11,7 @@
           <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, active: true ) %>
             <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
             <form class="form-inline" >
-              <%= link_to preference_tag_path(pref), { class: "btn-sm btn-secondary w-100 text-center", method: "patch",  style: "text-decoration:none;" } do %>
+              <%= link_to preference_tag_path(pref), { class: "btn-sm btn-secondary w-100 text-center", method: "patch",  style: "text-decoration:none;; border:1px solid;" } do %>
                 <span><%= choice.name %></span>
               <% end %>
             </form>
@@ -33,28 +33,32 @@
             <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
               <% pref = Preference.find_by(ingredient_id: ingredient.id, active: true) %>
               <form class="form-inline" >
-                <%= link_to preference_ingredient_path(ingredient), { class: "btn-sm btn-warning w-100 text-center", method: "post",  style: "text-decoration:none;" } do %>
+                <%= link_to preference_ingredient_path(ingredient), { class: "btn-sm btn-warning w-100 text-center", method: "post",  style: "text-decoration:none;; border:1px solid;" } do %>
                   <span><%= ingredient.name %></span>
                 <% end %>
               </form>
        <% else %>
-          <% if choice.category == "cuisines"  %>
-            <% i = '-danger' %>
-            <% f = 'font-c-4' %>
-          <% elsif choice.category == "top_choice" %>
-            <% i = '-secondary'  %>
-            <% f = 'font-c-3' %>
-          <% elsif choice.category == "dish_types"%>
-            <% i = '-info'  %>
-            <% f = 'font-c-1' %>
-         <% else%>
-            <% i = '-warning' %>
-          <% end %>
+   <% if choice.category == "cuisines"  %>
+      <% i = '-danger' %>
+      <% j = '-danger' %>
+      <% f = 'font-c-4' %>
+  <% elsif choice.category == "top_choice" %>
+      <% i = '-secondary'  %>
+      <% j = '-secondary'  %>
+      <% f = 'font-c-3' %>
+    <% elsif choice.category == "dish_types"%>
+      <% i = '-info text-white'  %>
+      <% j = '-info'  %>
+      <% f = 'font-c-1' %>
+  <% else%>
+      <% i = '-warning' %>
+      <% j = '-warning' %>
+  <% end %>
           <% next if Preference.exists?(tag_id: choice.id, user_id: current_user.id, active: true)%>
           <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
             <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
             <form class="form-inline" >
-              <%= link_to preference_tag_path(choice), { class: "btn-sm btn#{i} w-100 text-center", method: "post",  style: "text-decoration:none;" } do %>
+              <%= link_to preference_tag_path(choice), { class: "btn-sm btn#{i} w-100 text-center", method: "post",  style: "text-decoration:none;; border:1px solid;" } do %>
                 <span><%= choice.name %></span>
               <% end %>
             </form>
@@ -111,7 +115,7 @@
               <a class="shuffle" data-remote="true" rel="nofollow" data-method="post" href="/meals/122/shuffle"><i class="fa fa-redo" aria-hidden="true"></i></a>
             </div>
             <div class="remove-btn">
-              <a class="delete" style="text-decoration:none;" rel="nofollow" data-method="delete" href="/meals/122"><i class="far fa-trash-alt" aria-hidden="true"></i></a>
+              <a class="delete" style="text-decoration:none;; border:1px solid;" rel="nofollow" data-method="delete" href="/meals/122"><i class="far fa-trash-alt" aria-hidden="true"></i></a>
             </div>
           </form>
         </div>

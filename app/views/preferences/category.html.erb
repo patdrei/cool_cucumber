@@ -6,9 +6,11 @@
 <body>
    <% if params[:category] == "cuisines"  %>
       <% i = '-danger' %>
+      <% j = '-danger' %>
       <% f = 'font-c-4' %>
   <% elsif params[:category] == "top_choice" %>
       <% i = '-secondary'  %>
+      <% j = '-secondary'  %>
       <% f = 'font-c-3' %>
     <% elsif params[:category] == "dish_types"%>
       <% i = '-info text-white'  %>
@@ -16,6 +18,7 @@
       <% f = 'font-c-1' %>
   <% else%>
       <% i = '-warning' %>
+      <% j = '-warning' %>
   <% end %>
 
   <div class="m-3">
