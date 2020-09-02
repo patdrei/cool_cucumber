@@ -16,7 +16,7 @@ class MealsController < ApplicationController
     @meal_plan.days += 1
     @m_recipes = @meal_plan.meals.map{ |meal| meal.recipe }
     new_meal
-    redirect_back(fallback_location: new_meal_plan_path)
+    redirect_back(fallback_location: edit_meal_plan_path(@meal_plan))
   end
 
   def shuffle
@@ -29,7 +29,7 @@ class MealsController < ApplicationController
 
   def new_meal
     @user = current_user
-    @preferences = @user.preferences.where(kind: 1, ingredient_id: nil)
+    @preferences = @user.preferences.where(ingredient_id: nil)
     tags = @preferences.map do |pref|
       next if pref.tag_id.nil?
       tag = pref.tag

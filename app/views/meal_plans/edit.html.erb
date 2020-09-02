@@ -1,32 +1,33 @@
-<div class="m-3">
-  <%= link_to '+', meal_plan_meals_path(@plan), {class: "btn btn-primary w-100", method: 'post'}%>
+
+<div class="m-2">
+  <%= link_to '+', meal_plan_meals_path(@plan), {class: "btn btn-primary w-100", method: 'post', remote: true}%>
 </div>
 
 
 <% unless @plan.nil? %>
 <% @plan.meals.order(id: :desc).each do |meal|%>
 <div class="my-2">
-  <di<div class="my-2">
+  <div class="my-2">
   <div class="card-meal">
      <div class="d-flex">
       <div class="align-self-center" ,="" style="height: 120px">
-        <img width="100" src=" ">
+        <img width="100" src="<%= meal.recipe.image_url %>">
       </div>
         <div class="col-8 d-flex card-meal-infos lefty-border" style="align-items: center">
           <div class="details">
-          <h3 class="font-c-6 mt-0"> <a href="/recipes/37">Cherry Lime Mojito</a> </h3>
+          <h3 class="font-c-6 mt-0"> <a href="/recipes/<%= meal.recipe.id %>"><%= meal.recipe.name %></a> </h3>
             <div class="pl-1 desc-size ">
-            <h5 class="font-c-neutral text-left text-secondary"><i class="fas fa-clock pr-1" aria-hidden="true"></i>  minutes</h5>
-            <p class="overflow-ellipsis"> Cherry Lime Mojito is... </p>
+            <h5 class="font-c-neutral text-left text-secondary"><i class="fas fa-clock pr-1" aria-hidden="true"></i> <%= meal.recipe.prep_time %> minutes</h5>
+            <p class="overflow-ellipsis"><%= meal.recipe.description  %> </p>
             </div>
           </div>
         <div class="btn-form-wrapper">
           <form class="form-row">
             <div class="shuffle-btn">
-              <a class="shuffle" data-remote="true" rel="nofollow" data-method="post" href="/meals/122/shuffle"><i class="fa fa-redo" aria-hidden="true"></i></a>
+              <a class="shuffle" data-remote="true" rel="nofollow" data-method="post" href="/meals/<%= meal.id %>/shuffle"><i class="fa fa-redo" aria-hidden="true"></i></a>
             </div>
             <div class="remove-btn">
-              <a class="delete" style="text-decoration:none;" rel="nofollow" data-method="delete" href="/meals/122"><i class="far fa-trash-alt" aria-hidden="true"></i></a>
+              <a class="delete" data-remote="true" style="text-decoration:none;" rel="nofollow" data-method="delete" href="/meals/<%= meal.id %>"><i class="far fa-trash-alt" aria-hidden="true"></i></a>
             </div>
           </form>
         </div>
@@ -44,3 +45,4 @@
 
 </div>
 <br>
+
