@@ -1,0 +1,8 @@
+meta.yml
+
+
+meta_product_name: "The Cool Cucumber Club"
+meta_title: "The Cool Cucumber Club - Be your own Chef"
+meta_description: "Create beautiful customized Mealplans and corresponding shopping lists to cook without hassle."
+meta_image: "cover.jpeg" # should exist in `app/assets/images/`
+twitter_account: "@LeWagonBerlin"   # required for Twitter Cards
