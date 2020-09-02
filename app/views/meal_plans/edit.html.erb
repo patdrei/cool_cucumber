@@ -7,7 +7,6 @@
 <% unless @plan.nil? %>
 <% @plan.meals.order(id: :desc).each do |meal|%>
 <div class="my-2">
-  <div class="my-2">
   <div class="card-meal">
      <div class="d-flex">
       <div class="align-self-center" ,="" style="height: 120px">
@@ -33,9 +32,8 @@
         </div>
         </div>
        </div>
-       </div>
-       </div>
-    </div>
+      </div>
+    
 <div>
 <% end %>
   <%= link_to 'To My Shopping List', meal_plan_shopping_list_items_path(@plan), {class: "btn btn-danger mt-3 w-100"}  %>

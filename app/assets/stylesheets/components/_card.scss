@@ -48,7 +48,7 @@
 
 
 .card-meal {
-  margin-bottom: 5px;
+  margin: 10px;
   overflow: hidden;
   height: 120px;
   border-radius: 10px;
@@ -97,16 +97,12 @@
   white-space: nowrap;
  }
 
-.btn-form-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 5px;
-}
 
 .shuffle-btn i, .remove-btn i {
-  padding-left: 30px;
+  padding-left: 10px;
   font-size: large;
   color: $primary;
+
 }
 
 .btn-form-wrapper {
@@ -120,4 +116,5 @@
     flex-direction: column;
     justify-content: space-around;
     height: 80px;
+
   }
