@@ -15,7 +15,7 @@
       </div>
         <div class="col-8 d-flex card-meal-infos lefty-border" style="align-items: center">
           <div class="details">
-          <h3 class="font-c-6 mt-0"> <a href="/recipes/<%= meal.recipe.id %>"><%= meal.recipe.name %></a> </h3>
+          <h3 class="font-c-6 mt-0"> <a href="/recipes/<%= meal.recipe.id %>"><%= meal.recipe.name.truncate(35) %></a> </h3>
             <div class="pl-1 desc-size ">
             <h5 class="font-c-neutral text-left text-secondary"><i class="fas fa-clock pr-1" aria-hidden="true"></i> <%= meal.recipe.prep_time %> minutes</h5>
             <p class="overflow-ellipsis"><%= meal.recipe.description  %> </p>
