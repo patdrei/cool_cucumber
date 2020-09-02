@@ -19,7 +19,7 @@
           <h3 class="font-c-6 mt-0"> <a href="/recipes/<%= meal.recipe.id %>"><%= meal.recipe.name.truncate(20) %></a> </h3>
             <div class="pl-1 desc-size ">
             <h5 class="font-c-neutral text-left text-secondary"><i class="fas fa-clock pr-1" aria-hidden="true"></i> <%= meal.recipe.prep_time %> minutes</h5>
-            <p class="overflow-ellipsis"><%= meal.recipe.description.truncate(24) %> </p>
+            <p class="overflow-ellipsis"><%= meal.recipe.description.html_safe.truncate(24) %> </p>
             </div>
           </div>
         <div class="btn-form-wrapper">
