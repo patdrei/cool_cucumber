@@ -1,5 +1,6 @@
-
+<div class="m-2">
 <% unless @plan.nil? %>
+<h4 class="m-3"> A Meal Plan for <%= @plan.days %> Days</h4>
 <% @plan.meals.order(id: :desc).each do |meal|%>
 <div class="my-2">
   <div class="card-meal">
@@ -23,3 +24,4 @@
 <% end %>
 <% end %>
       <%= link_to 'Save to my Account', meal_plan_save_path(@plan), {class: "btn btn-primary mt-3 w-100", method: 'post'}  %>
+</div>
