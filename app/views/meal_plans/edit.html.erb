@@ -1,8 +1,10 @@
 
-<div class="m-2">
-  <%= link_to '+', meal_plan_meals_path(@plan), {class: "btn btn-primary w-100", method: 'post', remote: true}%>
-</div>
-
+  <div class="banner d-flex justify-content-center h-30" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1549590143-d5855148a9d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60);">
+    <div class="container">
+      <h1 class="text-center"> <strong>Your Meal Plan</strong></h1>
+      <p class="text-center">Adjust your mealplan</p>
+    </div>
+  </div>
 
 <% unless @plan.nil? %>
 <% @plan.meals.order(id: :desc).each do |meal|%>
@@ -17,7 +19,7 @@
           <h3 class="font-c-6 mt-0"> <a href="/recipes/<%= meal.recipe.id %>"><%= meal.recipe.name.truncate(20) %></a> </h3>
             <div class="pl-1 desc-size ">
             <h5 class="font-c-neutral text-left text-secondary"><i class="fas fa-clock pr-1" aria-hidden="true"></i> <%= meal.recipe.prep_time %> minutes</h5>
-            <p class="overflow-ellipsis"><%= meal.recipe.description.truncate(24) %> </p>
+            <p class="overflow-ellipsis"><%= meal.recipe.description.html_safe.truncate(24) %> </p>
             </div>
           </div>
         <div class="btn-form-wrapper">
@@ -33,13 +35,15 @@
         </div>
        </div>
       </div>
+      <% end %>
+  <% end %>
 
-<div>
-<% end %>
-  <%= link_to 'To My Shopping List', meal_plan_shopping_list_items_path(@plan), {class: "btn btn-danger mt-3 w-100"}  %>
-<% end %>
-<!-- /meal_plans/:meal_plan_id/shopping_list_items/
-, {class: "btn btn-secondary"} -->
-
+<div class="plus-item">
+  <%= link_to meal_plan_meals_path(@plan), {class: "plus-circle", method: 'post', remote: true} do %><i class="fas fa-plus-circle"></i><% end %>
 </div>
-<br>
+
+  <div class="quarter-ellipse2">
+    <%= link_to meal_plan_shopping_list_items_path(@plan), class: "shopping_list" do %><i class="fa fa-shopping-cart" ></i><% end %>
+  </div>
+
+
