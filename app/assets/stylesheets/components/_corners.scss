@@ -18,26 +18,26 @@ footer {
 
 .quarter-ellipse2 {
   position: fixed;
+  display: flex;
+  // align-item: center;
+  justify-content: center;
   bottom: 0px;
   left: 0px;
   background: $secondary;
   opacity: 0.9;
-  border-radius: 0 100% 0 0;
-  width: 90px;
-  height: 90px;
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
 
 }
 
-
 .shopping_list {
-  color: $gray;
-  font-size: 30px;
-  padding-left: 20px;
+  position: fixed;
+  font-size: 27px;
+  padding-top: 18px;
 }
 
 .shopping_list i {
-  vertical-align: -webkit-baseline-middle;
-  display: flex;
-  padding-left: 18px;
-  padding-bottom: 20px;
+  top: 19px;
+  color: $gray;
 }

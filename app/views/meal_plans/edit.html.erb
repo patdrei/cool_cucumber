@@ -21,16 +21,16 @@
             <p class="overflow-ellipsis"><%= meal.recipe.description.html_safe.truncate(24) %> </p>
             </div>
           </div>
-        <div class="btn-form-wrapper">
-          <form class="form-row">
-            <div class="shuffle-btn">
-              <a class="shuffle" data-remote="true" rel="nofollow" data-method="post" href="/meals/<%= meal.id %>/shuffle"><i class="fa fa-redo" aria-hidden="true"></i></a>
-            </div>
-            <div class="remove-btn">
-              <a class="delete" data-remote="true" style="text-decoration:none;" rel="nofollow" data-method="delete" href="/meals/<%= meal.id %>"><i class="far fa-trash-alt" aria-hidden="true"></i></a>
-            </div>
-          </form>
-        </div>
+          <div class="btn-form-wrapper">
+            <form class="form-row">
+              <div class="shuffle-btn">
+                <a class="shuffle" data-remote="true" rel="nofollow" data-method="post" href="/meals/<%= meal.id %>/shuffle"><i class="fa fa-redo" aria-hidden="true"></i></a>
+              </div>
+              <div class="remove-btn">
+                <a class="delete" data-remote="true" style="text-decoration:none;" rel="nofollow" data-method="delete" href="/meals/<%= meal.id %>"><i class="far fa-trash-alt" aria-hidden="true"></i></a>
+              </div>
+            </form>
+          </div>
         </div>
        </div>
       </div>
