@@ -16,13 +16,13 @@
           <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, active: true ) %>
             <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
             <form class="form-inline" >
-              <%= link_to preference_tag_path(pref), { class: "btn-sm btn-secondary w-100 py-2 text-center disabled", method: "patch",  style: "text-decoration:none;; border:1px solid;" } do %>
+              <%= link_to preference_tag_path(pref), { class: "btn-sm btn-secondary w-100 py-2 text-center disabled", method: "patch",  style: "text-decoration:none;; border:1px solid;", remote: true} do %>
                 <span><%= choice.name %></span>
               <% end %>
             </form>
           <% else %>
             <form class="form-inline" >
-              <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-outline-secondary py-2 btn-sm w-100 text-center disabled", method: "post",  style: "text-decoration:none; border:1px solid;"} do %>
+              <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-outline-secondary py-2 btn-sm w-100 text-center disabled", method: "post",  style: "text-decoration:none; border:1px solid;", remote: true} do %>
                 <span><%= choice.name %></span>
               <% end %>
             </form>
@@ -38,7 +38,7 @@
             <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1 pb-3">
               <% pref = Preference.find_by(ingredient_id: ingredient.id, active: true) %>
               <form class="form-inline" >
-                <%= link_to preference_ingredient_path(ingredient), { class: "btn-sm btn-warning w-100 py-2 text-center disabled", method: "post",  style: "text-decoration:none;; border:1px solid;" } do %>
+                <%= link_to preference_ingredient_path(ingredient), { class: "btn-sm btn-warning w-100 py-2 text-center disabled", method: "post",  style: "text-decoration:none;; border:1px solid;", remote: true } do %>
                   <span><%= ingredient.name %></span>
                 <% end %>
               </form>
@@ -64,7 +64,7 @@
           <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1 pb-3">
             <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
             <form class="form-inline" >
-              <%= link_to preference_tag_path(choice), { class: "btn-sm btn#{i} w-100 py-2 text-center disabled ", method: "post",  style: "text-decoration:none;; border:1px solid;" } do %>
+              <%= link_to preference_tag_path(choice), { class: "btn-sm btn#{i} w-100 py-2 text-center disabled ", method: "post",  style: "text-decoration:none;; border:1px solid;", remote: true } do %>
                 <span><%= choice.name %></span>
               <% end %>
             </form>
