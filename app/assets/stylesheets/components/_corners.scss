@@ -22,22 +22,21 @@ footer {
   left: 0px;
   background: $secondary;
   opacity: 0.9;
-  border-radius: 0 100% 0 0;
-  width: 90px;
-  height: 90px;
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
 
 }
 
-
 .shopping_list {
-  color: $gray;
+
   font-size: 30px;
   padding-left: 20px;
 }
 
 .shopping_list i {
-  vertical-align: -webkit-baseline-middle;
   display: flex;
-  padding-left: 18px;
-  padding-bottom: 20px;
+  color: $gray;
+  justify-content: center;
+  align-item: center;
 }

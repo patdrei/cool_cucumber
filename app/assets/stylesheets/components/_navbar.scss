@@ -1,12 +1,28 @@
-.navbar {
-  justify-content: space-between;
 
+
+.quarter-ellipse3 {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
-.navbar .navbar-collapse {
-  flex-grow: 0;
-}
 
-.navbar .navbar-brand img {
+
+.logo img {
   width: 40px;
+}
+
+.login {
+  position: fixed;
+  display: flex;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
 }

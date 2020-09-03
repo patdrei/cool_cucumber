@@ -1,5 +1,5 @@
 
-  <div class="banner d-flex justify-content-center h-30" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1549590143-d5855148a9d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60);">
+  <div class="banner d-flex justify-content-center 25vh" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1549590143-d5855148a9d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=60);">
     <div class="container">
       <h1 class="text-center"> <strong>Your Meal Plan</strong></h1>
       <p class="text-center">Adjust your mealplan</p>
@@ -22,20 +22,20 @@
             <p class="overflow-ellipsis"><%= meal.recipe.description.html_safe.truncate(24) %> </p>
             </div>
           </div>
-        <div class="btn-form-wrapper">
-          <form class="form-row">
-            <div class="shuffle-btn">
-              <a class="shuffle" data-remote="true" rel="nofollow" data-method="post" href="/meals/<%= meal.id %>/shuffle"><i class="fa fa-redo" aria-hidden="true"></i></a>
-            </div>
-            <div class="remove-btn">
-              <a class="delete" data-remote="true" style="text-decoration:none;" rel="nofollow" data-method="delete" href="/meals/<%= meal.id %>"><i class="far fa-trash-alt" aria-hidden="true"></i></a>
-            </div>
-          </form>
-        </div>
+          <div class="btn-form-wrapper">
+            <form class="form-row">
+              <div class="shuffle-btn">
+                <a class="shuffle" data-remote="true" rel="nofollow" data-method="post" href="/meals/<%= meal.id %>/shuffle"><i class="fa fa-redo" aria-hidden="true"></i></a>
+              </div>
+              <div class="remove-btn">
+                <a class="delete" data-remote="true" style="text-decoration:none;" rel="nofollow" data-method="delete" href="/meals/<%= meal.id %>"><i class="far fa-trash-alt" aria-hidden="true"></i></a>
+              </div>
+            </form>
+          </div>
         </div>
        </div>
       </div>
-      <% end %>
+    <% end %>
   <% end %>
 
 <div class="plus-item">
