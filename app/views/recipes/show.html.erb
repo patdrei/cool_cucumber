@@ -4,7 +4,7 @@
   <title>Your Recipe</title>
 </head>
 <body>
-  <div class="banner d-flex justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @recipe.image_url %>); height: 25vh;">
+  <div class="banner d-flex justify-content-center align-items-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @recipe.image_url %>); height: 25vh;">
     <div class="container">
       <h1 class="text-center"> <strong><%= @recipe.name.html_safe %></strong></h1>
     </div>
