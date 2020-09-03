@@ -28,14 +28,14 @@
         <u>Return to preference overview</u>
       </a>
     </div>
-    <h4 class ="text-muted pb-3"> Select from all <%= @category.capitalize.gsub("_"," ") %></h4>
+    <h5 class ="text-muted pb-3"> Select from <%= @category == "top_choice" ? "Dietary Requirements" : @category.capitalize.gsub("_"," ") %></h5>
 
     <div class="justify-content-center p-1 mb-3 pb-2">
     <%= form_tag preferences_category_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
         class: "form-control w-80",
-        placeholder: "Find ingredient"
+        placeholder: "Find in #{@category == 'top_choice' ? 'Dietary Requirements' : @category.capitalize.gsub('_',' ')}"
       %>
       <%#= submit_tag "Find", class: "font-c-5" %>
     <% end %>
