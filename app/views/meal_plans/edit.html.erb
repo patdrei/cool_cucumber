@@ -37,12 +37,16 @@
       <% end %>
   <% end %>
 
-<div class="plus-item">
-  <%= link_to meal_plan_meals_path(@plan), {class: "plus-circle", method: 'post', remote: true} do %><i class="fas fa-plus-circle"></i><% end %>
+  <div class="shopping-button">
+    <form class="form-inline">
+     <%=link_to meal_plan_meals_path(@plan), { class: "btn btn-primary",  style: "text-decoration:none;", method: 'post', remote: true } do %>
+      <span>Add a Meal</span>
+    <% end %>
+  </form>
 </div>
 
-  <div class="quarter-ellipse2">
-    <%= link_to meal_plan_shopping_list_items_path(@plan), class: "shopping_list" do %><i class="fa fa-shopping-cart" ></i><% end %>
-  </div>
 
+  <div class="quarter-ellipse2">
+    <%= link_to meal_plan_shopping_list_items_path(@plan), class: "shopping_list" do %><i class="fas fa-scroll"></i><% end %>
+  </div>
 
