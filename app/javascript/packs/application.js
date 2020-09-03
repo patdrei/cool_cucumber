@@ -30,6 +30,7 @@ import { pref_toggler } from '../preferences.js';
 import { rotator } from '../rotator.js';
 import { range_slider } from '../range_slider.js';
 import { disabled } from '../meal_plan_new.js';
+import { shuffle_delete } from '../shuffle_delete.js';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
@@ -40,6 +41,12 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   pref_toggler();
+});
+
+document.addEventListener('turbolinks:load', () => {
+  // Call your functions here, e.g:
+  // initSelect2();
+  shuffle_delete();
 });
 
 document.addEventListener('turbolinks:load', () => {
