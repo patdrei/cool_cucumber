@@ -1,7 +1,9 @@
 <div class="logo">
   <div class="quarter-ellipse3">
     <%= link_to "/", class: "logo-brand" do %>
+    <div class:"logo-pic">
     <%= image_tag "logo.svg"  %>
+    </div>
     <% end %>
       <% @plan = MealPlan.find_by(user: current_user, active: true) %>
   </div>
