@@ -2,15 +2,26 @@
     <div class="container">
       <h1 class="text-center"> <strong>Your Meal Plan</strong></h1>
       <p class="text-center">Adjust your mealplan</p>
+      <!-- AddToAny BEGIN -->
+      <div class="zindex-tooltip:: 1070 !default vw-100 pr-1">
+      <div class="a2a_kit" data-a2a-url="https://www.coolcucumbers.de/meal_plans/<%= @plan.id %>">
+      <h2><a class="a2a_dd" href="https://www.addtoany.com/share"><i class="fas fa-share-alt text-light text-right pb-4"></i></a></h2>
+      </div>
+      <script async src="https://static.addtoany.com/menu/page.js"></script>
+      </div>
+      <!-- AddToAny END -->
     </div>
   </div>
+
+
+
 
 <% unless @plan.nil? %>
 <% @plan.meals.order(id: :desc).each do |meal|%>
 <div class="my-2">
   <div class="card-meal">
      <div class="d-flex">
-      <div class="align-self-center" ,="" style="height: 120px">
+      <div class="align-self-center" style="height: 120px">
         <img width="100" src="<%= meal.recipe.image_url.nil? ? "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" : meal.recipe.image_url %>">
       </div>
         <div class="col-8 d-flex card-meal-infos lefty-border" style="align-items: center">
