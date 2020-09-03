@@ -40,7 +40,6 @@ const pref_toggler = () => {
         preference.classList.toggle("btn-info");
         preference.classList.toggle("text-white");
         preference.classList.toggle("btn-outline-info");
-        preference.classList.toggle('disabled');
       });
     });
 
@@ -54,7 +53,6 @@ const pref_toggler = () => {
       preference.addEventListener("click", () => {
         preference.classList.toggle("btn-warning");
         preference.classList.toggle("btn-outline-warning");
-        preference.classList.toggle('disabled');
       });
     });
 
