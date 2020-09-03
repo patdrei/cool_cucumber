@@ -4,7 +4,6 @@ footer {
 }
 
 .quarter-ellipse1 {
-
   position: fixed;
   bottom: 0px;
   right: 0px;
@@ -16,28 +15,24 @@ footer {
 }
 
 
+
 .quarter-ellipse2 {
   position: fixed;
-  display: flex;
-  // align-item: center;
-  justify-content: center;
   bottom: 0px;
   left: 0px;
   background: $secondary;
   opacity: 0.9;
-  border-radius: 50%;
-  width: 75px;
-  height: 75px;
-
+  border-radius: 0 100% 0 0;
+  width: 90px;
+  height: 90px;
 }
 
 .shopping_list {
-  position: fixed;
   font-size: 27px;
-  padding-top: 18px;
 }
 
 .shopping_list i {
-  top: 19px;
   color: $gray;
+  padding-top: 40px;
+  padding-left: 18px;
 }
