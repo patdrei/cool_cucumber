@@ -19,6 +19,8 @@ footer {
 .quarter-ellipse2 {
   position: fixed;
   display: flex;
+  // align-item: center;
+  justify-content: center;
   bottom: 0px;
   left: 0px;
   background: $secondary;
@@ -30,13 +32,12 @@ footer {
 }
 
 .shopping_list {
-  font-size: 30px;
-
+  position: fixed;
+  font-size: 27px;
+  padding-top: 18px;
 }
 
-.quarter-ellipse2 .shopping_list i {
-  position: relative;
+.shopping_list i {
+  top: 19px;
   color: $gray;
-  justify-content: center;
-  align-item: center;
 }
