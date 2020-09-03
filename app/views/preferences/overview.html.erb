@@ -6,7 +6,7 @@
   <h5 class="text-muted pt-3">No Main Tags matching your search</h5>
   </div>
 <% else %>
-  <h5 class="text-muted pt-3 pb-3">Select from Dietary Requirements</h5>
+  <h5 class="text-muted pt-3 pb-3" >Select from Dietary Requirements</h5>
   <div class="row">
 
 <% @top_choices.each do |choice| %>
@@ -49,11 +49,11 @@
 
 <% if @cuisines.length == 0 %>
 <div>
-  <h5 class="text-muted pt-3">No Cuisines matching your search</h5>
+  <h5 class="text-muted pt-3" style="border-top: 1px solid lightgrey;">No Cuisines matching your search</h5>
   </div>
 <% else %>
 
-  <h5 class="text-muted pt-3 pb-3">Select from Cuisines</h5>
+  <h5 class="text-muted pt-3 pb-3" style="border-top: 1px solid lightgrey;">Select from Cuisines</h5>
   <div class="row">
 
 <% @cuisines.each do |choice| %>
@@ -99,7 +99,7 @@
   </div>
 <% else %>
 
-  <h5 class="text-muted pt-3p pb-3">Select from Dish Types</h5>
+  <h5 class="text-muted pt-3 pb-3" style="border-top: 1px solid lightgrey;">Select from Dish Types</h5>
   <div class="row">
 
 <% @types.each do |choice| %>
@@ -152,7 +152,7 @@
   <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, kind: -1, active: true) %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice), { class: "btn-sm btn-danger w-100 py-2 text-center", method: "post",  style: "text-decoration:none;", remote: true } do %>
+      <%= link_to preference_tag_path(choice), { class: "btn-sm btn-danger w-100 py-2 text-center disabled", method: "post",  style: "text-decoration:none;", remote: true } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -160,7 +160,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_tag_path(choice, kind: -1), { class: "btn-sm btn-outline-danger w-100 py-2 text-center", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true } do %>
+      <%= link_to preference_tag_path(choice, kind: -1), { class: "btn-sm btn-outline-danger w-100 py-2 text-center disabled", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -186,7 +186,7 @@
 </div>
 <% else %>
 
-  <h5 class="text-muted pt-3 pb-3">Select your favourite Ingredients</h5>
+  <h5 class="text-muted pt-3 pb-3" style="border-top: 1px solid lightgrey;">Select your favourite Ingredients</h5>
   <div class="row">
 
 <% @ingredients.each do |choice| %>
@@ -198,7 +198,7 @@
   <% if Preference.exists?(ingredient_id: choice.id, user_id: current_user.id) %>
     <% pref = Preference.find_by(ingredient_id: choice.id, user_id: current_user.id) %>
     <form class="form-inline" >
-      <%= link_to preference_ingredient_path(choice), { class: "btn-sm btn-warning py-2 w-100 text-center inc-pref", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true } do %>
+      <%= link_to preference_ingredient_path(choice), { class: "btn-sm btn-warning py-2 w-100 text-center inc-pref disabled", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true } do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>
@@ -206,7 +206,7 @@
   <% else %>
 
     <form class="form-inline" >
-      <%= link_to preference_ingredient_path(choice), { class: "btn-sm btn-outline-warning py-2 w-100 text-center no-pref", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true} do %>
+      <%= link_to preference_ingredient_path(choice), { class: "btn-sm btn-outline-warning py-2 w-100 text-center no-pref disabled", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true} do %>
         <span><%= choice.name %></span>
       <% end %>
     </form>

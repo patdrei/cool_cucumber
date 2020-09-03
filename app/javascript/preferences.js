@@ -24,8 +24,6 @@ const pref_toggler = () => {
       preference.addEventListener("click", () => {
         preference.classList.toggle("btn-danger");
         preference.classList.toggle("btn-outline-danger");
-
-
       });
     });
 
