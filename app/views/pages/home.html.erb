@@ -6,37 +6,37 @@
 </head>
 <body>
 
-  <div class="banner d-flex justify-content-center h-40" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80);">
+  <div class="banner d-flex justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60); height: 25vh;">
     <div class="container">
-      <h1 class="text-center"> <strong>Ready, shop - cook!</strong></h1>
-      <p class="text-center">Get your own mealplan</p>
+      <h1 class="text-center"> <strong>Shop, chop - never stop!</strong></h1>
+      <p class="text-center">Master chef in less than 5 minutes</p>
     </div>
     <a class="btn btn-primary" id="btn-lg" href='/meal_plans/new'>Create</a>
   </div>
   <div class="container pl-0">
   <div class="card-product row mt-5 ml-3">
-    <h1 class="col-1 text-center font-c-6 p-0">1</h1>
-    <div class="col-10 card-product-infos lefty-border">
-      <h2 class="font-c-6">Set your preferences</h2>
-      <p class="pb-3">Healthy and diverse</p>
+    <h1 class="col-1 text-center font-c-6 p-0 mr-2">1</h1>
+    <div class="col-10 card-product-info lefty-border border-bottom">
+      <h2 class="font-c-6 medium"> Set your preferences </h2>
+      <p class="pb-3">Choose from healthy and diverse options</p>
       <div class="d-flex pb-3 border-bottom">
         <div class="col-4 col-lg-2 col-md-3 col-sm-4 p-1">
           <form class="form-inline">
-            <a class="btn-sm btn-secondary w-100 text-center inc-pref" style="text-decoration:none;">
+            <a class="btn-sm btn-secondary w-100 text-center inc-pref pt-2 pb-2" style="text-decoration:none;">
               <span>vegetarian</span>
             </a>
           </form>
         </div>
-        <div class="col-4 col-lg-2 col-md-3 col-sm-4  p-1">
+        <div class="col-4 col-lg-2 col-md-3 col-sm-4 p-1">
           <form class="form-inline">
-            <a class="btn-sm btn-outline-danger w-100 text-center no-pref" style="text-decoration:none;border:1px solid;">
+            <a class="btn-sm btn-outline-danger w-100 text-center no-pref pt-2 pb-2" style="text-decoration:none;border:1px solid;">
               <span>Indian</span>
             </a>
           </form>
         </div>
         <div class="col-4 col-lg-2 col-md-3 col-sm-4  p-1">
           <form class="form-inline">
-            <a class="btn-sm btn-info w-100 text-center inc-pref" style="text-decoration:none;">
+            <a class="btn-sm btn-info w-100 text-center inc-pref pt-2 pb-2" style="text-decoration:none;">
               <span>Dinner</span>
             </a>
           </form>
@@ -45,11 +45,11 @@
     </div>
   </div>
   <div class="card-product row mt-4 ml-3">
-    <h1 class="col-1 text-center font-c-6 p-0">2</h1>
-    <div class="col-10 card-product-infos lefty-border">
+    <h1 class="col-1 text-center font-c-6 p-0 mr-2">2</h1>
+    <div class="col-10 card-product-infos lefty-border border-bottom">
       <h2 class="font-c-6">Shuffle your meal plan</h2>
-      <p class="pb-2">Individual and dynamic</p>
-      <div class ="pb-3 border-bottom">
+      <p class="pb-2">Pick your favorite recipes</p>
+      <div>
         <div class="card-meal-lp">
          <div class="d-flex">
             <div class="align-self-center" ,="" style="height: 120px">
@@ -67,14 +67,15 @@
     </div>
   </div>
   <div class="card-product row mt-4 ml-3">
-    <h1 class="col-1 text-center font-c-6 p-0">3</h1>
-    <div class="col-10 card-product-infos lefty-border">
+    <h1 class="col-1 text-center font-c-6 p-0 mr-2">3</h1>
+    <div class="col-10 card-product-infos lefty-border border-bottom">
       <h2 class="font-c-6">Shop smoothly</h2>
-      <p>Simple and quick</p>
-      <div class="pb-3 border-bottom">
+      <p>Have your groceries all added to one list</p>
+      <div>
         <div class="shopping_list_item_card mr-0 ml-0 mt-3 mb-0">
           <div class="shopping_list_item d-flex justify-content-between">
-            <div>
+            <div class="row">
+              <i class="fas fa-check-circle pr-2 pl-2 mt-2" style="font-size: 18px;"></i>
               <p>Feta cheese</p>
             </div>
             <div class ="d-flex">
@@ -83,7 +84,8 @@
             </div>
           </div>
           <div class="shopping_list_item d-flex justify-content-between">
-             <div>
+             <div class="row">
+              <i class="fas fa-check-circle pr-2 pl-2 mt-2" style="font-size: 18px;"></i>
               <p>Sugar</p>
             </div>
             <div class ="d-flex">

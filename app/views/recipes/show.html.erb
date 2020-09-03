@@ -4,18 +4,24 @@
   <title>Your Recipe</title>
 </head>
 <body>
-  <div class="banner d-flex justify-content-center h-40" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @recipe.image_url %>);">
+  <div class="banner d-flex justify-content-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @recipe.image_url %>); height: 25vh;">
     <div class="container">
       <h1 class="text-center"> <strong><%= @recipe.name.html_safe %></strong></h1>
     </div>
     <a class="btn btn-primary" id="btn-lg" href='/meal_plans/<%= MealPlan.find_by(user: current_user, active: true).id %>/edit'>Back to meal plan</a>
   </div>
-  <div class="m-2 justify-content-center">
-    <div class="border p-4 mt-5 justify-content-center">
+  <div class="m-2 justify-content-center m-3">
+    <div class="font-c-6 text-center text-secondary mt-5">
+      <div class="row justify-content-center mt-2">
+      <i class="fas fa-clock pr-2" aria-hidden="true" style="font-size: 24px;"></i>
+      <h5> <%= @recipe.prep_time %> minutes </h5>
+      </div>
+    </div>
+    <div class="border p-4 mt-4 justify-content-center">
       <div class="row mb-3">
         <div class="col-2"></div>
-        <a class="col-8 border-bottom text-center font-c-3" id="selector" data-toggle="collapse" href="#collapseIngredients" role="button"><strong>Ingredients</strong>
-          <i class="fas fa-caret-down"></i>
+        <a class="col-8 text-center font-c-3" id="selector" data-toggle="collapse" href="#collapseIngredients" role="button"><strong>Ingredients</strong>
+          <i class="fas fa-angle-double-right pl-2"></i>
         </a>
         <div class="col-2"></div>
       </div>
@@ -29,18 +35,18 @@
       </p>
       <div class="row mb-3 mt-5">
         <div class="col-2"></div>
-        <div class="col-8 border-bottom text-center font-c-3" id="selector" data-toggle="collapse" href="#collapseDescription" role="button"><strong>Summary</strong><i class="fas fa-caret-down m-1"></i></div>
+        <div class="col-8 text-center font-c-3" id="selector" data-toggle="collapse" href="#collapseDescription" role="button"><strong>Summary</strong><i class="fas fa-angle-double-right pl-2"></i></div>
         <div class="col-2"></div>
       </div>
       <p class="text-center collapse" id="collapseDescription"> <%= @recipe.description.html_safe %> </p>
       <div class="row mb-3 mt-5">
         <div class="col-2"></div>
-        <div class="col-8 border-bottom text-center font-c-3" id="selector" data-toggle="collapse" href="#collapseInstruction" role="button"><strong>Instructions</strong><i class="fas fa-caret-down m-1"></i></div>
+        <div class="col-8 text-center font-c-3" id="selector" data-toggle="collapse" href="#collapseInstruction" role="button"><strong>Instructions</strong><i class="fas fa-angle-double-right pl-2"></i></div>
         <div class="col-2"></div>
       </div>
       <div class="text-center collapse" id="collapseInstruction">
         <p> <%= @recipe.instructions.html_safe %> </p>
-        <i class="fas fa-caret-right"></i>
+        <i class="fas fa-angle-double-right"></i>
       </div>
     </div>
   </div>
