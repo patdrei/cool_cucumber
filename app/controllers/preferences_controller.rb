@@ -1,11 +1,12 @@
 class PreferencesController < ApplicationController
 
   def overview
-      @top_choices = Tag.where(category: 'top_choice').first(4)
-      @cuisines = Tag.where(category: 'cuisines').sort_by{|tag| -tag.recipe_tags.count }.first(4)
-      @types = Tag.where(category: 'dish_types').sort_by{|tag| -tag.recipe_tags.count }.first(4)
+      Tag.where(category: 'top_choice').select{|tag| tag.preferences.exists?(user: current_user)} == [] ? @top_choices = Tag.where(category: 'top_choice').sort_by{|tag| -tag.recipe_tags.count }.first(4) : @top_choices = Tag.where(category: 'top_choice').select{|tag| tag.preferences.exists?(user: current_user)}
+      Tag.where(category: 'cuisines').select{|tag| tag.preferences.exists?(user: current_user)} == [] ? @cuisines = Tag.where(category: 'cuisines').sort_by{|tag| -tag.recipe_tags.count }.first(4) : @cuisines = Tag.where(category: 'cuisines').select{|tag| tag.preferences.exists?(user: current_user)}
+      Tag.where(category: 'dish_types').select{|tag| tag.preferences.exists?(user: current_user)} == [] ? @types = Tag.where(category: 'dish_types').sort_by{|tag| -tag.recipe_tags.count }.first(4) : @types = Tag.where(category: 'dish_types').select{|tag| tag.preferences.exists?(user: current_user)}
 
-      @ingredients = Ingredient.all.sort_by{|ing| -ing.recipe_ingredients.count }.first(4)
+      Ingredient.select{|ingredient| ingredient.preferences.exists?(user: current_user)} == [] ? @ingredients = Ingredient.all.sort_by{|ing| -ing.recipe_ingredients.count }.first(4) : @ingredients = Ingredient.select{|ingredient| ingredient.preferences.exists?(user: current_user)}
+
       @preferences = current_user.preferences
   end
 
