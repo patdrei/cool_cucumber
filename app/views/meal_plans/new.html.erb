@@ -3,7 +3,7 @@
 </div>
 
 <div class="container">
-  <h6 class="text-muted pt-3" style="font-size: 17px;">Choose your preferences</h6>
+  <h6 class="text-muted pt-4" style="font-size: 17px; padding-bottom: 17px;">Choose your preferences</h6>
   <div class="row m-1 mb-3">
 
   <%  @user_preferences = current_user.preferences.first(4) %>
@@ -12,17 +12,17 @@
 
       <% @top_choices.each do |choice| %>
         <% next if Preference.exists?(tag_id: choice.id, user_id: current_user.id, active: true) || choice.name == 'sustainable' || choice.name == 'cheap'|| choice.name == 'veryPopular'%>
-        <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
+        <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1 pb-3">
           <% if Preference.exists?(tag_id: choice.id, user_id: current_user.id, active: true ) %>
             <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
             <form class="form-inline" >
-              <%= link_to preference_tag_path(pref), { class: "btn-sm btn-secondary w-100 text-center new-page-tag", method: "patch",  style: "text-decoration:none;; border:1px solid;" } do %>
+              <%= link_to preference_tag_path(pref), { class: "btn-sm btn-secondary w-100 py-2 text-center new-page-tag", method: "patch",  style: "text-decoration:none;; border:1px solid;" } do %>
                 <span><%= choice.name %></span>
               <% end %>
             </form>
           <% else %>
             <form class="form-inline" >
-              <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-outline-secondary btn-sm w-100 text-center new-page-tag", method: "post",  style: "text-decoration:none; border:1px solid;"} do %>
+              <%= link_to preference_tag_path(choice, kind: 1), { class: "btn-outline-secondary py-2 btn-sm w-100 text-center new-page-tag", method: "post",  style: "text-decoration:none; border:1px solid;"} do %>
                 <span><%= choice.name %></span>
               <% end %>
             </form>
@@ -35,10 +35,10 @@
         <% choice = pref.tag %>
         <% ingredient = pref.ingredient %>
         <% if choice.nil? %>
-            <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
+            <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1 pb-3">
               <% pref = Preference.find_by(ingredient_id: ingredient.id, active: true) %>
               <form class="form-inline" >
-                <%= link_to preference_ingredient_path(ingredient), { class: "btn-sm btn-warning w-100 text-center new-page-tag", method: "post",  style: "text-decoration:none;; border:1px solid;" } do %>
+                <%= link_to preference_ingredient_path(ingredient), { class: "btn-sm btn-warning w-100 py-2 text-center new-page-tag", method: "post",  style: "text-decoration:none;; border:1px solid;" } do %>
                   <span><%= ingredient.name %></span>
                 <% end %>
               </form>
@@ -61,10 +61,10 @@
               <% j = '-warning' %>
           <% end %>
           <% next if Preference.exists?(tag_id: choice.id, user_id: current_user.id, active: true)%>
-          <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
+          <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1 pb-3">
             <% pref = Preference.find_by(tag_id: choice.id, active: true) %>
             <form class="form-inline" >
-              <%= link_to preference_tag_path(choice), { class: "btn-sm btn#{i} w-100 text-center new-page-tag ", method: "post",  style: "text-decoration:none;; border:1px solid;" } do %>
+              <%= link_to preference_tag_path(choice), { class: "btn-sm btn#{i} w-100 py-2 text-center new-page-tag ", method: "post",  style: "text-decoration:none;; border:1px solid;" } do %>
                 <span><%= choice.name %></span>
               <% end %>
             </form>
@@ -73,6 +73,8 @@
       <% end %>
 
     <% end %>
+
+
   <div class="col-6 col-lg-2 col-md-3 col-sm-4 pt-2 pl-4">
       <a class="font-c-3" href='/preferences'>
         <u>More choices</u>
@@ -81,7 +83,7 @@
   </div>
 </div>
 
-  <h6 class="text-muted mb-1 " style="font-size: 17px;">Choose the number of days</h6>
+  <h6 class="text-muted mb-1 pt-3 pb-3" style="font-size: 17px;">Choose the number of days</h6>
   <%= simple_form_for @meal_plan do |f| %>
     <div class="row d-flex justify-content-center">
       <div class="column mt-1" style ="width:87%;">
@@ -91,7 +93,7 @@
         <a id="range_slider_value" class="ml-2 mt-3" style="color:black;">7</a>
       </div>
     </div>
-    <%= f.submit "Generate New Meal Plan", class: "btn btn-primary w-100 mb-3"%>
+    <%= f.submit "Generate New Meal Plan", class: "btn btn-primary w-100 mb-3 mt-3 pt-2"%>
   <% end %>
 
       <!-- end -->
