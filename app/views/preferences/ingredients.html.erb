@@ -4,17 +4,13 @@
   <title></title>
 </head>
 <body>
-
   <div class="m-3">
-
     <div class="row justify-content-left mt-2 ml-1 mb-3">
       <a class="font-c-neutral" href='/preferences'>
        <i class="fas fa-angle-double-left"></i>
       </a>
     </div>
-
-    <div class="justify-content-center p-1 mb-3 pb-3
-    ">
+    <div class="justify-content-center p-1 mb-3 pb-3">
     <%= form_tag preferences_ingredients_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
@@ -25,39 +21,34 @@
     <% end %>
     </div>
 
-    <% if @pure_ingredients.nil? %>
 
+    <% if @pure_ingredients.nil? %>
     <% @ingredients.each_with_index do |array, i| %>
-          <a class="mt-3 sizing font-c-5" id="selector" data-toggle="collapse" href="#collapse-<%= i %>" role="button">
-            <%= @alphabet[i].capitalize %></a>
+          <a class="mt-3 sizing font-c-5 ml-3" id="selector" data-toggle="collapse" href="#collapse-<%= i %>" role="button">
+            <%= @alphabet[i].capitalize %>
+            <i class="fas fa-angle-double-right"></i>
+            </a>
           <div class="row p-1 mb-3">
             <% array.each do |ingredient| %>
-            <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1 pb-3 <%= i == 0 ? 'collapse-show' : 'collapse' %>" id="collapse-<%= i %>">
+            <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1 pb-3 collapse" id="collapse-<%= i %>">
               <% if Preference.exists?(ingredient_id: ingredient.id, user_id: current_user.id) %>
                 <form class="form-inline" >
                   <%= link_to preference_ingredient_path(ingredient), { class: "btn-sm  py-2 btn-warning w-100 text-center inc-pref", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true} do %>
                     <span><%= ingredient.name.truncate(25) %></span>
                   <% end %>
                 </form>
-
               <% else %>
-
                 <form class="form-inline" >
                   <%= link_to preference_ingredient_path(ingredient), { class: "btn-sm btn-outline-warning w-100 text-center no-pref", method: "post",  style: "text-decoration:none; border:1px solid;", remote: true} do %>
                     <span><%= ingredient.name.truncate(25) %></span>
                   <% end %>
                 </form>
-
               <% end %>
-
             </div>
-
             <% end %>
             </div>
           <% end %>
-
     <%  else %>
-
     <div class="row p-1 mb-3">
             <% @pure_ingredients.each do |ingredient| %>
             <% next if Preference.exists?(ingredient_id: ingredient.id, user_id: current_user.id, kind: -1, active: true) %>
@@ -69,28 +60,21 @@
                     <span><%= ingredient.name %></span>
                   <% end %>
                 </form>
-
               <% else %>
-
                 <form class="form-inline" >
                   <%= link_to preference_ingredient_path(ingredient, kind: 1), { class: "btn-sm btn-outline-warning py-2 w-100 text-center no-pref", method: "post",  style: "text-decoration:none; border:1px solid;", remote: true} do %>
                     <span><%= ingredient.name %></span>
                   <% end %>
                 </form>
-
               <% end %>
-
             </div>
-
             <% end %>
       </div>
-
-
   </div>
   <%  end %>
   <div class="row justify-content-left mt-2 ml-1 mb-3">
     <a class="font-c-6" href='/preferences'>
-      <i class="fas fa-long-arrow-alt-left mr-1"></i>
+      <i class="fas fa-angle-double-left"></i>
       <u>Return to preference overview</u>
     </a>
   </div>
