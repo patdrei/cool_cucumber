@@ -15,7 +15,7 @@ n <!DOCTYPE html>
     <% elsif params[:category] == "dish_types"%>
       <% i = '-info text-white'  %>
       <% j = '-info'  %>
-      <% f = 'font-c-1' %>
+      <% f = 'text-info' %>
   <% else%>
       <% i = '-warning' %>
       <% j = '-warning' %>
@@ -28,9 +28,9 @@ n <!DOCTYPE html>
         <u>Return to preference overview</u>
       </a>
     </div>
-    <h1> Select from all <%= @category.capitalize.gsub("_"," ") %></h1>
+    <h1 class =" pb-3"> Select from all <%= @category.capitalize.gsub("_"," ") %></h1>
 
-    <div class="justify-content-center p-1 mb-3">
+    <div class="justify-content-center p-1 mb-3 pb-2">
     <%= form_tag preferences_category_path, method: :get do %>
       <%= text_field_tag :query,
         params[:query],
@@ -45,12 +45,12 @@ n <!DOCTYPE html>
         <% @tags.each do |tag| %>
        <%next if tag.name == 'sustainable' || tag.name == 'cheap' || tag.name == 'veryPopular'%>
 
-        <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1">
+        <div class="col-6 col-lg-2 col-md-3 col-sm-4 p-1 pb-3">
 
           <% if Preference.exists?(tag_id: tag.id, user_id: current_user.id) %>
             <% pref = Preference.find_by(tag_id: tag.id, active: true) %>
             <form class="form-inline" >
-              <%= link_to preference_tag_path(tag), { class: "btn-sm btn#{i} w-100 text-center inc-pref", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true } do %>
+              <%= link_to preference_tag_path(tag), { class: "btn-sm btn#{i} py-2 w-100 text-center inc-pref", method: "post",  style: "text-decoration:none;border:1px solid;", remote: true } do %>
                 <span><%= tag.name %></span>
               <% end %>
             </form>
@@ -58,7 +58,7 @@ n <!DOCTYPE html>
           <% else %>
 
             <form class="form-inline" >
-              <%= link_to preference_tag_path(tag), { class: "btn-sm btn-outline#{j} w-100 text-center no-pref", method: "post",  style: "text-decoration:none; border:1px solid;", remote: true} do %>
+              <%= link_to preference_tag_path(tag), { class: "btn-sm btn-outline#{j} py-2 w-100 text-center no-pref", method: "post",  style: "text-decoration:none; border:1px solid;", remote: true} do %>
                 <span><%= tag.name %></span>
               <% end %>
             </form>
